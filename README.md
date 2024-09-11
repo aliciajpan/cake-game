@@ -10,13 +10,13 @@ In this game, players will be given cake orders in the form of an image of what 
 
 Points are earned for successfully submitted orders! Beware the order timers - no hungry customer wants to be left waiting for too long!
 
-<img src="./proposal-images/menu.jpg" alt="cake order card" width=200>
+<img src="./proposal-images/cakeorder.jpg" alt="menu page mockup" width=300>
 
 ### Problem Space
 
 **Short answer**: This project is meant to deliver some good silly fun!
 
-**Longer answer**: Everyone needs a pick-me-up every now and then. This project aims to have a colourful and cheerful design with a main game mechanic that requires just the right amount of concentration that it gives your mind something to do, but is not too frustrating. I hope to bring a smile to someone's face when they play this :)
+**Longer answer**: Everyone needs a pick-me-up every now and then. This project aims to have a cozy and cheerful design with a main game mechanic that requires just the right amount of concentration that it gives your mind something to do, but is not too frustrating. I hope to bring a smile to someone's face when they play this :)
 
 **Personal answer**: I have been interested in what goes into video game design - especially browser games, which generally need to be designed to be more lightweight - for a long time. The scope of this game is not meant to be super expansive due to the time constraints, but I'd still like to put my newly learned software skills to use on a project that feels exciting to me. Plus I think a site of lil cakes would be super cute!
 
@@ -35,7 +35,7 @@ I forsee players of the game falling into these categories:
 - Cake card orders will appear on the screen
 - Cake orders will have a timer shown through a decreasing bar; once the timer is up, the card will expire and disappear (i.e. player can no longer earn points for completing that specific order)
 
-- Players will be able to add _cake components_ by pressing buttons on screen (layers and a topmost icing layer) as they see fit 
+- Players will be able to add _cake components_ (layers and a topmost icing layer) by pressing buttons on screen as they see fit 
     * A maximum limit will be enforced so that the cake can fit in the screen area
 - Players will be able to customize _cake components_ to have different colours/flavours by pressing buttons on screen
 
@@ -45,6 +45,12 @@ I forsee players of the game falling into these categories:
 - Orders do not have to be fulfilled in the order of appearance
 
 - Player score will be tracked and displayed on the screen
+
+- Players can view a game instruction blurb
+
+- Players can see their previous score history
+
+- Players can enter their Chef name
  
 ## Implementation
 
@@ -57,7 +63,7 @@ HTML, SASS, Javascript
 React, axios, SASS, react-router-dom
 
 #### Back-End
-Node, Express, CORS, uuid
+Node, Express, CORS
 
 #### Tools & Softwares
 VSCode, Postman, Procreate, font and icon libraries
@@ -66,11 +72,7 @@ VSCode, Postman, Procreate, font and icon libraries
 
 No external sources of data, a custom back-end will be made!
 
-### Sitemap
-
-List the pages of your app with brief descriptions. You can show this visually, or write it out.
-
-### Mockups
+### Sitemap / Mockups
 
 #### Menu Page
 
@@ -122,11 +124,9 @@ List the pages of your app with brief descriptions. You can show this visually, 
 8. Flavour menu
 9. Buttons to add _cake components_
 10. Player score
-11. Tracker for number of failed (timed out) orders
+11. Tracker for number of failed (timed out) orders; game ends when limit is reached
 
 ### Data
-
-Describe your data and the relationships between the data points. You can show this visually using diagrams, or write it out. 
 
 1. Pool of flavours cake layers/icing
 2. Array of randomly generated cake configurations (uses #1)
@@ -145,35 +145,45 @@ Describe your data and the relationships between the data points. You can show t
         ```
 3. Front-end can change cake data from #2
     - If order times out, write to back-end to change `expired` to `true` 
-    - If order sucessfully submitted, write to back-end to change `submitted` to `true` 
-4. 
-When game over, save score to personal leaderboard (persistent)
-Ask for player name (for leaderboard) "Chef ____"
-
-
-(diving deeper: global leaderboard)
+    - If order successfully submitted, write to back-end to change `submitted` to `true` 
+4. Array of player's past scores and associated timestamps
+    - When game over, save current score and timestamp of game end to array
+5. Store player's name (from front-end input or use placeholder if none provided)
 
 ### Endpoints
 
 List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
-baseurl/generate
-baseurl/cakes
-baseurl/cake
-baseurl/scores
+
+**POST `/generate`** -> Generates and saves array of cakes to a JSON file
+
+**GET `/cakes`** -> Returns array of cakes
+
+**GET `/cake`** -> Returns individual cake
+
+**PUT `/cake`** -> Edits property on cake
+
+**GET `/scores`** -> Returns array of scoreboard data
+
+**POST `/scores`** -> Adds new score to scoreboard data
+
+**POST `/name`** -> Saves player's name
+
+**GET `/name`** -> Returns player's saved name
+
 
 ## Roadmap
 
-Scope your project as a sprint. Break down the tasks that will need to be completed and map out timeframes for implementation working back from the capstone due date. 
-
 ### Main Chunks
 
-1. Setting up repo
+0. Get feedback _(Sept 11)_
+
+1. Setting up repo _(Sept 11)_
     - Split into `client` and `server` directories
     - Set default branch to `develop`
 
-2. Collect icon assets (garbage can, checkmark, etc.)
+2. Collect icon assets (garbage can, checkmark, etc.) _(Sept 11)_
 
-3. Create components in front-end
+3. Create components in front-end _(Sept 12-14)_
     - Cake layers
     - Icing
     - Plate
@@ -185,13 +195,13 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
     - Score count
     - Flavour menu
 
-4. Create and route pages in front-end
+4. Create and route pages in front-end _(Sept 15)_
     - Menu page (`/`)
     - Scoreboard page (`/scoreboard`)
     - Tutorial page (`/howtoplay`)
     - Main page (`/play`)
 
-5. Create data collections in back-end
+5. Create data collections in back-end _(Sept 15-16)_
     - List of cake layer/icing flavours
     - Generate array of cakes
         - Each cake object should have these properties (example properties):
@@ -210,10 +220,10 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
         - Sorted to show highest at front of the array
         - Use dynamic timestamp
 
-6. Define HTTP verb + endpoint combinations in back-end
+6. Define HTTP verb + endpoint combinations in back-end _(Sept 17)_
     - See `Endpoints` section
 
-7. Make `axios` calls in appropriate places in front-end to get data from back-end
+7. Make `axios` calls in appropriate places in front-end to get data from back-end _(Sept 18-19)_
     - Clicking PLAY button on Menu Page triggers generation of array of cakes (**limit vs infinite play TBD**)
         - Brings player to `/play`/Main Page
     - Clicking SCOREBOARD button on Menu Page fetches scoreboard data to display
@@ -221,7 +231,7 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
     - Clicking CHECKMARK in Menu Page player name input writes name to back-end
         - If field is blank, use placeholder name
 
-8. Create event listeners in front-end to respond to player actions (see #7 for event listeners that have to do with back-end data)
+8. Create event listeners in front-end to respond to player actions (see #7 for event listeners that have to do with back-end data) _(Sept 19-21)_
     - On Menu Page
         - Clicking on **Tutorial tab** takes player to `/howtoplay`/Tutorial page
     - On Main Page
@@ -238,15 +248,18 @@ Scope your project as a sprint. Break down the tasks that will need to be comple
     - On Tutorial Page
         - Clicking on **home icon** brings user back to `/`/Menu page
 
+9. Testing _(Sept 22)_
+
 ---
 
-## Future Implementations/Nice to Haves
+## Ideas for Future Implementations/Nice to Haves
+
 1. Add cheerful music that plays in window
 2. Add symbols on flavours (instead of just relying on colours) to increase accessibility
 3. Deploy online
-    - Save global leaderboard data
+    - Save scoreboard data for online players
 4. Expand colours/flavours/number of cake layers (increase cake order complexity)
-5. Save data in database instead of JSON
+5. Save data in database instead of JSON file
 6. Different levels of difficulty (timers shorter/number of concurrent orders increases, etc.)
 7. Have back-end store names to randomly generate if player does not give a name
     - Example: Have array of adjectives and array of nouns, randomly pick one of each to give a name, ex. "Frosted Baker"
