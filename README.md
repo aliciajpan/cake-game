@@ -23,6 +23,7 @@ Points are earned for successfully submitted orders! Beware the order timers - n
 ### User Profile
 
 I forsee players of the game falling into these categories:
+
 1. Anyone who wants to have something fun and quick to do when taking a break from something more serious on their computer
 
 2. Anyone who likes the idea behind a game like Overcooked but gets frustrated with the more complicated mechanics/higher stress level of that game (I'll admit, I've definitely rage-quit before during family game night)
@@ -30,8 +31,6 @@ I forsee players of the game falling into these categories:
 2. Younger kids who might find this game a bit more challenging than adults. Being able to look at an image and identify the constituent parts and colours, counting cake layers, and assessing visual matches must be good for their young brains' development, right? I have two small nieces so I am super excited to show them this game!
 
 ### Features
-
-List the functionality that your app will include. These can be written as user stories or descriptions with related details. Do not describe _how_ these features are implemented, only _what_ needs to be implemented.
 
 - Cake card orders will appear on the screen
 - Cake orders will have a timer shown through a decreasing bar; once the timer is up, the card will expire and disappear (i.e. player can no longer earn points for completing that specific order)
@@ -51,7 +50,8 @@ List the functionality that your app will include. These can be written as user 
 
 ### Tech Stack
 
-List technologies that will be used in your app, including any libraries to save time or provide more functionality. Be sure to research any potential limitations.
+#### Languages
+HTML, SASS, Javascript
 
 #### Front-End
 React, axios, SASS, react-router-dom
@@ -59,17 +59,18 @@ React, axios, SASS, react-router-dom
 #### Back-End
 Node, Express, CORS, uuid
 
+#### Tools & Softwares
+VSCode, Postman, Procreate, font and icon libraries
+
 ### APIs
 
-List any external sources of data that will be used in your app.
+No external sources of data, a custom back-end will be made!
 
 ### Sitemap
 
 List the pages of your app with brief descriptions. You can show this visually, or write it out.
 
 ### Mockups
-
-Provide visuals of your app's screens. You can use pictures of hand-drawn sketches, or wireframing tools like Figma.
 
 #### Menu Page
 
@@ -116,25 +117,39 @@ Provide visuals of your app's screens. You can use pictures of hand-drawn sketch
 3. Tab to show tutorial modal, which looks like tutorial page but smaller and the Main Page is visible in the background
 4. Garbage can icon to scrap cake
 5. Plate on which _cake components_ are stacked
-6. Clicking on _cake components_ brings up flavour menu
+6. Clicking on _cake components_ brings up flavour menu to change flavour/colour
+7. Checkmark icon to submit cake to be compared against orders
+8. Flavour menu
+9. Buttons to add _cake components_
+10. Player score
+11. Tracker for number of failed (timed out) orders
 
 ### Data
 
 Describe your data and the relationships between the data points. You can show this visually using diagrams, or write it out. 
 
-Pool of flavours of cakes
-Pool of flavours of icing
-Randomly generate cake configurations
-Get array of cakes
-When timeout, write to backend to change that property
-When successful submit, write to back
+1. Pool of flavours cake layers/icing
+2. Array of randomly generated cake configurations (uses #1)
+    - Some limits on number of cake layers, etc.
+    - What each cake object looks like:
+        ```
+        {
+            id: 1,
+            score: 200,
+            layerCount: 3,
+            layers: ["chocolate", "vanilla", "chocolate"],
+            icing: "strawberry",
+            expired: false,
+            submitted: false
+        }
+        ```
+3. Front-end can change cake data from #2
+    - If order times out, write to back-end to change `expired` to `true` 
+    - If order sucessfully submitted, write to back-end to change `submitted` to `true` 
+4. 
 When game over, save score to personal leaderboard (persistent)
 Ask for player name (for leaderboard) "Chef ____"
-If not want provide then geerator name
-list of adj
-list of nouns
-related to baking
-ex. Chef Sweet Buns
+
 
 (diving deeper: global leaderboard)
 
