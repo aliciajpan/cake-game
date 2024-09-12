@@ -1,0 +1,39 @@
+@use './_fonts.scss' as *;
+@use './_variables.scss' as *;
+
+// reset
+* {
+    margin: 0;
+    padding: 0;
+    border: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'MilkCream', Arial;
+    color: $chocolate;
+
+    h1 { // page header
+        font-size: 5rem;
+        font-family: 'MilkCream';
+        font-weight: 500;
+    }
+
+    h2 { 
+        font-size: 3rem;
+        font-family: 'MilkCream';
+        font-weight: 500;
+    }
+
+    h3 { 
+        font-size: 2rem;
+        font-family: 'MilkCream';
+        font-weight: 500;
+    }
+
+    p { 
+        font-size: 1.5rem;
+        font-family: 'MilkCream';
+        font-weight: 500; 
+    }
+}
