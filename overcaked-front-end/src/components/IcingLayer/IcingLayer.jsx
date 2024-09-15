@@ -1,13 +1,12 @@
 import "./IcingLayer.scss";
 
-function IcingLayer({flavour}) {
-
+function IcingLayer({flavour, height, isSelected, onClick}) {
     return (
-        <div className={`icinglayer ${flavour}`}>
-            <div className="icing"></div>
-            <div className="drip drip1"></div>
-            <div className="drip drip2"></div>
-            <div className="drip drip3"></div>
+        <div onClick={onClick} className={`icinglayer icinglayer--${height} ${flavour}`}>
+            <div className={`icing ${isSelected ? `selected-icing` : ""}`}></div>
+            <div className={`drip drip1 ${isSelected ? `drip--selected` : ""}`}></div>
+            <div className={`drip drip2 ${isSelected ? `drip--selected` : ""}`}></div>
+            <div className={`drip drip3 ${isSelected ? `drip--selected` : ""}`}></div>
         </div>
     );
 }

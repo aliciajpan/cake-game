@@ -1,0 +1,10 @@
+@use '../../styles/partials/variables' as *;
+
+.flavourmenu {
+    display: flex;
+    flex-direction: column;
+    background-color: $vanilla;
+    border-radius: 3rem;
+    width: 15rem;
+    margin: 1rem;
+}
