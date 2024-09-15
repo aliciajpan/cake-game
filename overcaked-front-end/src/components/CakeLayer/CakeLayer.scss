@@ -1,0 +1,26 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/_mixins.scss' as *;
+
+.layer {
+    position: absolute;
+    display: block;
+    width: 250px;
+    height: 100px;
+    border-radius: 50%;
+}
+
+.layer-3 { bottom: 156px; }
+.layer-2 { bottom: 104px; }
+.layer-1 { bottom: 52px; }
+
+.chocolate {
+    @include foodColoring($chocolate);
+}
+
+.vanilla {
+    @include foodColoring($vanilla);
+}
+
+.strawberry {
+    @include foodColoring($strawberry);
+}

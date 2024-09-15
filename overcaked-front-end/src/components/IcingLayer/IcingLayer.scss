@@ -1,0 +1,82 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/_mixins.scss' as *;
+
+.icinglayer {
+    position: absolute;
+    bottom: 255px;
+    left: 0;
+}
+
+// .icing {
+//     top: -2px;
+//     left: 0;
+//     background-color: $vanilla;
+//     width: 15.625rem;
+//     height: 6.25rem;
+//     border-radius: 50%;
+//     position: absolute;
+
+//     &:before {
+//         content: "";
+//         position: absolute;
+//         top: 4px;
+//         right: 5px;
+//         bottom: 6px;
+//         left: 5px;
+//         background-color: lighten($vanilla, 3%);
+//         box-shadow:
+//             0 0 4px lighten($vanilla, 5%),
+//             0 0 4px lighten($vanilla, 5%),
+//             0 0 4px lighten($vanilla, 5%);
+//         border-radius: 50%;
+//         z-index: 1;
+//     }
+// }
+
+// .drip {
+//     display: block;
+//     width: 50px;
+//     height: 60px;
+//     border-bottom-left-radius: 25px;
+//     border-bottom-right-radius: 25px;
+//     background-color: $vanilla;
+//     position: absolute;
+// }
+
+// .drip1 {
+//     top: 53px;
+//     left: 0;
+//     transform: skewY(15deg);
+//     height: 48px;
+//     width: 40px;
+// }
+
+// .drip2 {
+//     top: 54px;
+//     left: 90px;
+//     width: 80px;
+//     border-bottom-left-radius: 40px;
+//     border-bottom-right-radius: 40px;
+// }
+
+// .drip3 {
+//     top: 50px;
+//     left: 185px;
+//     transform: skewY(-15deg);
+//     width: 65px;
+//     border-bottom-left-radius: 40px;
+//     border-bottom-right-radius: 40px;
+//     border-top-right-radius: 8px;
+// }
+
+.chocolate {
+    @include icingColoring($chocolate);
+}
+
+.vanilla {
+    @include icingColoring($vanilla);
+}
+
+.strawberry {
+    @include icingColoring($strawberry);
+}
