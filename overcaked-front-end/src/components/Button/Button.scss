@@ -1,0 +1,44 @@
+@use '../../styles/partials/variables' as *;
+
+.button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 3rem;
+    margin: 2rem;
+
+    &:hover {
+        opacity: 50%;
+        cursor: pointer;
+    }
+}
+
+.big {
+    width: 30vw;
+    height: 10vh;
+
+    font-size: 5rem;
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.small {
+    width: 20vw;
+    height: 8vh;
+
+    font-size: 3rem;
+    font-weight: 700;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.pink {
+    background-color: $strawberry;
+    color: $strawberry-light;
+}
+
+.brown {
+    background-color: $chocolate;
+    color: $chocolate-light;
+}

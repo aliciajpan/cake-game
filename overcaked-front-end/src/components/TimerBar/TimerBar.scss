@@ -1,0 +1,31 @@
+@use '../../styles/partials/variables' as *;
+
+@keyframes roundtime {
+    to {
+      /* More performant than animating `width` */
+        // transform: scaleX(0);
+        width: 0;
+        background-color: $red;
+    }
+}
+
+.timerbar {
+    height: 1rem;
+    width: 90%;
+    background-color: $vanilla;
+    border-radius: 0.5rem;
+    padding: 0.1rem;
+
+    &__remaining {
+        height: 100%;
+        width: 100%;
+        border-radius: 0.5rem;
+        background-color: $green;
+        // background: linear-gradient(to bottom, red, #900);
+        animation: roundtime calc(20s) linear forwards;
+        transform-origin: left center;
+    }
+}
+
+// https://getbootstrap.com/docs/4.0/components/progress/
+// https://codepen.io/benarson/pen/gMpOyX
