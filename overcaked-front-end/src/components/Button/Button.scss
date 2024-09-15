@@ -42,3 +42,15 @@
     background-color: $chocolate;
     color: $chocolate-light;
 }
+
+.game {
+    background-color: $vanilla;
+    color: $chocolate-light;
+    height: 3rem;
+    width: 15rem;
+    margin: 1rem;
+
+    &--menu {
+        width: 10rem;
+    }
+}

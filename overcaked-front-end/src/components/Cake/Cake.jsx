@@ -1,18 +1,23 @@
-
+import CakeLayer from "../CakeLayer/CakeLayer";
+import IcingLayer from "../IcingLayer/IcingLayer";
 import "./Cake.scss";
 
-function Cake() {
-
+function Cake({icing, cakelayers, size, selectedItem, setSelectedItem}) {
     return (
-        <article className="cake">
+        <article className={`cake ${size}`}>
             <div className="plate"></div>
-            <div className="layer layer-bottom"></div>
-            <div className="layer layer-middle"></div>
-            <div className="layer layer-top"></div>
-            <div className="icing"></div>
-            <div className="drip drip1"></div>
-            <div className="drip drip2"></div>
-            <div className="drip drip3"></div>
+            {cakelayers.map((layer, index) => {
+                return (
+                    <CakeLayer 
+                        key={index}
+                        onClick={() => {setSelectedItem(`layer${index+1}`)}} 
+                        isSelected={selectedItem===`layer${index+1}`} 
+                        layer={`${index+1}`} 
+                        flavour={layer}
+                    />
+                )
+            })}
+            <IcingLayer onClick={() => {setSelectedItem("icing")}} isSelected={selectedItem==="icing"} flavour={icing} height={cakelayers.length}/>
         </article>
     );
 }

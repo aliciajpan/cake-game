@@ -1,14 +1,33 @@
-.menu {
-    display: flex;
+.main {
+    // display: flex;
+    display: grid;
+    grid-template-columns: 25% 50% 25%;
+    grid-template-rows: 34% 66%;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-
-    &__logo {
-        width: 50%;
-    }
 
     &__orders {
         display: flex;
+        grid-column: 1 / 3; // second # non-inclusive because partitions not sections
+        grid-row: 1 / 2;
+        justify-self: flex-start;
+        align-self:center;
+    }
+
+    &__build {
+        display: flex;
+        justify-content: center;
+        height: 30rem;
+        grid-column: 2 / 3; // second # non-inclusive because partitions not sections
+        grid-row: 2 / 3;
+    }
+
+    &__edit {
+        display: flex;
+        justify-self: center;
+        flex-direction: column;
+        grid-column: 3 / 4;
+        grid-row: 1 / -1;
+        justify-content: center;
     }
 }

@@ -1,18 +1,80 @@
 import './MainPage.scss';
-import logo from '../../assets/logos/logo.png';
-import Button from '../../components/Button/Button';
-import NameForm from '../../components/NameForm/NameForm';
-import OrderCard from '../../components/OrderCard/OrderCard';
+import OrderList from '../../components/OrderList/OrderList.jsx';
 import Cake from '../../components/Cake/Cake';
-
+import Button from '../../components/Button/Button.jsx';
+import FlavourMenu from '../../components/FlavourMenu/FlavourMenu.jsx';
+import { useState } from 'react';
 
 function MainPage() {
+    const [cakelayers, setCakelayers] = useState([]);
+    const [icing, setIcing] = useState("");
+    const [selectedItem, setSelectedItem] = useState(null);
+
+    function addCakeLayer() {
+        if (cakelayers.length < 3 && icing === "") {
+            setCakelayers([...cakelayers, "chocolate"]);
+        }
+
+        else {
+            alert("cannot add more cake layers!");
+        }
+    }
+
+    function addIcingLayer() {
+        if (icing.length < 1 && cakelayers.length > 0) {
+            setIcing("chocolate");
+        }
+
+        else {
+            alert("too much icing!");
+        }
+    }
+
+    function setSelectedFlavour(flavour) {
+        if (selectedItem === "icing") {
+            setIcing(flavour);
+        }
+
+        else if (selectedItem === "layer1") {
+            //const tempCakeLayers = cakelayers; -> both temp and cakeLayers point to the array of cakeLayers
+            const tempCakeLayers = [...cakelayers]; // -> making a new array
+            tempCakeLayers[0] = flavour; // this changes array val but DOES NOT change where temp is pointing
+            setCakelayers(tempCakeLayers); // thus does not trigger change here because cakeLayers was pointing there already
+        }
+
+        else if (selectedItem === "layer2") {
+            const tempCakeLayers = [...cakelayers];
+            tempCakeLayers[1] = flavour;
+            setCakelayers(tempCakeLayers);
+        }
+
+        else if (selectedItem === "layer3") {
+            const tempCakeLayers = [...cakelayers];
+            tempCakeLayers[2] = flavour;
+            setCakelayers(tempCakeLayers);
+        }
+
+        else {
+            console.error("nothing selected");
+        }
+    }
+
     return (
-        <div className='menu__orders'>
-            <OrderCard num={1}/>
-            <OrderCard num={2}/>
-            <OrderCard num={3}/>
-        </div>
+        <main className='main'>
+            <div className='main__orders'>
+                <OrderList/>
+            </div>
+
+            <section className='main__build'>
+                <Cake icing={icing} cakelayers={cakelayers} size="big-cake" setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
+            </section>
+
+            <section className='main__edit'>
+                    <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
+                    <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
+                    <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
+            </section>  
+        </main>
     )
 }
 
