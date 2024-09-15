@@ -1,1 +1,15 @@
 @use './styles/partials/_global.scss' as *;
+@use './styles/partials/_variables.scss' as *;
+
+.app {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    &__window {
+        background-color: $bkgd;
+        width: 90vw;
+        height: 90vh;
+        border-radius: 3rem;
+    }
+}
