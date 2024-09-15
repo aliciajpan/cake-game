@@ -30,7 +30,34 @@ function MainPage() {
         }
     }
 
-    console.log(selectedItem);
+    function setSelectedFlavour(flavour) {
+        if (selectedItem === "icing") {
+            setIcing(flavour);
+        }
+
+        else if (selectedItem === "layer1") {
+            //const tempCakeLayers = cakelayers; -> both temp and cakeLayers point to the array of cakeLayers
+            const tempCakeLayers = [...cakelayers]; // -> making a new array
+            tempCakeLayers[0] = flavour; // this changes array val but DOES NOT change where temp is pointing
+            setCakelayers(tempCakeLayers); // thus does not trigger change here because cakeLayers was pointing there already
+        }
+
+        else if (selectedItem === "layer2") {
+            const tempCakeLayers = [...cakelayers];
+            tempCakeLayers[1] = flavour;
+            setCakelayers(tempCakeLayers);
+        }
+
+        else if (selectedItem === "layer3") {
+            const tempCakeLayers = [...cakelayers];
+            tempCakeLayers[2] = flavour;
+            setCakelayers(tempCakeLayers);
+        }
+
+        else {
+            console.error("nothing selected");
+        }
+    }
 
     return (
         <main className='main'>
@@ -45,7 +72,7 @@ function MainPage() {
             <section className='main__edit'>
                     <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
                     <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
-                    <FlavourMenu selectedItem={selectedItem}/>
+                    <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
             </section>  
         </main>
     )

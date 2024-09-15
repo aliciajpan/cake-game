@@ -1,13 +1,13 @@
 import "./FlavourMenu.scss";
 import Button from "../Button/Button";
 
-function FlavourMenu({selectedItems}) {
+function FlavourMenu({setSelectedFlavour}) {
 
     return (
         <section className="flavourmenu">
-            <Button text="chocolate" sizing="game--menu" color="brown"/>
-            <Button text="vanilla" sizing="game--menu" color="brown"/>
-            <Button text="strawberry" sizing="game--menu" color="brown"/>
+            <Button onClick={() => {setSelectedFlavour("chocolate")}} text="chocolate" sizing="game--menu" color="brown"/>
+            <Button onClick={() => {setSelectedFlavour("vanilla")}} text="vanilla" sizing="game--menu" color="brown"/>
+            <Button onClick={() => {setSelectedFlavour("strawberry")}} text="strawberry" sizing="game--menu" color="brown"/>
         </section>
     );
 }
