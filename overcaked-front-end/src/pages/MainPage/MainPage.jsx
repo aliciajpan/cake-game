@@ -3,12 +3,30 @@ import OrderList from '../../components/OrderList/OrderList.jsx';
 import Cake from '../../components/Cake/Cake';
 import Button from '../../components/Button/Button.jsx';
 import FlavourMenu from '../../components/FlavourMenu/FlavourMenu.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function MainPage() {
     const [cakelayers, setCakelayers] = useState([]);
     const [icing, setIcing] = useState("");
     const [selectedItem, setSelectedItem] = useState(null);
+    const [cakeArray, setCakeArray] = useState([]);
+
+    async function fetchAllCakes() {
+        try {
+            const allCakes = await axios.post("http://localhost:8080/cakes");
+            console.log(allCakes);
+            setCakeArray(allCakes.data);
+        }
+
+        catch(error) {
+            console.error(error);
+        }
+    }
+
+    useEffect (() => {
+        fetchAllCakes();
+    }, [])
 
     function addCakeLayer() {
         if (cakelayers.length < 3 && icing === "") {
@@ -62,7 +80,7 @@ function MainPage() {
     return (
         <main className='main'>
             <div className='main__orders'>
-                <OrderList/>
+                <OrderList cakeArray={cakeArray}/>
             </div>
 
             <section className='main__build'>
