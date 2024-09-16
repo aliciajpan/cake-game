@@ -1,3 +1,3 @@
-flavours = ["vanilla", "chocolate", "strawberry"];
+const flavours = ["vanilla", "chocolate", "strawberry"];
 
 export default flavours;
