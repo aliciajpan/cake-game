@@ -37,4 +37,41 @@ function generateCakes (_req, res) {
     }
 };
 
-export {generateCakes};
+function compareCakes(submittedCake, truthCake) {
+    if (submittedCake.icing === truthCake.icing 
+        && submittedCake.cakeLayers.length === truthCake.layerCount) {
+            for (let j=0; j<submittedCake.cakeLayers.length; j++) {
+                if (submittedCake.cakeLayers[j] !== truthCake.layers[j]) {
+                    return false;
+                }
+            }
+        return true;
+    }
+
+    return false;
+}
+
+function submitCake (req, res) {
+    try {
+        const allCakes = readFile("cakes.json");
+        console.log(req.body);
+
+        for (let i=0; i<req.body.compareIds.length; i++) {
+            if (compareCakes(req.body, allCakes[req.body.compareIds[i]-1])) {
+                res.send(req.body.compareIds[i]);
+                return;
+            }
+        }
+
+        res.send(null);
+    } 
+        
+    catch (error) {
+        res.status(500).json({
+            message: "Unable to submit cake",
+            error:error.toString()
+        });
+    }
+};
+
+export {generateCakes, submitCake};

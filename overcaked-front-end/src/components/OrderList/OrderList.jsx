@@ -10,7 +10,6 @@ function OrderList({cakeArray}) {
                 return (
                     <OrderCard key={cake.id} num={cake.id} icing={cake.icing} cakelayers={cake.layers}/>
                 )
-                
             })}
         </section>
     );
