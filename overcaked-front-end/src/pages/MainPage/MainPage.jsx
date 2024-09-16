@@ -3,12 +3,32 @@ import OrderList from '../../components/OrderList/OrderList.jsx';
 import Cake from '../../components/Cake/Cake';
 import Button from '../../components/Button/Button.jsx';
 import FlavourMenu from '../../components/FlavourMenu/FlavourMenu.jsx';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 
 function MainPage() {
     const [cakelayers, setCakelayers] = useState([]);
     const [icing, setIcing] = useState("");
     const [selectedItem, setSelectedItem] = useState(null);
+    const [cakeArray, setCakeArray] = useState([]);
+    const [cakesToDisplay, setCakesToDisplay] = useState([1,2,3]);
+    const [nextCakeToDisplay, setNextCakeToDisplay] = useState(4);
+
+    async function fetchAllCakes() {
+        try {
+            const allCakes = await axios.post("http://localhost:8080/cakes");
+            console.log(allCakes);
+            setCakeArray(allCakes.data);
+        }
+
+        catch(error) {
+            console.error(error);
+        }
+    }
+
+    useEffect (() => {
+        fetchAllCakes();
+    }, [])
 
     function addCakeLayer() {
         if (cakelayers.length < 3 && icing === "") {
@@ -59,10 +79,40 @@ function MainPage() {
         }
     }
 
+    async function submitCake() {
+        try {
+            const req = {
+                compareIds: cakesToDisplay,
+                cakeLayers: cakelayers,
+                icing: icing
+            }
+
+            const matchedCake = await axios.post("http://localhost:8080/cakes/submit", req);
+            if (matchedCake.data) {
+                updateCakesToDisplay(matchedCake.data);
+            }
+
+            setCakelayers([]);
+            setIcing("");
+        }
+
+        catch(error) {
+            console.error(error);
+        }
+    }
+
+    function updateCakesToDisplay(cakeToRemove) {
+        const updatedCakesToDisplay = [...cakesToDisplay.filter((cakeId) => {return (cakeId !== cakeToRemove)})];
+        // console.log(updatedCakesToDisplay);
+        updatedCakesToDisplay.push(nextCakeToDisplay);
+        setCakesToDisplay(updatedCakesToDisplay);
+        setNextCakeToDisplay(nextCakeToDisplay+1);
+    }
+
     return (
         <main className='main'>
             <div className='main__orders'>
-                <OrderList/>
+                <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))}/>
             </div>
 
             <section className='main__build'>
@@ -74,6 +124,8 @@ function MainPage() {
                     <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
                     <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
             </section>  
+
+            <Button onClick={submitCake} text="submit" sizing="small" color="pink"/>
         </main>
     )
 }
