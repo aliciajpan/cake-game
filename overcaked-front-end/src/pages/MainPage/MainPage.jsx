@@ -3,8 +3,10 @@ import OrderList from '../../components/OrderList/OrderList.jsx';
 import Cake from '../../components/Cake/Cake';
 import Button from '../../components/Button/Button.jsx';
 import FlavourMenu from '../../components/FlavourMenu/FlavourMenu.jsx';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
+import submitIcon from '../../assets/icons/checkmark.png';
+import trashIcon from '../../assets/icons/trash.png';
 
 function MainPage() {
     const [cakelayers, setCakelayers] = useState([]);
@@ -13,11 +15,22 @@ function MainPage() {
     const [cakeArray, setCakeArray] = useState([]);
     const [cakesToDisplay, setCakesToDisplay] = useState([1,2,3]);
     const [nextCakeToDisplay, setNextCakeToDisplay] = useState(4);
+    const [score, setScore] = useState(0);
+
+    const cakesToDisplayRef = useRef('');
+    const nextCakeToDisplayRef = useRef('');
+
+    useEffect(() => {
+        cakesToDisplayRef.current = cakesToDisplay;
+    }, [cakesToDisplay])
+
+    useEffect(() => {
+        nextCakeToDisplayRef.current = nextCakeToDisplay;
+    }, [nextCakeToDisplay])
 
     async function fetchAllCakes() {
         try {
             const allCakes = await axios.post("http://localhost:8080/cakes");
-            console.log(allCakes);
             setCakeArray(allCakes.data);
         }
 
@@ -32,7 +45,7 @@ function MainPage() {
 
     function addCakeLayer() {
         if (cakelayers.length < 3 && icing === "") {
-            setCakelayers([...cakelayers, "chocolate"]);
+            setCakelayers([...cakelayers, "vanilla"]);
         }
 
         else {
@@ -42,7 +55,7 @@ function MainPage() {
 
     function addIcingLayer() {
         if (icing.length < 1 && cakelayers.length > 0) {
-            setIcing("chocolate");
+            setIcing("vanilla");
         }
 
         else {
@@ -90,6 +103,7 @@ function MainPage() {
             const matchedCake = await axios.post("http://localhost:8080/cakes/submit", req);
             if (matchedCake.data) {
                 updateCakesToDisplay(matchedCake.data);
+                setScore(score+1);
             }
 
             setCakelayers([]);
@@ -102,30 +116,50 @@ function MainPage() {
     }
 
     function updateCakesToDisplay(cakeToRemove) {
-        const updatedCakesToDisplay = [...cakesToDisplay.filter((cakeId) => {return (cakeId !== cakeToRemove)})];
-        // console.log(updatedCakesToDisplay);
-        updatedCakesToDisplay.push(nextCakeToDisplay);
+        const updatedCakesToDisplay = [...cakesToDisplayRef.current.filter((cakeId) => {return (cakeId !== cakeToRemove)})];
+        // const updatedCakesToDisplay = [...cakesToDisplay].filter((cakeId) => {return (cakeId !== cakeToRemove)});
+        updatedCakesToDisplay.push(nextCakeToDisplayRef.current);
         setCakesToDisplay(updatedCakesToDisplay);
-        setNextCakeToDisplay(nextCakeToDisplay+1);
+        setNextCakeToDisplay(nextCakeToDisplayRef.current+1);
+        console.log(updatedCakesToDisplay);
+    }
+
+    function expireCake(expiredId) {
+        updateCakesToDisplay(expiredId);
+        console.log("expired", expiredId);
+        console.log("NEXT", nextCakeToDisplayRef.current);
+    }
+
+    function trashCake() {
+        setCakelayers([]);
+        setIcing("");
     }
 
     return (
         <main className='main'>
             <div className='main__orders'>
-                <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))}/>
+                <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake}/>
             </div>
 
-            <section className='main__build'>
+            <section className='main__build'>                
                 <Cake icing={icing} cakelayers={cakelayers} size="big-cake" setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
             </section>
 
             <section className='main__edit'>
-                    <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
-                    <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
-                    <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
+                <h2>score: {score}</h2>
+                <h3>hangry customers: #/10</h3>
+                <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
+                <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
+                <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
+                <div className='main__icon-wrapper'>
+                    <img className='main__icon' onClick={submitCake} src={submitIcon}/>
+                </div>
             </section>  
 
-            <Button onClick={submitCake} text="submit" sizing="small" color="pink"/>
+            {/* <Button onClick={submitCake} text="submit" sizing="small" color="pink"/> */}
+            <div className='main__icon-wrapper'>
+                    <img onClick={trashCake} className='main__icon' src={trashIcon}/>
+            </div>
         </main>
     )
 }

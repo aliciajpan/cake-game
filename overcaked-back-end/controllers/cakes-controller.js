@@ -25,6 +25,45 @@ function generateCakes (_req, res) {
             )
         }
 
+        // const cakes = [
+        //     {
+        //         id: 1,
+        //         layerCount: 1,
+        //         layers: ["vanilla"],
+        //         icing: "vanilla"
+        //     },
+        //     {
+        //         id: 2,
+        //         layerCount: 2,
+        //         layers: ["vanilla", "vanilla"],
+        //         icing: "vanilla"
+        //     },
+        //     {
+        //         id: 3,
+        //         layerCount: 3,
+        //         layers: ["vanilla", "vanilla", "vanilla"],
+        //         icing: "vanilla"
+        //     },            
+        //     {
+        //         id: 4,
+        //         layerCount: 1,
+        //         layers: ["chocolate", "chocolate", "chocolate"],
+        //         icing: "chocolate"
+        //     },
+        //     {
+        //         id: 5,
+        //         layerCount: 2,
+        //         layers: ["chocolate", "chocolate"],
+        //         icing: "chocolate"
+        //     },
+        //     {
+        //         id: 6,
+        //         layerCount: 3,
+        //         layers: ["chocolate"],
+        //         icing: "chocolate"
+        //     }
+        // ]
+
         writeFile("cakes.json", cakes);
         res.json(cakes);
     } 

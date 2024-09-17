@@ -22,8 +22,19 @@
         border-radius: 0.5rem;
         background-color: $green;
         // background: linear-gradient(to bottom, red, #900);
-        animation: roundtime calc(20s) linear forwards;
         transform-origin: left center;
+
+        &--1 {
+            animation: roundtime calc(10s) linear forwards;
+        }
+
+        &--2 {
+            animation: roundtime calc(20s) linear forwards;
+        }
+
+        &--3 {
+            animation: roundtime calc(30s) linear forwards;
+        }
     }
 }
 
