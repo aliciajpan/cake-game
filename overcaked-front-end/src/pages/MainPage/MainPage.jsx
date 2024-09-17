@@ -18,6 +18,7 @@ function MainPage() {
     const [score, setScore] = useState(0);
     const [missedCakesCount, setMissedCakesCount] = useState(0);
     // const mutex = useRef(new Mutex());
+    const [shake, setShake] = useState(false);
 
     const [isGameOver, setIsGameOver] = useState(false);
 
@@ -110,10 +111,16 @@ function MainPage() {
                 // await 
                 updateCakesToDisplay(matchedCake.data);
                 setScore(score+1);
+                setCakelayers([]);
+                setIcing("");
             }
 
-            setCakelayers([]);
-            setIcing("");
+            else {
+                setShake(true);
+                setTimeout(() => setShake(false), 500);
+            }
+            // setCakelayers([]);
+            // setIcing("");
         }
 
         catch(error) {
@@ -172,7 +179,7 @@ function MainPage() {
                     <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake}/>
                 </div>
     
-                <section className='main__build'>                
+                <section className={`main__build ${shake ? 'shake-cake' : ''}`}>                
                     <Cake icing={icing} cakelayers={cakelayers} size="big-cake" setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
                 </section>
     

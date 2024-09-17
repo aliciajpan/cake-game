@@ -25,15 +25,15 @@
         transform-origin: left center;
 
         &--1 {
-            animation: roundtime calc(5s) linear forwards;
+            animation: roundtime calc(15s) linear forwards;
         }
 
         &--2 {
-            animation: roundtime calc(10s) linear forwards;
+            animation: roundtime calc(30s) linear forwards;
         }
 
         &--3 {
-            animation: roundtime calc(15s) linear forwards;
+            animation: roundtime calc(45s) linear forwards;
         }
     }
 }

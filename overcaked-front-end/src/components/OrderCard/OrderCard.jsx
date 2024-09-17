@@ -5,7 +5,7 @@ import Cake from "../Cake/Cake";
 
 function OrderCard({num, icing, cakelayers, expireCake}) {
     useEffect(() => {
-        const timer = setTimeout(() => {expireCake(num)}, (cakelayers.length * 5000));
+        const timer = setTimeout(() => {expireCake(num)}, (cakelayers.length * 15000));
         return (() => {clearTimeout(timer)}) // cleaned up when ordercard is gone from display (no longer expires if already submitted)
     }, [])
 
