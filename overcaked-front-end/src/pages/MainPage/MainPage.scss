@@ -30,4 +30,16 @@
         grid-row: 1 / -1;
         justify-content: center;
     }
+
+    &__icon {
+        max-width: 5rem;
+        &:hover {
+            opacity: 50%;
+            cursor: pointer;
+        }
+    }
+
+    &__icon-wrapper {
+        max-width: 5rem;
+    }
 }
