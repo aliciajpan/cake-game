@@ -16,17 +16,22 @@ function MainPage() {
     const [cakesToDisplay, setCakesToDisplay] = useState([1,2,3]);
     const [nextCakeToDisplay, setNextCakeToDisplay] = useState(4);
     const [score, setScore] = useState(0);
+    const [missedCakesCount, setMissedCakesCount] = useState(0);
+    // const mutex = useRef(new Mutex());
 
-    const cakesToDisplayRef = useRef('');
-    const nextCakeToDisplayRef = useRef('');
+    const [isGameOver, setIsGameOver] = useState(false);
 
-    useEffect(() => {
-        cakesToDisplayRef.current = cakesToDisplay;
-    }, [cakesToDisplay])
+    const cakesToDisplayRef = useRef(cakesToDisplay);
+    const nextCakeToDisplayRef = useRef(nextCakeToDisplay);
+    const missedCakesCountRef = useRef(missedCakesCount); // any state used in a function that has to do w timer stuff needs a Ref
 
-    useEffect(() => {
-        nextCakeToDisplayRef.current = nextCakeToDisplay;
-    }, [nextCakeToDisplay])
+    // useEffect(() => {
+    //     cakesToDisplayRef.current = cakesToDisplay;
+    // }, [cakesToDisplay])
+
+    // useEffect(() => {
+    //     nextCakeToDisplayRef.current = nextCakeToDisplay;
+    // }, [nextCakeToDisplay])
 
     async function fetchAllCakes() {
         try {
@@ -102,6 +107,7 @@ function MainPage() {
 
             const matchedCake = await axios.post("http://localhost:8080/cakes/submit", req);
             if (matchedCake.data) {
+                // await 
                 updateCakesToDisplay(matchedCake.data);
                 setScore(score+1);
             }
@@ -115,19 +121,39 @@ function MainPage() {
         }
     }
 
+    // async 
     function updateCakesToDisplay(cakeToRemove) {
-        const updatedCakesToDisplay = [...cakesToDisplayRef.current.filter((cakeId) => {return (cakeId !== cakeToRemove)})];
-        // const updatedCakesToDisplay = [...cakesToDisplay].filter((cakeId) => {return (cakeId !== cakeToRemove)});
-        updatedCakesToDisplay.push(nextCakeToDisplayRef.current);
-        setCakesToDisplay(updatedCakesToDisplay);
-        setNextCakeToDisplay(nextCakeToDisplayRef.current+1);
-        console.log(updatedCakesToDisplay);
+        // await mutex.current.runExclusive(() => {
+            const updatedCakesToDisplay = [...cakesToDisplayRef.current.filter((cakeId) => {return (cakeId !== cakeToRemove)})];
+            // const updatedCakesToDisplay = [...cakesToDisplay].filter((cakeId) => {return (cakeId !== cakeToRemove)});
+            updatedCakesToDisplay.push(nextCakeToDisplayRef.current);
+            // setCakesToDisplay(updatedCakesToDisplay);
+            cakesToDisplayRef.current = updatedCakesToDisplay;
+            // setNextCakeToDisplay(nextCakeToDisplayRef.current+1);
+            nextCakeToDisplayRef.current = nextCakeToDisplayRef.current+1;
+            console.log(updatedCakesToDisplay);
+
+            setCakesToDisplay(updatedCakesToDisplay);
+            setNextCakeToDisplay(nextCakeToDisplayRef.current);
+        // })
     }
 
+    // async 
     function expireCake(expiredId) {
+        // await 
         updateCakesToDisplay(expiredId);
         console.log("expired", expiredId);
         console.log("NEXT", nextCakeToDisplayRef.current);
+
+        if (missedCakesCountRef.current >= 9) {
+            setIsGameOver(true);
+        }
+
+        else {
+            missedCakesCountRef.current += 1;
+            setMissedCakesCount(missedCakesCountRef.current);
+        }
+        
     }
 
     function trashCake() {
@@ -135,33 +161,39 @@ function MainPage() {
         setIcing("");
     }
 
-    return (
-        <main className='main'>
-            <div className='main__orders'>
-                <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake}/>
-            </div>
+    if (isGameOver) {
+        return (<></>)
+    }
 
-            <section className='main__build'>                
-                <Cake icing={icing} cakelayers={cakelayers} size="big-cake" setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
-            </section>
-
-            <section className='main__edit'>
-                <h2>score: {score}</h2>
-                <h3>hangry customers: #/10</h3>
-                <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
-                <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
-                <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
-                <div className='main__icon-wrapper'>
-                    <img className='main__icon' onClick={submitCake} src={submitIcon}/>
+    else {
+        return (
+            <main className='main'>
+                <div className='main__orders'>
+                    <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake}/>
                 </div>
-            </section>  
-
-            {/* <Button onClick={submitCake} text="submit" sizing="small" color="pink"/> */}
-            <div className='main__icon-wrapper'>
-                    <img onClick={trashCake} className='main__icon' src={trashIcon}/>
-            </div>
-        </main>
-    )
+    
+                <section className='main__build'>                
+                    <Cake icing={icing} cakelayers={cakelayers} size="big-cake" setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
+                </section>
+    
+                <section className='main__edit'>
+                    <h2>score: {score}</h2>
+                    <h3>hangry customers: {missedCakesCount}/10</h3>
+                    <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
+                    <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
+                    <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
+                    <div className='main__icon-wrapper'>
+                        <img className='main__icon' onClick={submitCake} src={submitIcon}/>
+                    </div>
+                </section>  
+    
+                {/* <Button onClick={submitCake} text="submit" sizing="small" color="pink"/> */}
+                <div className='main__icon-wrapper'>
+                        <img onClick={trashCake} className='main__icon' src={trashIcon}/>
+                </div>
+            </main>
+        )
+    }
 }
 
 export default MainPage;
