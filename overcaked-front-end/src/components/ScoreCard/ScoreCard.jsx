@@ -1,4 +1,5 @@
 import "./ScoreCard.scss";
+import dynamicTimestamp from "../../utils/dynamic-timestamp";
 
 function ScoreCard({scoreObj, color}) {
     // console.log(color);
@@ -13,7 +14,7 @@ function ScoreCard({scoreObj, color}) {
             </div>
 
             <div>
-                {scoreObj.time}
+                {dynamicTimestamp(scoreObj.time)}
             </div>
         </article>
     );
