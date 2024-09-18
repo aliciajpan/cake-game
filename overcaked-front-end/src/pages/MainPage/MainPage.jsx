@@ -178,8 +178,10 @@ function MainPage() {
 
     async function postScore() {
         try {
+            const useThisName = localStorage.getItem("overcakedSavedName");
+            console.log(useThisName);
             const req = {
-                playerName: "chef bubbles",
+                playerName: useThisName,
                 playerScore: score
             }
 
