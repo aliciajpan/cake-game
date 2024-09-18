@@ -10,9 +10,20 @@ function generateCakes (_req, res) {
             const generatedNum = generateNum(3);
             const cakeLayers = [];
             const icingFlavour = flavours[generateNum(3)-1];
+            let pointsForSuccess = 0;
 
             for (let i=0; i<generatedNum; i++) {
                 cakeLayers.push(flavours[generateNum(3)-1]);
+            }
+
+            for (let i=0; i<cakeLayers.length; i++) {
+                if (cakeLayers[i] === "vanilla") {
+                    pointsForSuccess += 100;
+                }
+
+                else {
+                    pointsForSuccess += 150;
+                }
             }
 
             cakes.push(
@@ -20,7 +31,8 @@ function generateCakes (_req, res) {
                     id: i+1,
                     layerCount: generatedNum,
                     layers: cakeLayers,
-                    icing: icingFlavour
+                    icing: icingFlavour,
+                    points: pointsForSuccess
                 }
             )
         }
@@ -97,7 +109,7 @@ function submitCake (req, res) {
 
         for (let i=0; i<req.body.compareIds.length; i++) {
             if (compareCakes(req.body, allCakes[req.body.compareIds[i]-1])) {
-                res.send(req.body.compareIds[i]);
+                res.send(allCakes.find((cake) => cake.id === req.body.compareIds[i]));
                 return;
             }
         }

@@ -55,7 +55,9 @@ function MainPage() {
         }
 
         else {
-            alert("cannot add more cake layers!");
+            // alert("cannot add more cake layers!");
+            setShake(true);
+            setTimeout(() => setShake(false), 500);
         }
     }
 
@@ -65,7 +67,9 @@ function MainPage() {
         }
 
         else {
-            alert("too much icing!");
+            // alert("too much icing!");
+            setShake(true);
+            setTimeout(() => setShake(false), 500);
         }
     }
 
@@ -109,8 +113,9 @@ function MainPage() {
             const matchedCake = await axios.post("http://localhost:8080/cakes/submit", req);
             if (matchedCake.data) {
                 // await 
-                updateCakesToDisplay(matchedCake.data);
-                setScore(score+1);
+                console.log(matchedCake.data);
+                updateCakesToDisplay(matchedCake.data.id);
+                setScore(score + matchedCake.data.points);
                 setCakelayers([]);
                 setIcing("");
             }
