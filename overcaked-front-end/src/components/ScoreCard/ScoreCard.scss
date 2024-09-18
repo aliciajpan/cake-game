@@ -1,0 +1,26 @@
+@use '../../styles/partials/variables' as *;
+
+.scorecard {
+    display: flex;
+    width: 80%;
+    height: 3rem;
+    border-radius: 2rem;
+    justify-content: space-between;
+    padding: 0 1rem;
+    align-items: center;
+    font-size: 2rem;
+    margin: 1rem;
+
+    &--pink {
+        background-color: $strawberry-light;
+    }
+
+    &--brown {
+        background-color: $chocolate-light;
+        color: $vanilla;
+    }
+
+    &--cream {
+        background-color: $vanilla;
+    }
+}
