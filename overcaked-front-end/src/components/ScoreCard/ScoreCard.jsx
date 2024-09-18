@@ -1,13 +1,22 @@
-import { useState } from "react";
-import "./Button.scss";
+import "./ScoreCard.scss";
 
-function Button({text, sizing, color, onClick}) {
-
+function ScoreCard({scoreObj, color}) {
+    console.log(color);
     return (
-        <button className={`button ${sizing} ${color}`} onClick={onClick}>
-            <div>{text}</div>
-        </button>
+        <article className={`scorecard ${color}`}>
+            <div>
+                {scoreObj.name}
+            </div>
+
+            <div>
+                {scoreObj.score}
+            </div>
+
+            <div>
+                {scoreObj.time}
+            </div>
+        </article>
     );
 }
 
-export default Button;
+export default ScoreCard;
