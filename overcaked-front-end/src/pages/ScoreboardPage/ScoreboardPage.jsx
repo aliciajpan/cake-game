@@ -24,7 +24,7 @@ function ScoreboardPage() {
     }, [])
 
     return (
-        <section className='menu'>
+        <section className='scoreboard'>
             <h1>Scores</h1>
             {scoresArray.map((scoreObj, index) => {
                 return (<ScoreCard key={index} scoreObj={scoreObj} color={colors[(index) % colors.length]}/>)

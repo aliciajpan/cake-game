@@ -1,14 +1,7 @@
-.menu {
+.scoreboard {
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: start;
     align-items: center;
-
-    &__logo {
-        width: 50%;
-    }
-
-    &__orders {
-        display: flex;
-    }
+    flex: 1 0;
 }
