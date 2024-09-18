@@ -2,7 +2,6 @@ import "./ScoreCard.scss";
 import dynamicTimestamp from "../../utils/dynamic-timestamp";
 
 function ScoreCard({scoreObj, color}) {
-    // console.log(color);
     return (
         <article className={`scorecard ${color}`}>
             <div>

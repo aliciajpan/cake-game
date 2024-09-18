@@ -18,7 +18,6 @@ function MenuPage() {
                 <NameForm />
                 <NavLink to="/play"><Button text="play" sizing="big" color="pink"/></NavLink>
                 <NavLink to="/scoreboard"><Button text="scoreboard" sizing="small" color="brown"/></NavLink>
-                {/* <NavLink to="/howtoplay"><Button text="tutorial*" sizing="small" color="brown"/></NavLink> */}
                 <img className="menu__image menu__image--whisk" src={whisk}/>
             </section>
         </div>

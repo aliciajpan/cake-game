@@ -35,6 +35,5 @@
 }
 
 .selected-icing {
-    // border: green solid 2px;
     @include selectedGlowIcing;
 }
