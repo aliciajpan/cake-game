@@ -3,8 +3,8 @@ import { readFile, writeFile } from '../utils/json.js';
 function postScore (req, res) {
     const {playerName, playerScore} = req.body;
 
-    if (!playerName || !playerScore) {
-        console.log(playerName, playerScore);
+    if (!playerName || !playerScore === null) {
+        // console.log(playerName, playerScore);
         return res.status(400).json({
             message: "Name or score missing",
         });
@@ -12,7 +12,7 @@ function postScore (req, res) {
 
     try {
         const allScores = readFile('scores.json');
-        console.log("reading scores JSON", allScores);
+        // console.log("reading scores JSON", allScores);
 
         const newScoreItem = {
             name: playerName,

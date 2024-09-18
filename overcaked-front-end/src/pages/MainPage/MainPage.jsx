@@ -7,6 +7,7 @@ import { useState, useEffect, useRef } from 'react';
 import axios from 'axios';
 import submitIcon from '../../assets/icons/checkmark.png';
 import trashIcon from '../../assets/icons/trash.png';
+import GameEndModal from '../../components/GameEndModal/GameEndModal.jsx';
 
 function MainPage() {
     const [cakelayers, setCakelayers] = useState([]);
@@ -17,14 +18,17 @@ function MainPage() {
     const [nextCakeToDisplay, setNextCakeToDisplay] = useState(4);
     const [score, setScore] = useState(0);
     const [missedCakesCount, setMissedCakesCount] = useState(0);
+    const [resolvedCakesCount, setResolvedCakesCount] = useState(0);
     // const mutex = useRef(new Mutex());
     const [shake, setShake] = useState(false);
 
     const [isGameOver, setIsGameOver] = useState(false);
+    const [isModalOpen, setModalOpen] = useState(false);
 
     const cakesToDisplayRef = useRef(cakesToDisplay);
     const nextCakeToDisplayRef = useRef(nextCakeToDisplay);
     const missedCakesCountRef = useRef(missedCakesCount); // any state used in a function that has to do w timer stuff needs a Ref
+    const resolvedCakesCountRef = useRef(resolvedCakesCount);
 
     // useEffect(() => {
     //     cakesToDisplayRef.current = cakesToDisplay;
@@ -119,6 +123,12 @@ function MainPage() {
                 setCakelayers([]);
                 setIcing("");
                 setSelectedItem(null);
+                resolvedCakesCountRef.current = resolvedCakesCountRef.current+1;
+
+                // IS THIS NEEDED? WHY NOT ONLY USE REF? BELOW SET NEXT AND TO DISPLAY WHY?
+                //////////////////////////////////////
+                setResolvedCakesCount(resolvedCakesCountRef.current);
+                //////////////////////////////////////
             }
 
             else {
@@ -127,6 +137,10 @@ function MainPage() {
             }
             // setCakelayers([]);
             // setIcing("");
+            console.log("resolved cakes", resolvedCakesCountRef.current);
+            if (resolvedCakesCountRef.current >= 20) {
+                setIsGameOver(true);
+            }
         }
 
         catch(error) {
@@ -144,7 +158,7 @@ function MainPage() {
             cakesToDisplayRef.current = updatedCakesToDisplay;
             // setNextCakeToDisplay(nextCakeToDisplayRef.current+1);
             nextCakeToDisplayRef.current = nextCakeToDisplayRef.current+1;
-            console.log(updatedCakesToDisplay);
+            // console.log(updatedCakesToDisplay);
 
             setCakesToDisplay(updatedCakesToDisplay);
             setNextCakeToDisplay(nextCakeToDisplayRef.current);
@@ -155,8 +169,15 @@ function MainPage() {
     function expireCake(expiredId) {
         // await 
         updateCakesToDisplay(expiredId);
-        console.log("expired", expiredId);
-        console.log("NEXT", nextCakeToDisplayRef.current);
+        // console.log("expired", expiredId);
+        // console.log("NEXT", nextCakeToDisplayRef.current);
+
+        resolvedCakesCountRef.current = resolvedCakesCountRef.current+1;
+        setResolvedCakesCount(resolvedCakesCountRef.current);
+        console.log("resolved cakes", resolvedCakesCountRef.current);
+        if (resolvedCakesCountRef.current >= 20) {
+            setIsGameOver(true);
+        }
 
         if (missedCakesCountRef.current >= 9) {
             setIsGameOver(true);
@@ -166,7 +187,6 @@ function MainPage() {
             missedCakesCountRef.current += 1;
             setMissedCakesCount(missedCakesCountRef.current);
         }
-        
     }
 
     function trashCake() {
@@ -189,10 +209,22 @@ function MainPage() {
         }
     }
 
+    function openModal() {
+        setModalOpen(true);
+    }
+
+    function closeModal() {
+        setModalOpen(false);
+    }
+
     if (isGameOver) {
-        console.log(score);
         postScore();
-        return (<>Game End</>)
+        // setModalOpen(true);
+        return (<>
+            {/* <>Game End</>  */}
+            <GameEndModal closeModal={closeModal} fail={missedCakesCount===10}/>
+            </>)
+            // something about this writes insanely to scores.json when doing modal stuff??
     }
 
     else {
@@ -222,7 +254,11 @@ function MainPage() {
                         <img onClick={trashCake} className='main__icon' src={trashIcon}/>
                 </div>
 
-                <Button onClick={() => {setIsGameOver(true)}} text="End game" sizing="game" color="brown"/>
+                <Button onClick={() => {setIsGameOver(true); setModalOpen(true)}} text="End game" sizing="game" color="brown"/>
+
+                {/* {isModalOpen && (
+                    <GameEndModal closeModal={closeModal} fail={true}/>
+                )} */}
             </main>
         )
     }
