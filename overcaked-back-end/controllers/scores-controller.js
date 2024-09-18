@@ -37,4 +37,19 @@ function postScore (req, res) {
     }
 };
 
-export {postScore};
+function getAllScores (_req, res) {
+    try {
+        const allScores = readFile('scores.json');
+        res.json(allScores);
+    } 
+        
+    catch (error) {
+        res.status(500).json({
+            message: "Unable to retrieve score data",
+            error:error.toString()
+        });
+    }
+};
+
+
+export {postScore, getAllScores};

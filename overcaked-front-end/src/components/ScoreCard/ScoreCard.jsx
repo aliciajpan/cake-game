@@ -1,7 +1,7 @@
 import "./ScoreCard.scss";
 
 function ScoreCard({scoreObj, color}) {
-    console.log(color);
+    // console.log(color);
     return (
         <article className={`scorecard ${color}`}>
             <div>

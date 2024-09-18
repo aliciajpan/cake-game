@@ -35,7 +35,7 @@ function ScoreboardPage() {
         <section className='menu'>
             <h1>Scores</h1>
             {scores.map((scoreObj) => {
-                return (<ScoreCard scoreObj={scoreObj} color={colors[(scoreObj.id) % colors.length]}/>)
+                return (<ScoreCard key={scoreObj.id} scoreObj={scoreObj} color={colors[(scoreObj.id) % colors.length]}/>)
             })}
         </section>
     )
