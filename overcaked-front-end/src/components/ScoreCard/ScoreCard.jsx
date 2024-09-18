@@ -1,4 +1,3 @@
-import { useState } from "react";
 import "./ScoreCard.scss";
 
 function ScoreCard({scoreObj, color}) {
