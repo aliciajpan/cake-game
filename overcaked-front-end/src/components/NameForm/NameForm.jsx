@@ -1,3 +1,4 @@
+import { NavLink } from "react-router-dom";
 import Button from "../Button/Button";
 import "./NameForm.scss";
 
@@ -10,12 +11,20 @@ function NameForm() {
     }
 
     return (
+        <>
         <form className="nameform" onSubmit={submitName}>
-            <input className="nameform__input" name="name" id="name" type="text" placeholder="what's your name, chef?">
-            </input>
+            <input 
+                className="nameform__input" 
+                name="name" 
+                id="name" 
+                type="text" 
+                placeholder={localStorage.getItem("overcakedSavedName") || "what's your name, chef?"}
+            ></input>
             <Button text="Submit" sizing="form" color="brown"/>
                 {/* form sizing does not actually exist */}
         </form>
+        <NavLink to="/play"><Button text="play" sizing="big" color="pink"/></NavLink>
+        </>
     );
 }
 

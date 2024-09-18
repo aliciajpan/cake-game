@@ -23,6 +23,16 @@ function ScoreboardPage() {
         fetchAllScores();
     }, [])
 
+    if (scoresArray.length === 0) {
+        return (
+            <section className='scoreboard'>
+                <h1>Scores</h1>
+                <br></br>
+                <h3>No scores to display yet!</h3>
+            </section>
+        )
+    }
+
     return (
         <section className='scoreboard'>
             <h1>Scores</h1>
