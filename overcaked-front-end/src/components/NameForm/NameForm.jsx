@@ -4,8 +4,8 @@ import "./NameForm.scss";
 function NameForm() {
     function submitName(event) {
         event.preventDefault();
-        const saveThisName = event.target.name.value;
-        console.log(saveThisName);
+        const saveThisName = event.target.name.value.trim();
+
         localStorage.setItem("overcakedSavedName", saveThisName);
     }
 

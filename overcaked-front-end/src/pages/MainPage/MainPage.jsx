@@ -31,6 +31,9 @@ function MainPage() {
     const resolvedCakesCountRef = useRef(0);
     const isGameOverRef = useRef(isGameOver);
 
+    const maxCakeCount = cakeArray.length();
+    const expiredCakeLimit = 10;
+
     async function fetchAllCakes() {
         try {
             const allCakes = await axios.post("http://localhost:8080/cakes");
@@ -106,7 +109,6 @@ function MainPage() {
 
             const matchedCake = await axios.post("http://localhost:8080/cakes/submit", req);
             if (matchedCake.data) {
-                console.log(matchedCake.data);
                 updateCakesToDisplay(matchedCake.data.id);
 
                 setScoreText(true);
@@ -125,7 +127,7 @@ function MainPage() {
                 setSelectedItem(null);
             }
 
-            if (resolvedCakesCountRef.current >= 20) {
+            if (resolvedCakesCountRef.current >= maxCakeCount) {
                 isGameOverRef.current = true;
                 setIsGameOver(isGameOverRef.current);
             }
@@ -154,9 +156,8 @@ function MainPage() {
             setTimeout(() => setWarnText(false), 500);
 
             resolvedCakesCountRef.current = resolvedCakesCountRef.current+1;
-            console.log("resolved cakes", resolvedCakesCountRef.current);
 
-            if (resolvedCakesCountRef.current >= 20) {
+            if (resolvedCakesCountRef.current >= maxCakeCount) {
                 isGameOverRef.current = true;
                 setIsGameOver(isGameOverRef.current);
             }
@@ -164,7 +165,7 @@ function MainPage() {
             missedCakesCountRef.current += 1;
             setMissedCakesCount(missedCakesCountRef.current);
 
-            if (missedCakesCountRef.current >= 10) {
+            if (missedCakesCountRef.current >= expiredCakeLimit) {
                 isGameOverRef.current = true;
                 setIsGameOver(isGameOverRef.current);
             }
@@ -179,9 +180,9 @@ function MainPage() {
     async function postScore() {
         try {
             const useThisName = localStorage.getItem("overcakedSavedName");
-            console.log(useThisName);
+
             const req = {
-                playerName: useThisName,
+                playerName: useThisName || "Anonymous Chef",
                 playerScore: score
             }
 
