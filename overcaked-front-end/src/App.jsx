@@ -8,7 +8,7 @@ import TutorialPage from './pages/TutorialPage/TutorialPage';
 function App() {
     return (
         <BrowserRouter>
-            <div className='app'>
+            <div /*className='app'*/>
                 <div className='app__window'>
                     <Routes>
                         <Route path="/" element={<MenuPage />} />

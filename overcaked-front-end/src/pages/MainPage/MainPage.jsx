@@ -18,19 +18,20 @@ function MainPage() {
     const [nextCakeToDisplay, setNextCakeToDisplay] = useState(4);
     const [score, setScore] = useState(0);
     const [missedCakesCount, setMissedCakesCount] = useState(0);
-    const [resolvedCakesCount, setResolvedCakesCount] = useState(0);
+    // const [resolvedCakesCount, setResolvedCakesCount] = useState(0);
     // const mutex = useRef(new Mutex());
     const [shake, setShake] = useState(false);
     const [warnText, setWarnText] = useState(false);
     const [scoreText, setScoreText] = useState(false);
 
     const [isGameOver, setIsGameOver] = useState(false);
-    const [isModalOpen, setModalOpen] = useState(false);
+    // const [isModalOpen, setModalOpen] = useState(false);
 
     const cakesToDisplayRef = useRef(cakesToDisplay);
     const nextCakeToDisplayRef = useRef(nextCakeToDisplay);
     const missedCakesCountRef = useRef(missedCakesCount); // any state used in a function that has to do w timer stuff needs a Ref
-    const resolvedCakesCountRef = useRef(resolvedCakesCount);
+    const resolvedCakesCountRef = useRef(0);
+    const isGameOverRef = useRef(isGameOver);
 
     // useEffect(() => {
     //     cakesToDisplayRef.current = cakesToDisplay;
@@ -132,8 +133,9 @@ function MainPage() {
                 resolvedCakesCountRef.current = resolvedCakesCountRef.current+1;
 
                 // IS THIS NEEDED? WHY NOT ONLY USE REF? BELOW SET NEXT AND TO DISPLAY WHY?
+                // use state to render the screen
                 //////////////////////////////////////
-                setResolvedCakesCount(resolvedCakesCountRef.current);
+                // setResolvedCakesCount(resolvedCakesCountRef.current);
                 //////////////////////////////////////
             }
 
@@ -145,7 +147,8 @@ function MainPage() {
             // setIcing("");
             console.log("resolved cakes", resolvedCakesCountRef.current);
             if (resolvedCakesCountRef.current >= 20) {
-                setIsGameOver(true);
+                isGameOverRef.current = true;
+                setIsGameOver(isGameOverRef.current);
             }
         }
 
@@ -173,28 +176,32 @@ function MainPage() {
 
     // async 
     function expireCake(expiredId) {
-        // await 
-        updateCakesToDisplay(expiredId);
-        // console.log("expired", expiredId);
-        // console.log("NEXT", nextCakeToDisplayRef.current);
+        if (!isGameOverRef.current) {
+            // await 
+            updateCakesToDisplay(expiredId);
+            // console.log("expired", expiredId);
+            // console.log("NEXT", nextCakeToDisplayRef.current);
 
-        setWarnText(true);
-        setTimeout(() => setWarnText(false), 500);
+            setWarnText(true);
+            setTimeout(() => setWarnText(false), 500);
 
-        resolvedCakesCountRef.current = resolvedCakesCountRef.current+1;
-        setResolvedCakesCount(resolvedCakesCountRef.current);
-        console.log("resolved cakes", resolvedCakesCountRef.current);
-        if (resolvedCakesCountRef.current >= 20) {
-            setIsGameOver(true);
-        }
+            resolvedCakesCountRef.current = resolvedCakesCountRef.current+1;
+            // setResolvedCakesCount(resolvedCakesCountRef.current);
+            console.log("resolved cakes", resolvedCakesCountRef.current);
+            if (resolvedCakesCountRef.current >= 20) {
+                isGameOverRef.current = true;
+                setIsGameOver(isGameOverRef.current);
+            }
 
-        if (missedCakesCountRef.current >= 9) {
-            setIsGameOver(true);
-        }
+            if (missedCakesCountRef.current >= 9) {
+                isGameOverRef.current = true;
+                setIsGameOver(isGameOverRef.current);
+            }
 
-        else {
-            missedCakesCountRef.current += 1;
-            setMissedCakesCount(missedCakesCountRef.current);
+            else {
+                missedCakesCountRef.current += 1;
+                setMissedCakesCount(missedCakesCountRef.current);
+            }
         }
     }
 
@@ -218,29 +225,36 @@ function MainPage() {
         }
     }
 
-    function openModal() {
-        setModalOpen(true);
-    }
+    // function openModal() {
+    //     setModalOpen(true);
+    // }
 
-    function closeModal() {
-        setModalOpen(false);
-    }
+    // function closeModal() {
+    //     setModalOpen(false);
+    // }
 
-    if (isGameOver) {
-        postScore();
+    useEffect (() => {
+        if (isGameOver) {
+            postScore();
+        }
+    }, [isGameOver])
+
+    // if (isGameOver) {
         // setModalOpen(true);
-        return (<>
-            {/* <>Game End</>  */}
-            <GameEndModal closeModal={closeModal} fail={missedCakesCount===10}/>
-            </>)
-            // something about this writes insanely to scores.json when doing modal stuff??
-    }
+    //     // setModalOpen(true);
+    //     // return (<>
+    //         {/* <>Game End</>  */}
+    //         <GameEndModal closeModal={closeModal} fail={missedCakesCount===10}/>
+    //         // </>)
+    //         // something about this writes insanely to scores.json when doing modal stuff??
+    // }
 
-    else {
+    // else {
         return (
+            <>
             <main className='main'>
                 <div className='main__orders'>
-                    <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake}/>
+                    <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake} isGameOver={isGameOver}/>
                 </div>
     
                 <section className={`main__build ${shake ? 'shake-cake' : ''}`}>                
@@ -263,14 +277,19 @@ function MainPage() {
                         <img onClick={trashCake} className='main__icon' src={trashIcon}/>
                 </div>
 
-                <Button onClick={() => {setIsGameOver(true); setModalOpen(true)}} text="End game" sizing="game" color="brown"/>
+                <Button onClick={() => {
+                    isGameOverRef.current = true;
+                    setIsGameOver(isGameOverRef.current);
+                    }} text="End game" sizing="game" color="brown"/>
 
-                {/* {isModalOpen && (
-                    <GameEndModal closeModal={closeModal} fail={true}/>
-                )} */}
+                
             </main>
+            {isGameOver && (
+                <GameEndModal /*closeModal={closeModal}*/ fail={missedCakesCountRef.current >= 10}/>
+            )}
+            </>
         )
     }
-}
+// }
 
 export default MainPage;

@@ -11,6 +11,20 @@
     font-size: 2rem;
     margin: 1rem;
 
+    & > div {
+        flex: 1 0;
+        display: flex;
+        justify-content: space-around;
+    }
+
+    & > div:nth-child(1) {
+        justify-content: start;
+    }
+
+    & > div:nth-last-child(1) {
+        justify-content: end;
+    }
+
     &--pink {
         background-color: $strawberry-light;
     }

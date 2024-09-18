@@ -1,5 +1,14 @@
 @use './_variables.scss' as *;
 
+@keyframes roundtime {
+    to {
+      /* More performant than animating `width` */
+        // transform: scaleX(0);
+        width: 0;
+        background-color: $red;
+    }
+}
+
 @keyframes shakeWrongCake {
     0% {transform: translateX(0);}
     25% {transform: translateX(-1rem);}
