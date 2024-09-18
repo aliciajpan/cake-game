@@ -177,8 +177,8 @@ function MainPage() {
     async function postScore() {
         try {
             const req = {
-                playerName: "placeholder1",
-                playerScore: 100
+                playerName: "chef bubbles",
+                playerScore: score
             }
 
             await axios.post("http://localhost:8080/scores", req);
