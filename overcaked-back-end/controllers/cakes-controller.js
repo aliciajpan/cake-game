@@ -26,6 +26,10 @@ function generateCakes (_req, res) {
                 }
             }
 
+            if (icingFlavour !== "vanilla") {
+                pointsForSuccess += 50;
+            }
+
             cakes.push(
                 {
                     id: i+1,
@@ -105,7 +109,7 @@ function compareCakes(submittedCake, truthCake) {
 function submitCake (req, res) {
     try {
         const allCakes = readFile("cakes.json");
-        console.log(req.body);
+        // console.log(req.body);
 
         for (let i=0; i<req.body.compareIds.length; i++) {
             if (compareCakes(req.body, allCakes[req.body.compareIds[i]-1])) {

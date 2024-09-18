@@ -118,6 +118,7 @@ function MainPage() {
                 setScore(score + matchedCake.data.points);
                 setCakelayers([]);
                 setIcing("");
+                setSelectedItem(null);
             }
 
             else {
@@ -173,8 +174,25 @@ function MainPage() {
         setIcing("");
     }
 
+    async function postScore() {
+        try {
+            const req = {
+                playerName: "placeholder1",
+                playerScore: 100
+            }
+
+            await axios.post("http://localhost:8080/scores", req);
+        }
+
+        catch(error) {
+            console.error(error);
+        }
+    }
+
     if (isGameOver) {
-        return (<></>)
+        console.log(score);
+        postScore();
+        return (<>Game End</>)
     }
 
     else {
@@ -203,6 +221,8 @@ function MainPage() {
                 <div className='main__icon-wrapper'>
                         <img onClick={trashCake} className='main__icon' src={trashIcon}/>
                 </div>
+
+                <Button onClick={() => {setIsGameOver(true)}} text="End game" sizing="game" color="brown"/>
             </main>
         )
     }

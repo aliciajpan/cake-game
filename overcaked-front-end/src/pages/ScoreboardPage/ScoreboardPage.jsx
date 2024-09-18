@@ -10,6 +10,7 @@ function ScoreboardPage() {
     async function fetchAllScores() {
         try {
             const allScores = await axios.get("http://localhost:8080/scores");
+            allScores.data.sort((a,b) => b.score - a.score);
             setScoresArray(allScores.data);
         }
 
@@ -25,8 +26,8 @@ function ScoreboardPage() {
     return (
         <section className='menu'>
             <h1>Scores</h1>
-            {scoresArray.map((scoreObj) => {
-                return (<ScoreCard key={scoreObj.id} scoreObj={scoreObj} color={colors[(scoreObj.id) % colors.length]}/>)
+            {scoresArray.map((scoreObj, index) => {
+                return (<ScoreCard key={index} scoreObj={scoreObj} color={colors[(index) % colors.length]}/>)
             })}
         </section>
     )

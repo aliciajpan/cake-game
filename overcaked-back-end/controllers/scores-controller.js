@@ -1,7 +1,5 @@
 import { readFile, writeFile } from '../utils/json.js';
 
-let nextId = 0;
-
 function postScore (req, res) {
     const {playerName, playerScore} = req.body;
 
@@ -14,15 +12,13 @@ function postScore (req, res) {
 
     try {
         const allScores = readFile('scores.json');
+        console.log("reading scores JSON", allScores);
 
         const newScoreItem = {
-            id: nextId,
             name: playerName,
             score: playerScore,
             time: (new Date()).getTime()
         }
-
-        nextId += 1;
 
         allScores.push(newScoreItem);
         writeFile("scores.json", allScores);
