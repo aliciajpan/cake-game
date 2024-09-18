@@ -55,7 +55,9 @@ function MainPage() {
         }
 
         else {
-            alert("cannot add more cake layers!");
+            // alert("cannot add more cake layers!");
+            setShake(true);
+            setTimeout(() => setShake(false), 500);
         }
     }
 
@@ -65,7 +67,9 @@ function MainPage() {
         }
 
         else {
-            alert("too much icing!");
+            // alert("too much icing!");
+            setShake(true);
+            setTimeout(() => setShake(false), 500);
         }
     }
 
@@ -109,10 +113,12 @@ function MainPage() {
             const matchedCake = await axios.post("http://localhost:8080/cakes/submit", req);
             if (matchedCake.data) {
                 // await 
-                updateCakesToDisplay(matchedCake.data);
-                setScore(score+1);
+                console.log(matchedCake.data);
+                updateCakesToDisplay(matchedCake.data.id);
+                setScore(score + matchedCake.data.points);
                 setCakelayers([]);
                 setIcing("");
+                setSelectedItem(null);
             }
 
             else {
@@ -168,8 +174,25 @@ function MainPage() {
         setIcing("");
     }
 
+    async function postScore() {
+        try {
+            const req = {
+                playerName: "chef bubbles",
+                playerScore: score
+            }
+
+            await axios.post("http://localhost:8080/scores", req);
+        }
+
+        catch(error) {
+            console.error(error);
+        }
+    }
+
     if (isGameOver) {
-        return (<></>)
+        console.log(score);
+        postScore();
+        return (<>Game End</>)
     }
 
     else {
@@ -198,6 +221,8 @@ function MainPage() {
                 <div className='main__icon-wrapper'>
                         <img onClick={trashCake} className='main__icon' src={trashIcon}/>
                 </div>
+
+                <Button onClick={() => {setIsGameOver(true)}} text="End game" sizing="game" color="brown"/>
             </main>
         )
     }

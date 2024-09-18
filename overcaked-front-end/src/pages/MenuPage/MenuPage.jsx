@@ -5,8 +5,11 @@ import NameForm from '../../components/NameForm/NameForm';
 import OrderCard from '../../components/OrderCard/OrderCard';
 import Cake from '../../components/Cake/Cake';
 import { NavLink } from 'react-router-dom';
+import { useState } from 'react';
 
 function MenuPage() {
+    const [playerName, setPlayerName] = useState("");
+    
     return (
         <section className='menu'>
             <img className='menu__logo' src={logo} alt="Overcaked logo" />
