@@ -142,6 +142,7 @@ function MainPage() {
             else {
                 setShake(true);
                 setTimeout(() => setShake(false), 500);
+                setSelectedItem(null);
             }
             // setCakelayers([]);
             // setIcing("");
@@ -193,14 +194,12 @@ function MainPage() {
                 setIsGameOver(isGameOverRef.current);
             }
 
-            if (missedCakesCountRef.current >= 9) {
+            missedCakesCountRef.current += 1;
+            setMissedCakesCount(missedCakesCountRef.current);
+
+            if (missedCakesCountRef.current >= 10) {
                 isGameOverRef.current = true;
                 setIsGameOver(isGameOverRef.current);
-            }
-
-            else {
-                missedCakesCountRef.current += 1;
-                setMissedCakesCount(missedCakesCountRef.current);
             }
         }
     }
@@ -252,41 +251,44 @@ function MainPage() {
     // else {
         return (
             <>
-            <main className='main'>
-                <div className='main__orders'>
-                    <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake} isGameOver={isGameOver}/>
-                </div>
-    
-                <section className={`main__build ${shake ? 'shake-cake' : ''}`}>                
-                    <Cake icing={icing} cakelayers={cakelayers} size="big-cake" setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
-                </section>
-    
-                <section className='main__edit'>
-                    <h2 className={`${scoreText ? 'score-text' : ''}`}>score: {score}</h2>
-                    <h3 className={`${warnText ? 'warn-text' : ''}`}> hangry customers: {missedCakesCount}/10</h3>
-                    <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
-                    <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
-                    <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
-                    <div className='main__icon-wrapper'>
-                        <img className='main__icon' onClick={submitCake} src={submitIcon}/>
+            <div className='main__wrapper'>
+                <main className='main'>
+                    <div className='main__orders'>
+                        <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake} isGameOver={isGameOver}/>
                     </div>
-                </section>  
-    
-                {/* <Button onClick={submitCake} text="submit" sizing="small" color="pink"/> */}
-                <div className='main__icon-wrapper'>
-                        <img onClick={trashCake} className='main__icon' src={trashIcon}/>
-                </div>
+        
+                    <section className={`main__build ${shake ? 'shake-cake' : ''}`}>                
+                        <Cake icing={icing} cakelayers={cakelayers} size="big-cake" setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
+                    </section>
+        
+                    <section className='main__edit'>
+                        <h2 className={`${scoreText ? 'score-text' : ''}`}>score: {score}</h2>
+                        <h3 className={`${warnText ? 'warn-text' : ''}`}> hangry customers: {missedCakesCount}/10</h3>
+                        <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
+                        <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
+                        <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
+                        <div className='main__icon-wrapper'>
+                            <img className='main__icon' onClick={submitCake} src={submitIcon}/>
+                        </div>
+                    </section>  
+        
+                    {/* <Button onClick={submitCake} text="submit" sizing="small" color="pink"/> */}
+                    <div className='main__icon-wrapper'>
+                            <img onClick={trashCake} className='main__icon' src={trashIcon}/>
+                    </div>
 
-                <Button onClick={() => {
-                    isGameOverRef.current = true;
-                    setIsGameOver(isGameOverRef.current);
-                    }} text="End game" sizing="game" color="brown"/>
+                    {/* <Button onClick={() => {
+                        isGameOverRef.current = true;
+                        setIsGameOver(isGameOverRef.current);
+                        }} text="End game" sizing="game" color="brown"/> */}
 
-                
-            </main>
-            {isGameOver && (
-                <GameEndModal /*closeModal={closeModal}*/ fail={missedCakesCountRef.current >= 10}/>
-            )}
+                    
+                </main>
+                {isGameOver && (
+                    <GameEndModal /*closeModal={closeModal}*/ fail={missedCakesCountRef.current >= 10}/>
+                )}
+            </div>
+            
             </>
         )
     }
