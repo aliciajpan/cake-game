@@ -142,6 +142,7 @@ function MainPage() {
             else {
                 setShake(true);
                 setTimeout(() => setShake(false), 500);
+                setSelectedItem(null);
             }
             // setCakelayers([]);
             // setIcing("");

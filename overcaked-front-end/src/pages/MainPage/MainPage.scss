@@ -1,5 +1,6 @@
 @use '../../styles/partials/_variables.scss' as *;
 @use '../../styles/partials/_animations.scss' as *;
+@use '../../styles/partials/_mixins.scss' as *;
 
 .main {
     // display: flex;
@@ -11,8 +12,7 @@
     // width: 90vw;
 
     &__wrapper {
-        width: 100vw;
-        height: 100vh;
+        @include stretchScreen;
     }
 
     &__orders {

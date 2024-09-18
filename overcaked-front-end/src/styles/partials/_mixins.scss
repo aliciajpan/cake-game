@@ -113,3 +113,8 @@
         border-bottom-right-radius: 40px;
     }
 }
+
+@mixin stretchScreen {
+    width: 100vw;
+    height: 100vh;
+}

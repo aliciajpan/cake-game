@@ -1,14 +1,58 @@
+@use '../../styles/partials/_mixins.scss' as *;
+@use '../../styles/partials/_animations.scss' as *;
+
 .menu {
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    // overflow: hidden;
+
+    &__wrapper {
+        display: flex;
+        justify-content: flex;
+        align-items: center;
+        @include stretchScreen;
+    }
 
     &__logo {
         width: 50%;
+        margin: 2rem;
     }
 
     &__orders {
         display: flex;
+    }
+
+    &__image {
+        position: absolute;
+
+        &--whisk {
+            // &:hover {
+                rotate: 15deg;
+                right: -10rem;
+                top: -40rem;
+                scale: 0.4;
+                animation: stirWhisk 5s infinite;
+
+                &:hover {
+                    animation: stirWhisk 1s infinite;
+                    animation-fill-mode: forwards;
+                }
+            // }
+        }
+
+        &--folder {
+            left: -50rem;
+            bottom: -60rem;
+            scale: 0.3;
+            rotate: -25deg;
+
+            
+            &:hover {
+                animation: popBigger 1s ease;
+                animation-fill-mode: forwards;
+            }
+        }
     }
 }

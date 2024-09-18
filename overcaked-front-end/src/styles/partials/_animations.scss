@@ -36,3 +36,9 @@
     25% {transform: scale(1.1);}
     100% {transform: scale(1.1);}
 }
+
+@keyframes stirWhisk {
+    0% {rotate: 15deg;}
+    50% {rotate: 35deg;}
+    100% {rotate: 15deg;}
+}
