@@ -21,6 +21,8 @@ function MainPage() {
     const [resolvedCakesCount, setResolvedCakesCount] = useState(0);
     // const mutex = useRef(new Mutex());
     const [shake, setShake] = useState(false);
+    const [warnText, setWarnText] = useState(false);
+    const [scoreText, setScoreText] = useState(false);
 
     const [isGameOver, setIsGameOver] = useState(false);
     const [isModalOpen, setModalOpen] = useState(false);
@@ -119,6 +121,10 @@ function MainPage() {
                 // await 
                 console.log(matchedCake.data);
                 updateCakesToDisplay(matchedCake.data.id);
+
+                setScoreText(true);
+                setTimeout(() => setScoreText(false), 500);
+
                 setScore(score + matchedCake.data.points);
                 setCakelayers([]);
                 setIcing("");
@@ -171,6 +177,9 @@ function MainPage() {
         updateCakesToDisplay(expiredId);
         // console.log("expired", expiredId);
         // console.log("NEXT", nextCakeToDisplayRef.current);
+
+        setWarnText(true);
+        setTimeout(() => setWarnText(false), 500);
 
         resolvedCakesCountRef.current = resolvedCakesCountRef.current+1;
         setResolvedCakesCount(resolvedCakesCountRef.current);
@@ -239,8 +248,8 @@ function MainPage() {
                 </section>
     
                 <section className='main__edit'>
-                    <h2>score: {score}</h2>
-                    <h3>hangry customers: {missedCakesCount}/10</h3>
+                    <h2 className={`${scoreText ? 'score-text' : ''}`}>score: {score}</h2>
+                    <h3 className={`${warnText ? 'warn-text' : ''}`}> hangry customers: {missedCakesCount}/10</h3>
                     <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
                     <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
                     <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
