@@ -9,4 +9,18 @@
     width: 60%;
     border-radius: 2rem;
     padding: 1rem;
+    // position: absolute;
+
+    &__wrapper {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        width: 100vw;
+        height: 100vh;
+        z-index: 100;
+        background-color: rgb(50,50,50,0.5);
+        top: 0;
+        left: 0;
+    }
 }

@@ -2,29 +2,34 @@ import Button from "../Button/Button";
 import { NavLink } from "react-router-dom";
 import "./GameEndModal.scss";
 
-function GameEndModal({closeModal, fail}) {
-    console.log("fail", fail);
-    // const message = ({fail === true} ? "Too many customers were left waiting" : "You got through all the orders!"); // why this not work?
-    let message = "";
+function GameEndModal({/*closeModal,*/ fail}) {
+    
+    const message = (fail ? "Too many customers were left waiting" : "You got through a day at the bakery!"); // why this not work?
+    console.log(message);
 
-    if (fail) {
-        message = "Too many customers were left waiting :(";
-    }
+    // let message = "";
 
-    else {
-        message = "You got through a day at the bakery!";
-    }
+    // if (fail) {
+    //     message = "Too many customers were left waiting :(";
+    // }
 
-    function handleClose() {
-        closeModal();
-    }
+    // else {
+    //     message = "You got through a day at the bakery!";
+    // }
+
+    // function handleClose() {
+    //     closeModal();
+    // }
 
     return (
-        <article className="modal">
-            <h2>GAME OVER</h2>
-            <p>{message}</p>
-            <NavLink to="/scoreboard"><Button onClick={handleClose} text="See scores" sizing="small" color="brown"/></NavLink>
-        </article>
+        <div className="modal__wrapper">
+            <article className="modal">
+                <h2>GAME OVER</h2>
+                <p>{message}</p>
+                <NavLink to="/scoreboard"><Button /*onClick={handleClose}*/ text="See scores" sizing="small" color="brown"/></NavLink>
+            </article>
+        </div>
+        
     );
 }
 
