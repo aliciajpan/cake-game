@@ -6,7 +6,6 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    // overflow: hidden;
 
     &__wrapper {
         display: flex;
@@ -28,7 +27,6 @@
         position: absolute;
 
         &--whisk {
-            // &:hover {
                 rotate: 15deg;
                 right: -10rem;
                 top: -40rem;
@@ -39,7 +37,6 @@
                     animation: stirWhisk 1s infinite;
                     animation-fill-mode: forwards;
                 }
-            // }
         }
 
         &--folder {
@@ -47,7 +44,6 @@
             bottom: -60rem;
             scale: 0.3;
             rotate: -25deg;
-
             
             &:hover {
                 animation: popBigger 1s ease;

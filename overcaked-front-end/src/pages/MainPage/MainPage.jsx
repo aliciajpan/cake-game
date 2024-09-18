@@ -18,28 +18,18 @@ function MainPage() {
     const [nextCakeToDisplay, setNextCakeToDisplay] = useState(4);
     const [score, setScore] = useState(0);
     const [missedCakesCount, setMissedCakesCount] = useState(0);
-    // const [resolvedCakesCount, setResolvedCakesCount] = useState(0);
-    // const mutex = useRef(new Mutex());
+
     const [shake, setShake] = useState(false);
     const [warnText, setWarnText] = useState(false);
     const [scoreText, setScoreText] = useState(false);
 
     const [isGameOver, setIsGameOver] = useState(false);
-    // const [isModalOpen, setModalOpen] = useState(false);
 
     const cakesToDisplayRef = useRef(cakesToDisplay);
     const nextCakeToDisplayRef = useRef(nextCakeToDisplay);
-    const missedCakesCountRef = useRef(missedCakesCount); // any state used in a function that has to do w timer stuff needs a Ref
+    const missedCakesCountRef = useRef(missedCakesCount);
     const resolvedCakesCountRef = useRef(0);
     const isGameOverRef = useRef(isGameOver);
-
-    // useEffect(() => {
-    //     cakesToDisplayRef.current = cakesToDisplay;
-    // }, [cakesToDisplay])
-
-    // useEffect(() => {
-    //     nextCakeToDisplayRef.current = nextCakeToDisplay;
-    // }, [nextCakeToDisplay])
 
     async function fetchAllCakes() {
         try {
@@ -62,7 +52,6 @@ function MainPage() {
         }
 
         else {
-            // alert("cannot add more cake layers!");
             setShake(true);
             setTimeout(() => setShake(false), 500);
         }
@@ -74,7 +63,6 @@ function MainPage() {
         }
 
         else {
-            // alert("too much icing!");
             setShake(true);
             setTimeout(() => setShake(false), 500);
         }
@@ -86,10 +74,9 @@ function MainPage() {
         }
 
         else if (selectedItem === "layer1") {
-            //const tempCakeLayers = cakelayers; -> both temp and cakeLayers point to the array of cakeLayers
-            const tempCakeLayers = [...cakelayers]; // -> making a new array
-            tempCakeLayers[0] = flavour; // this changes array val but DOES NOT change where temp is pointing
-            setCakelayers(tempCakeLayers); // thus does not trigger change here because cakeLayers was pointing there already
+            const tempCakeLayers = [...cakelayers];
+            tempCakeLayers[0] = flavour;
+            setCakelayers(tempCakeLayers);
         }
 
         else if (selectedItem === "layer2") {
@@ -119,7 +106,6 @@ function MainPage() {
 
             const matchedCake = await axios.post("http://localhost:8080/cakes/submit", req);
             if (matchedCake.data) {
-                // await 
                 console.log(matchedCake.data);
                 updateCakesToDisplay(matchedCake.data.id);
 
@@ -131,12 +117,6 @@ function MainPage() {
                 setIcing("");
                 setSelectedItem(null);
                 resolvedCakesCountRef.current = resolvedCakesCountRef.current+1;
-
-                // IS THIS NEEDED? WHY NOT ONLY USE REF? BELOW SET NEXT AND TO DISPLAY WHY?
-                // use state to render the screen
-                //////////////////////////////////////
-                // setResolvedCakesCount(resolvedCakesCountRef.current);
-                //////////////////////////////////////
             }
 
             else {
@@ -144,9 +124,7 @@ function MainPage() {
                 setTimeout(() => setShake(false), 500);
                 setSelectedItem(null);
             }
-            // setCakelayers([]);
-            // setIcing("");
-            console.log("resolved cakes", resolvedCakesCountRef.current);
+
             if (resolvedCakesCountRef.current >= 20) {
                 isGameOverRef.current = true;
                 setIsGameOver(isGameOverRef.current);
@@ -158,37 +136,26 @@ function MainPage() {
         }
     }
 
-    // async 
     function updateCakesToDisplay(cakeToRemove) {
-        // await mutex.current.runExclusive(() => {
-            const updatedCakesToDisplay = [...cakesToDisplayRef.current.filter((cakeId) => {return (cakeId !== cakeToRemove)})];
-            // const updatedCakesToDisplay = [...cakesToDisplay].filter((cakeId) => {return (cakeId !== cakeToRemove)});
-            updatedCakesToDisplay.push(nextCakeToDisplayRef.current);
-            // setCakesToDisplay(updatedCakesToDisplay);
-            cakesToDisplayRef.current = updatedCakesToDisplay;
-            // setNextCakeToDisplay(nextCakeToDisplayRef.current+1);
-            nextCakeToDisplayRef.current = nextCakeToDisplayRef.current+1;
-            // console.log(updatedCakesToDisplay);
+        const updatedCakesToDisplay = [...cakesToDisplayRef.current.filter((cakeId) => {return (cakeId !== cakeToRemove)})];
+        updatedCakesToDisplay.push(nextCakeToDisplayRef.current);
+        cakesToDisplayRef.current = updatedCakesToDisplay;
+        nextCakeToDisplayRef.current = nextCakeToDisplayRef.current+1;
 
-            setCakesToDisplay(updatedCakesToDisplay);
-            setNextCakeToDisplay(nextCakeToDisplayRef.current);
-        // })
+        setCakesToDisplay(updatedCakesToDisplay);
+        setNextCakeToDisplay(nextCakeToDisplayRef.current);
     }
 
-    // async 
     function expireCake(expiredId) {
         if (!isGameOverRef.current) {
-            // await 
             updateCakesToDisplay(expiredId);
-            // console.log("expired", expiredId);
-            // console.log("NEXT", nextCakeToDisplayRef.current);
 
             setWarnText(true);
             setTimeout(() => setWarnText(false), 500);
 
             resolvedCakesCountRef.current = resolvedCakesCountRef.current+1;
-            // setResolvedCakesCount(resolvedCakesCountRef.current);
             console.log("resolved cakes", resolvedCakesCountRef.current);
+
             if (resolvedCakesCountRef.current >= 20) {
                 isGameOverRef.current = true;
                 setIsGameOver(isGameOverRef.current);
@@ -224,74 +191,46 @@ function MainPage() {
         }
     }
 
-    // function openModal() {
-    //     setModalOpen(true);
-    // }
-
-    // function closeModal() {
-    //     setModalOpen(false);
-    // }
-
     useEffect (() => {
         if (isGameOver) {
             postScore();
         }
     }, [isGameOver])
 
-    // if (isGameOver) {
-        // setModalOpen(true);
-    //     // setModalOpen(true);
-    //     // return (<>
-    //         {/* <>Game End</>  */}
-    //         <GameEndModal closeModal={closeModal} fail={missedCakesCount===10}/>
-    //         // </>)
-    //         // something about this writes insanely to scores.json when doing modal stuff??
-    // }
-
-    // else {
-        return (
-            <>
-            <div className='main__wrapper'>
-                <main className='main'>
-                    <div className='main__orders'>
-                        <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake} isGameOver={isGameOver}/>
-                    </div>
-        
-                    <section className={`main__build ${shake ? 'shake-cake' : ''}`}>                
-                        <Cake icing={icing} cakelayers={cakelayers} size="big-cake" setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
-                    </section>
-        
-                    <section className='main__edit'>
-                        <h2 className={`${scoreText ? 'score-text' : ''}`}>score: {score}</h2>
-                        <h3 className={`${warnText ? 'warn-text' : ''}`}> hangry customers: {missedCakesCount}/10</h3>
-                        <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
-                        <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
-                        <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
-                        <div className='main__icon-wrapper'>
-                            <img className='main__icon' onClick={submitCake} src={submitIcon}/>
-                        </div>
-                    </section>  
-        
-                    {/* <Button onClick={submitCake} text="submit" sizing="small" color="pink"/> */}
+    return (
+        <>
+        <div className='main__wrapper'>
+            <main className='main'>
+                <div className='main__orders'>
+                    <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake} isGameOver={isGameOver}/>
+                </div>
+    
+                <section className={`main__build ${shake ? 'shake-cake' : ''}`}>                
+                    <Cake icing={icing} cakelayers={cakelayers} size="big-cake" setSelectedItem={setSelectedItem} selectedItem={selectedItem}/>
+                </section>
+    
+                <section className='main__edit'>
+                    <h2 className={`${scoreText ? 'score-text' : ''}`}>score: {score}</h2>
+                    <h3 className={`${warnText ? 'warn-text' : ''}`}> hangry customers: {missedCakesCount}/10</h3>
+                    <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
+                    <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
+                    <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
                     <div className='main__icon-wrapper'>
-                            <img onClick={trashCake} className='main__icon' src={trashIcon}/>
+                        <img className='main__icon' onClick={submitCake} src={submitIcon}/>
                     </div>
+                </section>  
 
-                    {/* <Button onClick={() => {
-                        isGameOverRef.current = true;
-                        setIsGameOver(isGameOverRef.current);
-                        }} text="End game" sizing="game" color="brown"/> */}
-
-                    
-                </main>
-                {isGameOver && (
-                    <GameEndModal /*closeModal={closeModal}*/ fail={missedCakesCountRef.current >= 10}/>
-                )}
-            </div>
-            
-            </>
-        )
-    }
-// }
+                <div className='main__icon-wrapper'>
+                        <img onClick={trashCake} className='main__icon' src={trashIcon}/>
+                </div>                
+            </main>
+            {isGameOver && (
+                <GameEndModal fail={missedCakesCountRef.current >= 10}/>
+            )}
+        </div>
+        
+        </>
+    )
+}
 
 export default MainPage;
