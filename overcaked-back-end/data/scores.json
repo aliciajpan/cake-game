@@ -1,1 +1,11 @@
-[{"name":"placeholder","score":1000,"time":1726623162575},{"name":"placeholder","score":1900,"time":1726623449591},{"name":"placeholder","score":400,"time":1726625069574},{"name":"placeholder","score":100,"time":1726625135244},{"name":"alicia","score":3250,"time":1726626134019},{"name":"alicia","score":150,"time":1726626172178},{"name":"chef bubbles","score":3850,"time":1726626405437}]
+[
+  { "name": "placeholder", "score": 1000, "time": 1726623162575 },
+  { "name": "placeholder", "score": 1900, "time": 1726623449591 },
+  { "name": "placeholder", "score": 100, "time": 1726625135244 },
+  { "name": "alicia", "score": 3250, "time": 1726626134019 },
+  { "name": "alicia", "score": 150, "time": 1726626172178 },
+  { "name": "chef bubbles", "score": 3850, "time": 1726626405437 },
+  { "name": "chef bubbles", "score": 0, "time": 1726628854084 },
+  { "name": "chef bubbles", "score": 650, "time": 1726629605486 },
+  { "name": "chef bubbles", "score": 6000, "time": 1726631942687 }
+]
