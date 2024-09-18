@@ -3,7 +3,7 @@ import "./OrderCard.scss";
 import TimerBar from "../TimerBar/TimerBar";
 import Cake from "../Cake/Cake";
 
-function OrderCard({num, icing, cakelayers, expireCake}) {
+function OrderCard({num, icing, cakelayers, expireCake, isGameOver}) {
     useEffect(() => {
         const timer = setTimeout(() => {expireCake(num)}, (cakelayers.length * 15000));
         return (() => {clearTimeout(timer)}) // cleaned up when ordercard is gone from display (no longer expires if already submitted)
@@ -13,7 +13,7 @@ function OrderCard({num, icing, cakelayers, expireCake}) {
         <article className="ordercard">
             <p>Order #{num}</p>
             <Cake icing={icing} cakelayers={cakelayers} size="small-cake"/>
-            <TimerBar time={cakelayers.length}/>
+            <TimerBar time={cakelayers.length} isGameOver={isGameOver}/>
         </article>
     );
 }

@@ -1,13 +1,5 @@
 @use '../../styles/partials/variables' as *;
-
-@keyframes roundtime {
-    to {
-      /* More performant than animating `width` */
-        // transform: scaleX(0);
-        width: 0;
-        background-color: $red;
-    }
-}
+@use '../../styles/partials/_animations.scss' as *;
 
 .timerbar {
     height: 1rem;
@@ -36,6 +28,10 @@
             animation: roundtime calc(45s) linear forwards;
         }
     }
+}
+
+.pause-animation {
+    animation-play-state: paused;
 }
 
 // https://getbootstrap.com/docs/4.0/components/progress/

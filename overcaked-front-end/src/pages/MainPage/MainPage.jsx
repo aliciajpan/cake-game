@@ -31,6 +31,7 @@ function MainPage() {
     const nextCakeToDisplayRef = useRef(nextCakeToDisplay);
     const missedCakesCountRef = useRef(missedCakesCount); // any state used in a function that has to do w timer stuff needs a Ref
     const resolvedCakesCountRef = useRef(0);
+    const isGameOverRef = useRef(isGameOver);
 
     // useEffect(() => {
     //     cakesToDisplayRef.current = cakesToDisplay;
@@ -146,7 +147,8 @@ function MainPage() {
             // setIcing("");
             console.log("resolved cakes", resolvedCakesCountRef.current);
             if (resolvedCakesCountRef.current >= 20) {
-                setIsGameOver(true);
+                isGameOverRef.current = true;
+                setIsGameOver(isGameOverRef.current);
             }
         }
 
@@ -174,28 +176,32 @@ function MainPage() {
 
     // async 
     function expireCake(expiredId) {
-        // await 
-        updateCakesToDisplay(expiredId);
-        // console.log("expired", expiredId);
-        // console.log("NEXT", nextCakeToDisplayRef.current);
+        if (!isGameOverRef.current) {
+            // await 
+            updateCakesToDisplay(expiredId);
+            // console.log("expired", expiredId);
+            // console.log("NEXT", nextCakeToDisplayRef.current);
 
-        setWarnText(true);
-        setTimeout(() => setWarnText(false), 500);
+            setWarnText(true);
+            setTimeout(() => setWarnText(false), 500);
 
-        resolvedCakesCountRef.current = resolvedCakesCountRef.current+1;
-        // setResolvedCakesCount(resolvedCakesCountRef.current);
-        console.log("resolved cakes", resolvedCakesCountRef.current);
-        if (resolvedCakesCountRef.current >= 20) {
-            setIsGameOver(true);
-        }
+            resolvedCakesCountRef.current = resolvedCakesCountRef.current+1;
+            // setResolvedCakesCount(resolvedCakesCountRef.current);
+            console.log("resolved cakes", resolvedCakesCountRef.current);
+            if (resolvedCakesCountRef.current >= 20) {
+                isGameOverRef.current = true;
+                setIsGameOver(isGameOverRef.current);
+            }
 
-        if (missedCakesCountRef.current >= 9) {
-            setIsGameOver(true);
-        }
+            if (missedCakesCountRef.current >= 9) {
+                isGameOverRef.current = true;
+                setIsGameOver(isGameOverRef.current);
+            }
 
-        else {
-            missedCakesCountRef.current += 1;
-            setMissedCakesCount(missedCakesCountRef.current);
+            else {
+                missedCakesCountRef.current += 1;
+                setMissedCakesCount(missedCakesCountRef.current);
+            }
         }
     }
 
@@ -248,7 +254,7 @@ function MainPage() {
             <>
             <main className='main'>
                 <div className='main__orders'>
-                    <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake}/>
+                    <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake} isGameOver={isGameOver}/>
                 </div>
     
                 <section className={`main__build ${shake ? 'shake-cake' : ''}`}>                
@@ -271,7 +277,10 @@ function MainPage() {
                         <img onClick={trashCake} className='main__icon' src={trashIcon}/>
                 </div>
 
-                <Button onClick={() => {setIsGameOver(true)}} text="End game" sizing="game" color="brown"/>
+                <Button onClick={() => {
+                    isGameOverRef.current = true;
+                    setIsGameOver(isGameOverRef.current);
+                    }} text="End game" sizing="game" color="brown"/>
 
                 
             </main>
