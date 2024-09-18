@@ -31,7 +31,7 @@ function MainPage() {
     const resolvedCakesCountRef = useRef(0);
     const isGameOverRef = useRef(isGameOver);
 
-    const maxCakeCount = cakeArray.length();
+    const maxCakeCount = 20;
     const expiredCakeLimit = 10;
 
     async function fetchAllCakes() {
