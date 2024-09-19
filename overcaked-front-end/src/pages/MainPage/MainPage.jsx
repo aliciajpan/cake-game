@@ -213,17 +213,20 @@ function MainPage() {
                 </section>
     
                 <section className='main__edit'>
-                    <h2 className={`${scoreText ? 'score-text' : ''}`}>score: {score}</h2>
-                    <h3 className={`${warnText ? 'warn-text' : ''}`}> hangry customers: {missedCakesCount}/10</h3>
+                    <div className='main__info'>
+                        <h2 className={`${scoreText ? 'score-text' : ''} main__score`}>score: {score}</h2>
+                        <h3 className={`${warnText ? 'warn-text' : ''}`}> hangry customers: {missedCakesCount}/10</h3>
+                    </div>
+                    
                     <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
                     <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
                     <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
-                    <div className='main__icon-wrapper'>
+                    <div className='main__icon-wrapper--submit'>
                         <img className='main__icon' onClick={submitCake} src={submitIcon}/>
                     </div>
                 </section>  
 
-                <div className='main__icon-wrapper'>
+                <div className='main__icon-wrapper--trash'>
                         <img onClick={trashCake} className='main__icon' src={trashIcon}/>
                 </div>                
             </main>

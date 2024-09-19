@@ -16,7 +16,7 @@
 
 .big {
     width: 30vw;
-    height: 10vh;
+    height: 11vh;
 
     font-size: 5rem;
     font-weight: 700;
@@ -36,11 +36,16 @@
 
 .pink {
     background-color: $strawberry;
-    color: $strawberry-light;
+    color: $bkgd;
 }
 
 .brown {
     background-color: $chocolate;
+    color: $vanilla-dark;
+}
+
+.cream {
+    background-color: $vanilla-dark;
     color: $chocolate-light;
 }
 
@@ -53,5 +58,6 @@
 
     &--menu {
         width: 10rem;
+        height: 3rem;
     }
 }

@@ -3,6 +3,8 @@
 .flavourmenu {
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     background-color: $vanilla;
     border-radius: 3rem;
     width: 15rem;
