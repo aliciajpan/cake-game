@@ -1,12 +1,18 @@
 @use './_variables.scss' as *;
 
-@keyframes roundtime {
-    to {
-      /* More performant than animating `width` */
-        // transform: scaleX(0);
-        width: 0;
-        background-color: $red;
-    }
+@keyframes barRunOut {
+    // to {
+    //     width: 0;
+    //     // transform: scaleX(0);
+    //     background-color: $red;
+        
+    // }
+
+    0% {width: 100%; background-color: $green;}
+    25% {width: 75%; background-color: $yellow;}
+    65% {width: 35%; background-color: $yellow-dark;}
+    85% {width: 15%; background-color: $red;}
+    100% {width: 0; background-color: $red;}
 }
 
 @keyframes shakeWrongCake {
@@ -37,8 +43,16 @@
     100% {transform: scale(1.1);}
 }
 
+@keyframes popBiggerLogo {
+    0% {transform: scale(1);}
+    25% {transform: scale(1.05);}
+    50% {transform: scale(1);}
+    75% {transform: scale(1.05);}
+    100% {transform: scale(1);}
+}
+
 @keyframes stirWhisk {
-    0% {rotate: 15deg;}
-    50% {rotate: 35deg;}
+    0% {rotate: 15deg; }
+    50% {rotate: 25deg;}
     100% {rotate: 15deg;}
 }

@@ -17,6 +17,7 @@
     &__logo {
         width: 50%;
         margin: 2rem;
+        animation: popBiggerLogo 8s infinite;
     }
 
     &__orders {
@@ -28,13 +29,13 @@
 
         &--whisk {
                 rotate: 15deg;
-                right: -10rem;
-                top: -40rem;
+                right: -15rem;
+                top: -45rem;
                 scale: 0.4;
-                animation: stirWhisk 5s infinite;
+                // animation: stirWhisk 5s infinite;
 
                 &:hover {
-                    animation: stirWhisk 1s infinite;
+                    animation: stirWhisk 0.5s infinite;
                     animation-fill-mode: forwards;
                 }
         }

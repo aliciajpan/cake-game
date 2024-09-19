@@ -4,10 +4,12 @@ import Cake from '../../components/Cake/Cake';
 import Button from '../../components/Button/Button.jsx';
 import FlavourMenu from '../../components/FlavourMenu/FlavourMenu.jsx';
 import { useState, useEffect, useRef } from 'react';
+import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import submitIcon from '../../assets/icons/checkmark.png';
 import trashIcon from '../../assets/icons/trash.png';
 import GameEndModal from '../../components/GameEndModal/GameEndModal.jsx';
+import folder from '../../assets/images/folder.png';
 
 function MainPage() {
     const [cakelayers, setCakelayers] = useState([]);
@@ -24,6 +26,7 @@ function MainPage() {
     const [scoreText, setScoreText] = useState(false);
 
     const [isGameOver, setIsGameOver] = useState(false);
+    // const [openTutorial, setOpenTutorial] = useState(false);
 
     const cakesToDisplayRef = useRef(cakesToDisplay);
     const nextCakeToDisplayRef = useRef(nextCakeToDisplay);
@@ -200,10 +203,15 @@ function MainPage() {
         }
     }, [isGameOver])
 
+    // function openTutorial {
+    //     setOpenTutorial(true);
+    // }
+
     return (
         <>
         <div className='main__wrapper'>
             <main className='main'>
+                <img /*onClick={openTutorial}*/ className="main__image main__image--folder" src={folder}/>
                 <div className='main__orders'>
                     <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake} isGameOver={isGameOver}/>
                 </div>
@@ -213,23 +221,31 @@ function MainPage() {
                 </section>
     
                 <section className='main__edit'>
-                    <h2 className={`${scoreText ? 'score-text' : ''}`}>score: {score}</h2>
-                    <h3 className={`${warnText ? 'warn-text' : ''}`}> hangry customers: {missedCakesCount}/10</h3>
+                    <div className='main__info'>
+                        <h2 className={`${scoreText ? 'score-text' : ''} main__score`}>score: {score}</h2>
+                        <h3 className={`${warnText ? 'warn-text' : ''}`}> hangry customers: {missedCakesCount}/10</h3>
+                    </div>
+                    
                     <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
                     <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
                     <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
-                    <div className='main__icon-wrapper'>
-                        <img className='main__icon' onClick={submitCake} src={submitIcon}/>
-                    </div>
-                </section>  
+                </section> 
 
-                <div className='main__icon-wrapper'>
+                <div className='main__icon-wrapper--submit'>
+                    <img className='main__icon' onClick={submitCake} src={submitIcon}/>
+                </div> 
+
+                <div className='main__icon-wrapper--trash'>
                         <img onClick={trashCake} className='main__icon' src={trashIcon}/>
                 </div>                
             </main>
             {isGameOver && (
                 <GameEndModal fail={missedCakesCountRef.current >= 10}/>
             )}
+
+            {/* {openTutorial && (
+                // <TutoModal fail={missedCakesCountRef.current >= 10}/>
+            )} */}
         </div>
         
         </>

@@ -2,6 +2,8 @@ import './ScoreboardPage.scss';
 import ScoreCard from '../../components/ScoreCard/ScoreCard';
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import homeIcon from '../../assets/icons/home.png';
+import { NavLink } from 'react-router-dom';
 
 function ScoreboardPage() {
     const colors = ["scorecard--pink", "scorecard--brown", "scorecard--cream"];
@@ -35,7 +37,10 @@ function ScoreboardPage() {
 
     return (
         <section className='scoreboard'>
-            <h1>Scores</h1>
+            <div className='scoreboard__header'>
+                <NavLink className="scoreboard__icon-wrapper" to="/"><img className='scoreboard__icon' src={homeIcon}/></NavLink>
+                <h1>Scores</h1>
+            </div>
             {scoresArray.map((scoreObj, index) => {
                 return (<ScoreCard key={index} scoreObj={scoreObj} color={colors[(index) % colors.length]}/>)
             })}
