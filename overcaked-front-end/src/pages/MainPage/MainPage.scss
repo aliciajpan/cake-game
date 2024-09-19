@@ -77,6 +77,22 @@
     &__score {
         font-size: 4rem;
     }
+
+    &__image {
+        position: absolute;
+
+        &--folder {
+            left: -50rem;
+            bottom: -65rem;
+            scale: 0.2;
+            rotate: -25deg;
+            
+            &:hover {
+                animation: popBigger 1s ease;
+                animation-fill-mode: forwards;
+            }
+        }
+    }
 }
 
 .score-text {
