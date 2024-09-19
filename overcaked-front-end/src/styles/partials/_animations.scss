@@ -37,8 +37,16 @@
     100% {transform: scale(1.1);}
 }
 
+@keyframes popBiggerLogo {
+    0% {transform: scale(1);}
+    25% {transform: scale(1.05);}
+    50% {transform: scale(1);}
+    75% {transform: scale(1.05);}
+    100% {transform: scale(1);}
+}
+
 @keyframes stirWhisk {
     0% {rotate: 15deg; }
-    50% {rotate: 35deg;}
+    50% {rotate: 25deg;}
     100% {rotate: 15deg;}
 }
