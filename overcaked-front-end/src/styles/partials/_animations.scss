@@ -1,12 +1,18 @@
 @use './_variables.scss' as *;
 
-@keyframes roundtime {
-    to {
-      /* More performant than animating `width` */
-        // transform: scaleX(0);
-        width: 0;
-        background-color: $red;
-    }
+@keyframes barRunOut {
+    // to {
+    //     width: 0;
+    //     // transform: scaleX(0);
+    //     background-color: $red;
+        
+    // }
+
+    0% {width: 100%; background-color: $green;}
+    25% {width: 75%; background-color: $yellow;}
+    65% {width: 35%; background-color: $yellow-dark;}
+    85% {width: 15%; background-color: $red;}
+    100% {width: 0; background-color: $red;}
 }
 
 @keyframes shakeWrongCake {
