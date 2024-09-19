@@ -3,12 +3,6 @@ import { NavLink } from 'react-router-dom';
 import homeIcon from '../../assets/icons/home.png';
 import folder from '../../assets/images/tutorialfolder.png';
 
-import add from '../../assets/images/addcakecomponents.png';
-import button from '../../assets/images/buttons.png';
-import order from '../../assets/images/cakeordercard.png';
-import flavours from '../../assets/images/flavourmenu.png';
-import hangry from '../../assets/images/hangry.png';
-
 function TutorialPage() {
     return (
         <section className='scoreboard'>

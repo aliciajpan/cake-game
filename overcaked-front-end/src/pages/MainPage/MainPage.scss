@@ -14,6 +14,8 @@
 
     &__wrapper {
         @include stretchScreen;
+        overflow: hidden;
+        position: absolute;
     }
 
     &__orders {
@@ -47,6 +49,8 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        margin-top: 2rem;
+        margin-bottom: 3rem;
     }
 
     &__icon {

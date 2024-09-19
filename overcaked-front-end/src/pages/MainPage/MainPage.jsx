@@ -10,6 +10,7 @@ import submitIcon from '../../assets/icons/checkmark.png';
 import trashIcon from '../../assets/icons/trash.png';
 import GameEndModal from '../../components/GameEndModal/GameEndModal.jsx';
 import folder from '../../assets/images/folder.png';
+import TutorialModal from '../../components/TutorialModal/TutorialModal.jsx';
 
 function MainPage() {
     const [cakelayers, setCakelayers] = useState([]);
@@ -26,7 +27,7 @@ function MainPage() {
     const [scoreText, setScoreText] = useState(false);
 
     const [isGameOver, setIsGameOver] = useState(false);
-    // const [openTutorial, setOpenTutorial] = useState(false);
+    const [tutorialModalOpen, setTutorialModalOpen] = useState(false);
 
     const cakesToDisplayRef = useRef(cakesToDisplay);
     const nextCakeToDisplayRef = useRef(nextCakeToDisplay);
@@ -55,6 +56,7 @@ function MainPage() {
     function addCakeLayer() {
         if (cakelayers.length < 3 && icing === "") {
             setCakelayers([...cakelayers, "vanilla"]);
+            // setSelectedItem(cakelayers[cakelayers.length-1]);
         }
 
         else {
@@ -66,6 +68,7 @@ function MainPage() {
     function addIcingLayer() {
         if (icing.length < 1 && cakelayers.length > 0) {
             setIcing("vanilla");
+            // setSelectedItem(icing);
         }
 
         else {
@@ -203,15 +206,19 @@ function MainPage() {
         }
     }, [isGameOver])
 
-    // function openTutorial {
-    //     setOpenTutorial(true);
-    // }
+    function openTutorial() {
+        setTutorialModalOpen(true);
+    }
+
+    function closeModal() {
+        setTutorialModalOpen(false);
+    }
 
     return (
         <>
         <div className='main__wrapper'>
             <main className='main'>
-                <img /*onClick={openTutorial}*/ className="main__image main__image--folder" src={folder}/>
+                <img onClick={openTutorial} className="main__image main__image--folder" src={folder}/>
                 <div className='main__orders'>
                     <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake} isGameOver={isGameOver}/>
                 </div>
@@ -243,9 +250,9 @@ function MainPage() {
                 <GameEndModal fail={missedCakesCountRef.current >= 10}/>
             )}
 
-            {/* {openTutorial && (
-                // <TutoModal fail={missedCakesCountRef.current >= 10}/>
-            )} */}
+            {tutorialModalOpen && (
+                <TutorialModal closeModal={closeModal}/>
+            )}
         </div>
         
         </>

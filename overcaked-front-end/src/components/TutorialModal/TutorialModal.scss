@@ -1,0 +1,30 @@
+@use '../../styles/partials/variables' as *;
+@use '../../styles/partials/_mixins.scss' as *;
+
+.tutmodal {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    // background-color: $strawberry-light;
+    width: 60%;
+    border-radius: 2rem;
+    padding: 1rem;
+
+    &__wrapper {
+        position: absolute;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        @include stretchScreen;
+        z-index: 100;
+        background-color: rgb(50,50,50,0.5);
+        top: 0;
+        left: 0;
+    }
+
+    &__image {
+        width: 80rem;
+        margin: 1rem 0;
+    }
+}

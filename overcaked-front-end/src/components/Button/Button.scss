@@ -52,12 +52,13 @@
 .game {
     background-color: $vanilla;
     color: $chocolate-light;
-    height: 3rem;
+    height: 4rem;
     width: 15rem;
     margin: 1rem;
 
     &--menu {
         width: 10rem;
-        height: 3rem;
+        height: 5rem;
+        margin: 1rem;
     }
 }

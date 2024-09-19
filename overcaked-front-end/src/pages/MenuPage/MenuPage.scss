@@ -6,12 +6,15 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    
 
     &__wrapper {
         display: flex;
         justify-content: flex;
         align-items: center;
         @include stretchScreen;
+        position: absolute;
+        overflow: hidden;
     }
 
     &__logo {
