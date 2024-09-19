@@ -9,7 +9,13 @@ function NameForm() {
         event.preventDefault();
         const saveThisName = event.target.name.value.trim();
 
-        if (!saveThisName) {
+        // TODO: DEAL W LOGIC HERE
+        if (localStorage.getItem("overcakedSavedName")) {
+            navigate("/play");
+            localStorage.setItem("overcakedSavedName", localStorage.getItem("overcakedSavedName"));
+        }
+
+        if (!saveThisName && !localStorage.getItem("overcakedSavedName")) {
             const nameInfo = confirm("Names are used for the scoreboard. Do you want to remain anonymous?");
             if (nameInfo) {
                 localStorage.setItem("overcakedSavedName", saveThisName);
