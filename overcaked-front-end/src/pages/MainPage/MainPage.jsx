@@ -221,10 +221,11 @@ function MainPage() {
                     <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>
                     <Button onClick={addIcingLayer} text="+ Add icing layer" sizing="game" color="brown"/>
                     <FlavourMenu setSelectedFlavour={setSelectedFlavour}/>
-                    <div className='main__icon-wrapper--submit'>
-                        <img className='main__icon' onClick={submitCake} src={submitIcon}/>
-                    </div>
-                </section>  
+                </section> 
+
+                <div className='main__icon-wrapper--submit'>
+                    <img className='main__icon' onClick={submitCake} src={submitIcon}/>
+                </div> 
 
                 <div className='main__icon-wrapper--trash'>
                         <img onClick={trashCake} className='main__icon' src={trashIcon}/>
