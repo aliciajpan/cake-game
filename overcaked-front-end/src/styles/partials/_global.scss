@@ -46,12 +46,18 @@ body {
     
     ::placeholder {
         font-family: 'MilkCream'; 
-        font-size: 1.25rem;
+        font-size: 2rem;
+        color: $wood;
     }
 
     input {
         font-family: 'MilkCream';
         font-size: 1.25rem;
+        background-color: $vanilla;
+
+        // &:hover, &:focus, &:active {
+        //     background-color: $vanilla;
+        // }
     }
 
     a {

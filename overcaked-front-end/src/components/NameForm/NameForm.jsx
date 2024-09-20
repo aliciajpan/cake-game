@@ -1,49 +1,48 @@
 import { useNavigate } from "react-router-dom";
+import { useEffect, useRef } from "react";
 import Button from "../Button/Button";
 import "./NameForm.scss";
 
 function NameForm() {
     const navigate = useNavigate();
+    const nameInputRef = useRef(null); // handles input default value
 
-    function submitName(event) {
+    useEffect(() => { // set preloaded value once on mount
+        const storedName = localStorage.getItem("overcakedSavedName");
+        if (storedName) {
+            nameInputRef.current.value = storedName;
+        }
+    }, [])
+
+    function handleSubmit(event) {
         event.preventDefault();
-        const saveThisName = event.target.name.value.trim();
-
-        // TODO: DEAL W LOGIC HERE
-        if (localStorage.getItem("overcakedSavedName")) {
-            navigate("/play");
-            localStorage.setItem("overcakedSavedName", localStorage.getItem("overcakedSavedName"));
+        const nameInputted = nameInputRef.current.value.trim();
+        
+        if (!nameInputted) {
+            const confirm = window.confirm("Names are used for the scoreboard. Click OK to remain anonymous");
+            
+            if (!confirm) {
+                return;
+            } 
         }
 
-        if (!saveThisName && !localStorage.getItem("overcakedSavedName")) {
-            const nameInfo = confirm("Names are used for the scoreboard. Do you want to remain anonymous?");
-            if (nameInfo) {
-                localStorage.setItem("overcakedSavedName", saveThisName);
-                navigate("/play");
-            }
-        }
-
-        else {
-            localStorage.setItem("overcakedSavedName", saveThisName);
-            navigate("/play");
-        }
+        localStorage.setItem("overcakedSavedName", nameInputted);
+        navigate("/play");
     }
 
     return (
         <>
-        <form className="nameform" onSubmit={submitName}>
-            <input 
-                className="nameform__input" 
-                name="name" 
-                id="name" 
-                type="text" 
-                placeholder={localStorage.getItem("overcakedSavedName") || "what's your name, chef?"}
-            ></input>
-            {/* <Button text="Submit" sizing="form" color="brown"/> */}
-                {/* form sizing does not actually exist */}
-            <Button text="play" sizing="big" color="pink"/>
-        </form>
-        {/*<NavLink to="/play"><Button text="play" sizing="big" color="pink"/></NavLink>*/}
+            <form className="nameform">
+                <input 
+                    ref={nameInputRef}
+                    className="nameform__input" 
+                    name="name" 
+                    id="name" 
+                    type="text"
+                    placeholder={"what's your name, chef?"}
+                ></input>
+                <Button text="play" sizing="big" color="pink" onClick={handleSubmit}/>
+            </form>
         </>
     );
 }
