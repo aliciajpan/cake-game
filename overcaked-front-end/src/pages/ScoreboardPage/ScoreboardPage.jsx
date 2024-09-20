@@ -28,7 +28,10 @@ function ScoreboardPage() {
     if (scoresArray.length === 0) {
         return (
             <section className='scoreboard'>
-                <h1>Scores</h1>
+                <div className='scoreboard__header'>
+                    <NavLink className="scoreboard__icon-wrapper" to="/"><img className='scoreboard__icon' src={homeIcon}/></NavLink>
+                    <h1>Scores</h1>
+                </div>
                 <br></br>
                 <h3>No scores to display yet!</h3>
             </section>
