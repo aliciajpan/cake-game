@@ -12,9 +12,10 @@
     width: 15rem;
     box-shadow: 0 0 0.25rem 0.1rem $wood;
     margin: 0.5rem;
+    animation: slideCard 1s ease;
 
     &:hover {
-        animation: popBigger 1s ease;
+        animation: popBigger, slideCard 1s ease;
         animation-fill-mode: forwards;
     }
 }
