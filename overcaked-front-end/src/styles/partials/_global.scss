@@ -1,5 +1,6 @@
 @use './_fonts.scss' as *;
 @use './_variables.scss' as *;
+@use './_mixins.scss' as *;
 
 // reset
 * {
@@ -46,13 +47,16 @@ body {
     
     ::placeholder {
         font-family: 'MilkCream'; 
-        font-size: 2rem;
+        font-size: 1.5rem;
         color: $wood;
+
+        @include desktop {
+            font-size: 2rem;
+        }
     }
 
     input {
         font-family: 'MilkCream';
-        font-size: 1.25rem;
         background-color: $vanilla;
 
         // &:hover, &:focus, &:active {

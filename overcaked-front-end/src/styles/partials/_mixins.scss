@@ -1,3 +1,17 @@
+@use './_variables.scss' as *;
+
+@mixin tablet {
+    @media (max-width: $tablet-width-max) or (max-height: $tablet-height-max) {
+        @content;
+    }
+}
+
+@mixin desktop {
+    @media (min-width: $desktop-width) and (min-height: $desktop-height) {
+        @content;
+    }
+}
+
 @mixin foodColoring($color) {
     background-color: $color;
     box-shadow:
