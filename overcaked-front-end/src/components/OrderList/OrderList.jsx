@@ -2,7 +2,7 @@ import { useState } from "react";
 import "./OrderList.scss";
 import OrderCard from "../OrderCard/OrderCard.jsx";
 
-function OrderList({filteredCakeArray, expireCake, isGameOver}) {
+function OrderList({filteredCakeArray, expireCake, isGameOver, tutorialModalOpen}) {
     return (
         <section className="orderlist">
             {filteredCakeArray.map((cake) => {
@@ -14,6 +14,7 @@ function OrderList({filteredCakeArray, expireCake, isGameOver}) {
                         cakelayers={cake.layers} 
                         expireCake={expireCake} 
                         isGameOver={isGameOver}
+                        tutorialModalOpen={tutorialModalOpen}
                     />
                 )
             })}
