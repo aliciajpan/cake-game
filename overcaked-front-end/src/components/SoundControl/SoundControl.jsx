@@ -34,10 +34,10 @@ function SoundControl() {
         <>
             <article className="music">
                 {showInfo &&
-                    <>
-                        <div className="music__info"><p>try playing with sound</p></div>
+                    <article className="music__info">
+                        <div className="music__info--bubble"><p>try playing with sound</p></div>
                         <div className="music__info--tail"></div>
-                    </>
+                    </article>
                 }
                 <img onClick={toggleSound} className="music__image" src={playSound ? soundON : soundOFF} />
                 <audio

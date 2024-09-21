@@ -22,15 +22,21 @@
     }
 
     &__info {
-        background-color: $vanilla;
-        border-radius: 1rem;
-        padding: 1rem;
-        
+        opacity: 0%;
+        animation: bubbleFade 2s ease;
+        animation-fill-mode: forwards;
         display: flex;
         justify-content: center;
-        align-items: center;
-        color: $wood;
+        align-items: end;
+        flex-direction: column;
 
+        &--bubble {
+            background-color: $vanilla;
+            border-radius: 1rem;
+            padding: 1rem;
+            color: $wood;
+        }
+        
         &--tail {
             background-color: $vanilla;
             width: 4rem;

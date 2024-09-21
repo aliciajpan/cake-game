@@ -69,3 +69,9 @@
     50% {rotate: 25deg;}
     100% {rotate: 15deg;}
 }
+
+@keyframes bubbleFade {
+    to {
+        opacity: 100%;
+    }
+}
