@@ -12,7 +12,7 @@
     25% {width: 75%; background-color: $yellow;}
     65% {width: 35%; background-color: $yellow-dark;}
     85% {width: 15%; background-color: $red;}
-    100% {width: 0; background-color: $red;}
+    100% {width: 0.6rem; background-color: $dark-red;}
 }
 
 @keyframes slideCard {
