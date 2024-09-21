@@ -4,6 +4,7 @@ import MenuPage from './pages/MenuPage/MenuPage';
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScoreboardPage from './pages/ScoreboardPage/ScoreboardPage';
 import TutorialPage from './pages/TutorialPage/TutorialPage';
+import SoundControl from './components/SoundControl/SoundControl';
 
 function App() {
     return (
@@ -17,6 +18,7 @@ function App() {
                         <Route path="/howtoplay" element={<TutorialPage />} />
                     </Routes>
                 </div>
+                <SoundControl/>
             </div>
         </BrowserRouter>
 
