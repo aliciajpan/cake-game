@@ -223,7 +223,7 @@ function MainPage() {
             <main className='main'>
                 <img onClick={openTutorial} className="main__image main__image--folder" src={folder}/>
                 <div className='main__orders'>
-                    <OrderList cakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake} isGameOver={isGameOver}/>
+                    <OrderList filteredCakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} expireCake={expireCake} isGameOver={isGameOver}/>
                 </div>
     
                 <section className={`main__build ${shake ? 'shake-cake' : ''}`}>                
