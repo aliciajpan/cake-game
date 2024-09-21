@@ -1,5 +1,6 @@
 @use '../../styles/partials/variables' as *;
 @use '../../styles/partials/_animations.scss' as *;
+@use '../../styles/partials/_mixins.scss' as *;
 
 .button {
     display: flex;
@@ -15,33 +16,62 @@
 }
 
 .big {
-    width: 30vw;
-    height: 11vh;
+    width: 20rem;
+    height: 5.5rem;
 
-    font-size: 5rem;
+    font-size: 4rem;
     font-weight: 700;
     margin-left: auto;
     margin-right: auto;
+    margin-bottom: 0;
+
+    @include desktop {
+        width: 30vw;
+        height: 6.75rem;
+    
+        font-size: 5rem;
+        font-weight: 700;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .small {
-    width: 20vw;
-    height: 8vh;
+    width: 18rem;
+    height: 3.5rem;
 
     font-size: 3rem;
     font-weight: 700;
     margin-left: auto;
     margin-right: auto;
+
+    @include desktop {
+        width: 20vw;
+        height: 8vh;
+
+        font-size: 3rem;
+        font-weight: 700;
+        margin-left: auto;
+        margin-right: auto;
+    }
 }
 
 .pink {
     background-color: $strawberry;
     color: $bkgd;
+
+    &--playBtn {
+        color: $strawberry-light;
+    }
 }
 
 .brown {
     background-color: $chocolate;
     color: $vanilla-dark;
+
+    &--scoreboardBtn {
+        color: $wood;
+    }
 }
 
 .cream {

@@ -30,23 +30,36 @@
         position: absolute;
 
         &--whisk {
+            rotate: 15deg;
+            right: -17rem;
+            top: -48rem;
+            scale: 0.3;
+
+            @include desktop {
                 rotate: 15deg;
                 right: -15rem;
                 top: -45rem;
                 scale: 0.4;
-                // animation: stirWhisk 5s infinite;
-
-                &:hover {
-                    animation: stirWhisk 0.5s infinite;
-                    animation-fill-mode: forwards;
-                }
+            }  
+            
+            &:hover {
+                animation: stirWhisk 0.5s infinite;
+                animation-fill-mode: forwards;
+            }
         }
 
         &--folder {
             left: -50rem;
-            bottom: -60rem;
-            scale: 0.3;
+            bottom: -63rem;
+            scale: 0.23;
             rotate: -25deg;
+
+            @include desktop {
+                left: -50rem;
+                bottom: -60rem;
+                scale: 0.3;
+                rotate: -25deg;
+            }
 
             &:hover {
                 animation: popBigger 1s ease;
