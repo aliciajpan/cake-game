@@ -56,7 +56,7 @@ function MainPage() {
     function addCakeLayer() {
         if (cakelayers.length < 3 && icing === "") {
             setCakelayers([...cakelayers, "vanilla"]);
-            // setSelectedItem(cakelayers[cakelayers.length-1]);
+            setSelectedItem(`layer${cakelayers.length+1}`);
         }
 
         else {
@@ -68,7 +68,7 @@ function MainPage() {
     function addIcingLayer() {
         if (icing.length < 1 && cakelayers.length > 0) {
             setIcing("vanilla");
-            // setSelectedItem("icing");
+            setSelectedItem("icing");
         }
 
         else {
