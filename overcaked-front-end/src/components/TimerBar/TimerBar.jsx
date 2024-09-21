@@ -1,11 +1,11 @@
 import { useState } from "react";
 import "./TimerBar.scss";
 
-function TimerBar({time, isGameOver}) {
+function TimerBar({time, isGameOver, tutorialModalOpen}) {
 
     return (
         <div className="timerbar">
-            <div className={`timerbar__remaining timerbar__remaining--${time} ${isGameOver ? "pause-animation" : ""}`}></div>
+            <div className={`timerbar__remaining timerbar__remaining--${time} ${(isGameOver || tutorialModalOpen) ? "pause-animation" : ""}`}></div>
         </div>
     );
 }
