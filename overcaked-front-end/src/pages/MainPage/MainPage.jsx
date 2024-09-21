@@ -137,6 +137,8 @@ function MainPage() {
                 isGameOverRef.current = true;
                 setIsGameOver(isGameOverRef.current);
             }
+
+            setSelectedItem(null);
         }
 
         catch(error) {
@@ -181,6 +183,7 @@ function MainPage() {
     function trashCake() {
         setCakelayers([]);
         setIcing("");
+        setSelectedItem(null);
     }
 
     async function postScore() {
