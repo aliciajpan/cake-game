@@ -4,7 +4,6 @@ import Cake from '../../components/Cake/Cake';
 import Button from '../../components/Button/Button.jsx';
 import FlavourMenu from '../../components/FlavourMenu/FlavourMenu.jsx';
 import { useState, useEffect, useRef } from 'react';
-import { NavLink } from 'react-router-dom';
 import axios from 'axios';
 import submitIcon from '../../assets/icons/checkmark.png';
 import trashIcon from '../../assets/icons/trash.png';
@@ -101,7 +100,7 @@ function MainPage() {
         }
 
         else {
-            console.error("nothing selected");
+            console.log("nothing selected");
         }
     }
 

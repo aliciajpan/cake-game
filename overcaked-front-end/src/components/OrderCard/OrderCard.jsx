@@ -10,7 +10,7 @@ function OrderCard({num, icing, cakelayers, expireCake, isGameOver}) {
         return (() => {clearTimeout(timer)})
     }, [])
 
-    console.log(num, icing, cakelayers, expireCake, isGameOver);
+    // console.log(num, icing, cakelayers, expireCake, isGameOver);
     return (
         <article className="ordercard">
             <p>Order #{num}</p>
