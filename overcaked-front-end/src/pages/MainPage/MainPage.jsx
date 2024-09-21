@@ -68,7 +68,7 @@ function MainPage() {
     function addIcingLayer() {
         if (icing.length < 1 && cakelayers.length > 0) {
             setIcing("vanilla");
-            // setSelectedItem(icing);
+            // setSelectedItem("icing");
         }
 
         else {
@@ -130,7 +130,7 @@ function MainPage() {
             else {
                 setShake(true);
                 setTimeout(() => setShake(false), 500);
-                setSelectedItem(null);
+                // setSelectedItem(null);
             }
 
             if (resolvedCakesCountRef.current >= maxCakeCount) {
@@ -138,7 +138,7 @@ function MainPage() {
                 setIsGameOver(isGameOverRef.current);
             }
 
-            setSelectedItem(null);
+            // setSelectedItem(null);
         }
 
         catch(error) {
