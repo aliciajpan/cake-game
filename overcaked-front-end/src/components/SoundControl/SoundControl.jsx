@@ -3,11 +3,14 @@ import bkgdMusic from '../../assets/sounds/cutesybkgdmusic.mp3';
 import soundON from '../../assets/icons/soundON.png';
 import soundOFF from '../../assets/icons/soundOFF.png';
 import { useState, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 
 function SoundControl() {
     const [playSound, setPlaySound] = useState(false);
     const [showInfo, setShowInfo] = useState(true);
     const playerRef = useRef(null);
+    const pageUrl = useLocation().pathname;
+    console.log(pageUrl);
 
     function toggleSound() {
         if (playSound === false) {
@@ -33,7 +36,7 @@ function SoundControl() {
     return (
         <>
             <article className="music">
-                {showInfo &&
+                {(showInfo && pageUrl === "/") && 
                     <article className="music__info">
                         <div className="music__info--bubble"><p>try playing with sound</p></div>
                         <div className="music__info--tail"></div>

@@ -47,7 +47,9 @@
 
         &:hover {
             cursor: pointer;
-            animation: popBigger 1s both;
+            animation-name: popBigger, bubbleFade;
+            animation-duration: 1s, 2s;
+            animation-timing-function: both, both;
         }
     }
 }
