@@ -30,7 +30,6 @@
 }
 
 .tutorial {
-
     display: flex;
     justify-content: center;
     align-items: center;
@@ -43,5 +42,9 @@
     
     &__bkgd {
         width: 85%;
+
+        &:hover {
+            animation: popBiggerSubtle 1s both;
+        }
     }
 }
