@@ -1,4 +1,4 @@
-# Overcaked! _(working title)_
+# Overcaked!
 
 ## Overview
 
