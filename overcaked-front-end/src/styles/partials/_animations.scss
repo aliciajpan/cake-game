@@ -9,10 +9,11 @@
     // }
 
     0% {width: 100%; background-color: $green;}
-    25% {width: 75%; background-color: $yellow;}
-    65% {width: 35%; background-color: $yellow-dark;}
-    85% {width: 15%; background-color: $red;}
-    100% {width: 0; background-color: $red;}
+    25% {width: 75%; background-color: $green-yellow;}
+    50% {width: 50%; background-color: $yellow;}
+    75% {width: 25%; background-color: $orange;}
+    90% {width: 10%; background-color: $red;}
+    100% {width: 0.6rem; background-color: $red;}
 }
 
 @keyframes slideCard {

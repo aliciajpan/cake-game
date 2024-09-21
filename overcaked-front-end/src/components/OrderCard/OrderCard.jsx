@@ -4,11 +4,13 @@ import TimerBar from "../TimerBar/TimerBar";
 import Cake from "../Cake/Cake";
 
 function OrderCard({num, icing, cakelayers, expireCake, isGameOver}) {
+    const msPerLayer = 15000;
     useEffect(() => {
-        const timer = setTimeout(() => {expireCake(num)}, (cakelayers.length * 15000));
+        const timer = setTimeout(() => {expireCake(num)}, (cakelayers.length * msPerLayer));
         return (() => {clearTimeout(timer)})
     }, [])
 
+    console.log(num, icing, cakelayers, expireCake, isGameOver);
     return (
         <article className="ordercard">
             <p>Order #{num}</p>
