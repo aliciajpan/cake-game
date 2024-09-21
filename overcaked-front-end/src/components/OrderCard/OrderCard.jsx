@@ -1,16 +1,37 @@
-import { useEffect, useState } from "react";
+import { useEffect, useCallback } from "react";
+import { useTimer } from "react-use-precision-timer";
 import "./OrderCard.scss";
 import TimerBar from "../TimerBar/TimerBar";
 import Cake from "../Cake/Cake";
 
 function OrderCard({num, icing, cakelayers, expireCake, isGameOver, tutorialModalOpen}) {
     const msPerLayer = 15000;
-    useEffect(() => {
-        const timer = setTimeout(() => {expireCake(num)}, (cakelayers.length * msPerLayer));
-        return (() => {clearTimeout(timer)})
-    }, [])
+    const callback = useCallback(() => {
+        expireCake(num); 
+    }, [num]);
 
-    // console.log(num, icing, cakelayers, expireCake, isGameOver);
+    const timer = useTimer({ 
+        delay: (cakelayers.length * msPerLayer),
+        runOnce: true,
+        fireOnStart: false,
+        startImmediately: true,
+        speedMultiplier: 1
+    }, callback);
+
+    useEffect(() => {
+        if (isGameOver) {
+            timer.stop();
+        }
+
+        else if (tutorialModalOpen) {
+            timer.pause();
+        }
+
+        else {
+            timer.resume();
+        }
+    }, [tutorialModalOpen, isGameOver])
+
     return (
         <article className="ordercard">
             <p>Order #{num}</p>
