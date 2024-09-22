@@ -1,0 +1,17 @@
+@use '../../styles/partials/_variables.scss' as *;
+
+.footer {
+    position: fixed;
+    bottom: 0.5rem;
+    color: $wood;
+
+    &__tag {
+        text-decoration: underline;
+        color: $wood;
+
+        &:hover {
+            cursor: pointer;
+            opacity: 75%;
+        }
+    }
+}

@@ -6,6 +6,7 @@ import whisk from '../../assets/images/whisk.png';
 import folder from '../../assets/images/folder.png';
 import { NavLink } from 'react-router-dom';
 import { useState } from 'react';
+import Footer from '../../components/Footer/Footer';
 
 function MenuPage() {
     const [playerName, setPlayerName] = useState("");
@@ -19,6 +20,7 @@ function MenuPage() {
                 {/* <NavLink to="/play"><Button text="play" sizing="big" color="pink"/></NavLink> */}
                 <NavLink to="/scoreboard"><Button text="scoreboard" sizing="small" color="brown brown--scoreboardBtn"/></NavLink>
                 <img className="menu__image menu__image--whisk" src={whisk}/>
+                <Footer/>
             </section>
         </div>
     )
