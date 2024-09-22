@@ -25,6 +25,7 @@ function SoundControl() {
     useEffect(() => {
         if (playSound) {
             playerRef.current.play();
+            playerRef.current.volume=0.2;
             setShowInfo(false);
         }
 

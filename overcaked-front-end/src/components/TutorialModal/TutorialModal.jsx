@@ -1,6 +1,6 @@
 import Button from "../Button/Button";
 import "./TutorialModal.scss";
-import folder from '../../assets/images/tutorialfolder.png';
+import folder from '../../assets/images/tutorialGIF.gif';
 
 function TutorialModal({closeModal}) {
     function closeTutModal() {

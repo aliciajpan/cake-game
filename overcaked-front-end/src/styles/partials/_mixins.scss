@@ -7,7 +7,20 @@
 }
 
 @mixin desktop {
-    @media (min-width: $desktop-width) and (min-height: $desktop-height) {
+    @media (min-width: $desktop-width-min) and (min-height: $desktop-height-min) {
+        @content;
+    }
+}
+
+@mixin desktop-medium {
+    @media (min-width: $desktop-width-min) and (min-height: $desktop-height-min) 
+    and ((max-width: $desktop-width-max) or (max-height: $desktop-height-max)) {
+        @content;
+    }
+}
+
+@mixin desktop-XL {
+    @media (min-width: $desktop-width-XL) and (min-height: $desktop-height-XL) {
         @content;
     }
 }

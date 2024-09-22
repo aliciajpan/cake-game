@@ -15,4 +15,8 @@
     @include desktop {
         margin-top: 3rem;
     }
+
+    @include desktop-XL {
+        margin-top: 2rem;
+    }
 }

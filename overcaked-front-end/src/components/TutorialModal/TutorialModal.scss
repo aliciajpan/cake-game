@@ -28,8 +28,12 @@
         margin-top: 1rem;
 
         @include desktop {
-            width: 80rem;
+            width: 60rem;
             margin: 1rem 0;
+        }
+
+        @include desktop-XL {
+            width: 70rem;
         }
     }
 }
