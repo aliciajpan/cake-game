@@ -1,4 +1,5 @@
 import { readFile, writeFile } from '../utils/json.js';
+import { v4 as uuidv4 } from 'uuid';
 
 function postScore (req, res) {
     const {playerName, playerScore} = req.body;
@@ -13,6 +14,7 @@ function postScore (req, res) {
         const allScores = readFile('scores.json');
 
         const newScoreItem = {
+            id: uuidv4(),
             name: playerName,
             score: playerScore,
             time: (new Date()).getTime()

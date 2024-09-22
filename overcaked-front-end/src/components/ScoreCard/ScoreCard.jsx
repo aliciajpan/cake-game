@@ -1,9 +1,18 @@
 import "./ScoreCard.scss";
 import dynamicTimestamp from "../../utils/dynamic-timestamp";
+import { useEffect, useRef } from "react";
 
-function ScoreCard({scoreObj, color}) {
+function ScoreCard({scoreObj, color, isNewest}) {
+    const newestScoreRef = useRef(null);
+
+    useEffect(() => {
+        if (isNewest) {
+            newestScoreRef.current.scrollIntoView({behavior: "smooth"});
+        }
+    }, [isNewest])
+
     return (
-        <article className={`scorecard ${color}`}>
+        <article ref={newestScoreRef} className={`scorecard ${color} ${isNewest ? "highlight" : ""}`}>
             <div>
                 {scoreObj.name}
             </div>
