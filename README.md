@@ -1,4 +1,5 @@
-# Overcaked! _(working title)_
+# Overcaked
+<img src="./overcaked-front-end/public/favicon.png" alt="favicon" width=300>
 
 ## Overview
 
@@ -9,8 +10,6 @@ Welcome to Overcaked!
 In this game, players will be given cake orders in the form of an image of what the cake should look like when completed and they must assemble a cake according to the order to hand off to customers. Cakes will have varying numbers of layers, layer flavours, and frosting flavours.
 
 Points are earned for successfully submitted orders! Beware the order timers - no hungry customer wants to be left waiting for too long!
-
-<img src="./proposal-images/cakeorder.jpg" alt="menu page mockup" width=300>
 
 ### Problem Space
 
@@ -53,20 +52,14 @@ I forsee players of the game falling into these categories:
 - Players can enter their Chef name
  
 ## Implementation
-
 ### Tech Stack
 
-#### Languages
-HTML, SASS, Javascript
-
-#### Front-End
-React, axios, SASS, react-router-dom
-
-#### Back-End
-Node, Express, CORS
-
-#### Tools & Softwares
-VSCode, Postman, Procreate, font and icon libraries
+|   |   |
+|---|---|
+|Languages| HTML, SASS, Javascript |
+| Front-End | React, SASS, axios, react-dom, react-router-dom, react-use-precision-timer |
+| Languages | Node, Express, CORS, body-parser, dotenv |
+| Tools & Softwares | VSCode, Postman, GitHub, Procreate, DaFont, Flaticon |
 
 ### APIs
 
@@ -132,43 +125,43 @@ No external sources of data, a custom back-end will be made!
 2. Array of randomly generated cake configurations (uses #1)
     - Some limits on number of cake layers, etc.
     - What each cake object looks like:
-        ```
-        {
-            id: 1,
-            score: 200,
-            layerCount: 3,
-            layers: ["chocolate", "vanilla", "chocolate"],
-            icing: "strawberry",
-            expired: false,
-            submitted: false
-        }
-        ```
+
+    ```
+    {
+        "id": 20,
+        "layerCount": 2,
+        "layers": ["vanilla", "vanilla"],
+        "icing": "chocolate",
+        "points": 250
+    }
+    ```
+
 3. Front-end can change cake data from #2
     - If order times out, write to back-end to change `expired` to `true` 
     - If order successfully submitted, write to back-end to change `submitted` to `true` 
 4. Array of player's past scores and associated timestamps
     - When game over, save current score and timestamp of game end to array
-5. Store player's name (from front-end input or use placeholder if none provided)
+        - What each score object looks like:
+    ```
+    { 
+        "name": "alicia", 
+        "score": 5300, 
+        "time": 1726802792496 
+    }
+     ```
+5. Store player's name (from front-end input or use placeholder if none provided) to localStorage
 
 ### Endpoints
 
 List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
 
-**POST `/generate`** -> Generates and saves array of cakes to a JSON file
+**POST `/cakes`** -> Generates and returns array of cakes
 
-**GET `/cakes`** -> Returns array of cakes
-
-**GET `/cake`** -> Returns individual cake
-
-**PUT `/cake`** -> Edits property on cake
+**POST `/cakes/submit`** -> Submits cake to compare to current orders
 
 **GET `/scores`** -> Returns array of scoreboard data
 
 **POST `/scores`** -> Adds new score to scoreboard data
-
-**POST `/name`** -> Saves player's name
-
-**GET `/name`** -> Returns player's saved name
 
 
 ## Roadmap
@@ -251,15 +244,48 @@ List endpoints that your server will implement, including HTTP methods, paramete
 9. Testing _(Sept 22)_
 
 ---
+## How to Run Locally
+
+---
 
 ## Ideas for Future Implementations/Nice to Haves
 
-1. Add cheerful music that plays in window
-2. Add symbols on flavours (instead of just relying on colours) to increase accessibility
-3. Deploy online
+- ✅ Add cheerful music that plays in window
+- ✅ Animations
+    - Title logo idle pulse
+    - Menu page whisk moves on hover
+    - Interactable items enlarge on hover (hand pointer cursor to show clickable)
+    - Articles/cards enlarge when hover (regular cursor)
+    - Order cards slide into page
+    - Plate shakes when invalid action happens
+    - Score and expired cake count text pops out and changes colour 
+    - Pop up on menu page reminds player to try playing with sound on
+- Add symbols on flavours (instead of just relying on colours) to increase accessibility
+- Deploy online
     - Save scoreboard data for online players
-4. Expand colours/flavours/number of cake layers (increase cake order complexity)
-5. Save data in database instead of JSON file
-6. Different levels of difficulty (timers shorter/number of concurrent orders increases, etc.)
-7. Have back-end store names to randomly generate if player does not give a name
+- Expand colours/flavours/number of cake layers (increase cake order complexity)
+- Save data in database instead of JSON file
+- ✅ Different levels of difficulty (timers shorter/number of concurrent orders increases, etc.)
+- Have back-end store names to randomly generate if player does not give a name
     - Example: Have array of adjectives and array of nouns, randomly pick one of each to give a name, ex. "Frosted Baker"
+
+## Acknowledgements
+
+Font (via DaFont): https://www.dafont.com/milk-cream.font by MJtype
+
+Music (copyright free): https://www.youtube.com/watch?v=tAaFg2u-i2c by UmbrTone
+
+CSS cake model (modified): https://codepen.io/fazlurr/pen/gPMJMK by Fazlur Rahman on CodePen
+
+Icon Attributions:
+
+- Checkmark - https://www.flaticon.com/authors/kliwir-art
+- Trash can - https://www.flaticon.com/authors/lakonicon
+- House - https://www.flaticon.com/authors/freepik
+- Volume off - https://www.flaticon.com/authors/fach
+- Volume on - https://www.flaticon.com/authors/fach
+
+
+Special thanks to my friend Carmela, the first ever player of the game, who helped find all the ways to break the code :)
+
+Original graphics by me! (Drawn on Procreate)
