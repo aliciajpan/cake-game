@@ -281,7 +281,7 @@ Icon Attributions:
 - House - https://www.flaticon.com/authors/freepik
 - Volume off - https://www.flaticon.com/authors/fach
 - Volume on - https://www.flaticon.com/authors/fach
-
+- Chef hat - https://www.flaticon.com/authors/those-icons
 
 Special thanks to my friend Carmela, the first ever player of the game, who helped find all the ways to break the code :)
 
