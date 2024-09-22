@@ -135,6 +135,7 @@
             bottom: -68rem;
             scale: 0.15;
             rotate: -32deg;
+            z-index: 2;
             cursor: url('/src/assets/images/handpointer.png') 16 16, auto;
             
             &:hover {
