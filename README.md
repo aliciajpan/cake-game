@@ -263,6 +263,7 @@ List endpoints that your server will implement, including HTTP methods, paramete
 - Save data in database instead of JSON file
 - ✅ Different levels of difficulty (timers shorter/number of concurrent orders increases, etc.)
 - ✅ Use tutorial modal instead of redirecting to tutorial page from playing page
+- ✅ Use GIF for playthrough instructions 
 - Have back-end store names to randomly generate if player does not give a name
     - Example: Have array of adjectives and array of nouns, randomly pick one of each to give a name, ex. "Frosted Baker"
 
