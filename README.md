@@ -56,10 +56,10 @@ I forsee players of the game falling into these categories:
 
 |   |   |
 |---|---|
-|Languages| HTML, SASS, Javascript |
-| Front-End | React, SASS, axios, react-dom, react-router-dom, react-use-precision-timer |
-| Languages | Node, Express, CORS, body-parser, dotenv |
-| Tools & Softwares | VSCode, Postman, GitHub, Procreate, DaFont, Flaticon |
+|__Languages__| HTML, SASS, Javascript |
+|__Front-End__| React, SASS, axios, react-dom, react-router-dom, react-use-precision-timer |
+|__Languages__| Node, Express, CORS, body-parser, dotenv |
+|__Tools & Softwares__| VSCode, Postman, GitHub, Procreate, DaFont, Flaticon |
 
 ### APIs
 
@@ -266,6 +266,7 @@ List endpoints that your server will implement, including HTTP methods, paramete
 - Expand colours/flavours/number of cake layers (increase cake order complexity)
 - Save data in database instead of JSON file
 - ✅ Different levels of difficulty (timers shorter/number of concurrent orders increases, etc.)
+- ✅ Use tutorial modal instead of redirecting to tutorial page from playing page
 - Have back-end store names to randomly generate if player does not give a name
     - Example: Have array of adjectives and array of nouns, randomly pick one of each to give a name, ex. "Frosted Baker"
 
