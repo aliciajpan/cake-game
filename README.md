@@ -63,7 +63,7 @@ No external sources of data, a custom back-end will be made!
 
 #### Menu Page
 
-<img src="./proposal-images/menu.jpg" alt="menu page mockup" width=400> <img src="./proposal-images/realMenu.png" alt="menu page mockup" width=400>
+<img src="./proposal-images/menu.jpg" alt="menu page mockup" width=800> <img src="./proposal-images/realMenu.png" alt="menu page mockup" width=800>
 
 1. Input for user to enter name (if left blank, a placeholder name will be used)
 
