@@ -266,6 +266,7 @@ List endpoints that your server will implement, including HTTP methods, paramete
 - ✅ Use GIF for playthrough instructions 
 - Have back-end store names to randomly generate if player does not give a name
     - Example: Have array of adjectives and array of nouns, randomly pick one of each to give a name, ex. "Frosted Baker"
+- ✅ Highlight and scroll to newly added score when view scoreboard page from end of game
 
 ## Acknowledgements
 
