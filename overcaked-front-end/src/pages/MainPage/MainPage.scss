@@ -56,6 +56,11 @@
         margin-top: -6rem;
 
         @include desktop {
+            margin-top: -5rem;
+            scale: 0.85;
+        }
+
+        @include desktop-XL {
             margin-top: 0;
             scale: 1;
         }
@@ -71,7 +76,7 @@
 
         @include desktop {
             margin-top: 2rem;
-            margin-bottom: 3rem;
+            margin-bottom: 1rem;
         }
     }
 
@@ -82,6 +87,7 @@
 
         @include desktop {
             max-width: 5rem;
+            bottom: 3rem;
         }
 
         &:hover {
@@ -103,6 +109,8 @@
             @include desktop {
                 max-width: 5rem;
                 position: static;
+                bottom: -3rem;
+                right: 15.5rem;
             }
         }
 
@@ -115,6 +123,8 @@
 
             @include desktop {
                 position: static;
+                bottom: -3rem;
+                left: 12rem;
             }
         }
     }
@@ -125,6 +135,11 @@
         @include desktop {
             font-size: 4rem;
         }
+    }
+
+    &__hangry {
+        text-align: center;
+        width: 90%;
     }
 
     &__image {

@@ -10,8 +10,8 @@
         color: $wood;
 
         &:hover {
-            cursor: pointer;
             opacity: 75%;
+            cursor: url('/src/assets/images/handpointer.png') 16 16, auto;
         }
     }
 }

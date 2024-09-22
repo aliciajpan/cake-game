@@ -237,7 +237,7 @@ function MainPage() {
                 <section className='main__edit'>
                     <div className='main__info'>
                         <h2 className={`${scoreText ? 'score-text' : ''} main__score`}>score: {score}</h2>
-                        <h3 className={`${warnText ? 'warn-text' : ''}`}> hangry customers: {missedCakesCount}/10</h3>
+                        <h3 className={`${warnText ? 'warn-text' : ''} main__hangry`}> hangry customers: {missedCakesCount}/10</h3>
                     </div>
                     
                     <Button onClick={addCakeLayer} text="+ Add cake layer" sizing="game" color="brown"/>

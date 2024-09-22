@@ -1,12 +1,14 @@
 @use '../../styles/partials/_animations.scss' as *;
 @use '../../styles/partials/_mixins.scss' as *;
+@use '../../styles/partials/_variables.scss' as *;
 
-.scoreboard {
+.tutorial {
     display: flex;
     flex-direction: column;
-    justify-content: start;
+    justify-content: center;
     align-items: center;
     flex: 1 0;
+    height: 100%;
 
     &__header {
         display: flex;
@@ -39,10 +41,11 @@
     }
 }
 
-.tutorial {
+.tutorial-module {
     display: flex;
     justify-content: center;
-    align-items: center;
+    align-items: start;
+    @include stretchScreen;
 
     &__bkgd-container {
         display: flex;
@@ -51,12 +54,14 @@
     }
     
     &__bkgd {
-        width: 90%;
+        min-width: 90%;
+        max-width: 90%;
         margin-top: 1rem;
 
         @include desktop {
             margin-top: 0;
-            width: 85%;
+            min-width: 85%;
+            max-width: 85%;
         }
 
         &:hover {
