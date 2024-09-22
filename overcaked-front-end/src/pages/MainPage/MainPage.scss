@@ -61,7 +61,7 @@
 
         &:hover {
             animation: popBigger 1s both;
-            cursor: pointer;
+            cursor: url('/src/assets/images/handpointer.png') 16 16, auto;
         }
     }
 
@@ -91,6 +91,7 @@
             bottom: -65rem;
             scale: 0.2;
             rotate: -25deg;
+            cursor: url('/src/assets/images/handpointer.png') 16 16, auto;
             
             &:hover {
                 animation: popBigger 1s ease;

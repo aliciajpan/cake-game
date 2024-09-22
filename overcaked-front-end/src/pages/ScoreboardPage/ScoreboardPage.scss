@@ -21,7 +21,7 @@
 
         &:hover {
             animation: popBigger 1s both;
-            cursor: pointer;
+            cursor: url('/src/assets/images/handpointer.png') 16 16, auto;
         }
     }
 

@@ -15,6 +15,9 @@ body {
     background-color: $bkgd;
     color: $chocolate;
 
+    // cursor: url('/src/assets/images/arrowpointer.png') 16 16, auto;
+    cursor: url('/src/assets/images/whiskpointer.png') 16 16, auto;
+
     h1 {
         font-size: 5rem;
         font-family: 'MilkCream';
@@ -58,6 +61,10 @@ body {
     input {
         font-family: 'MilkCream';
         background-color: $vanilla;
+
+        &:hover {
+            cursor: url('/src/assets/images/chefpointer.png') 16 16, auto;
+        }
 
         // &:hover, &:focus, &:active {
         //     background-color: $vanilla;

@@ -53,6 +53,7 @@
             bottom: -63rem;
             scale: 0.23;
             rotate: -25deg;
+            cursor: url('/src/assets/images/handpointer.png') 16 16, auto;
 
             @include desktop {
                 left: -50rem;
