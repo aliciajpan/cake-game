@@ -1,6 +1,7 @@
 import './ScoreboardPage.scss';
 import ScoreCard from '../../components/ScoreCard/ScoreCard';
 import { useState, useEffect } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import axios from 'axios';
 import homeIcon from '../../assets/icons/home.png';
 import { NavLink } from 'react-router-dom';
@@ -9,6 +10,8 @@ import Footer from '../../components/Footer/Footer';
 function ScoreboardPage() {
     const colors = ["scorecard--pink", "scorecard--brown", "scorecard--cream"];
     const [scoresArray, setScoresArray] = useState([]);
+    const [searchParam, setSearchParam] = useSearchParams();
+    const uploadedID = searchParam.get("id");
 
     async function fetchAllScores() {
         try {
@@ -49,7 +52,12 @@ function ScoreboardPage() {
                     <h1>Scores</h1>
                 </div>
                 {scoresArray.map((scoreObj, index) => {
-                    return (<ScoreCard key={index} scoreObj={scoreObj} color={colors[(index) % colors.length]}/>)
+                    return (<ScoreCard 
+                        key={index} 
+                        scoreObj={scoreObj} 
+                        color={colors[(index) % colors.length]}
+                        isNewest={scoreObj.id === uploadedID}
+                    />)
                 })}
             </section>
             <Footer/>

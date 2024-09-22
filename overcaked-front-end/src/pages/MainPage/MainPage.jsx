@@ -20,6 +20,7 @@ function MainPage() {
     const [nextCakeToDisplay, setNextCakeToDisplay] = useState(4);
     const [score, setScore] = useState(0);
     const [missedCakesCount, setMissedCakesCount] = useState(0);
+    const [newScoreID, setNewScoreID] = useState(null);
 
     const [shake, setShake] = useState(false);
     const [warnText, setWarnText] = useState(false);
@@ -194,7 +195,8 @@ function MainPage() {
                 playerScore: score
             }
 
-            await axios.post("http://localhost:8080/scores", req);
+            const newPost = await axios.post("http://localhost:8080/scores", req);
+            setNewScoreID(newPost.data.id);
         }
 
         catch(error) {
@@ -254,7 +256,7 @@ function MainPage() {
                 </div>                
             </main>
             {isGameOver && (
-                <GameEndModal fail={missedCakesCountRef.current >= 10}/>
+                <GameEndModal fail={missedCakesCountRef.current >= 10} newScoreID={newScoreID}/>
             )}
 
             {tutorialModalOpen && (
