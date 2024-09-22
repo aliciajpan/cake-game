@@ -65,11 +65,11 @@ I forsee players of the game falling into these categories:
 
 No external sources of data, a custom back-end will be made!
 
-### Sitemap / Mockups
+### Sitemap / Mockups vs Final Screenshots
 
 #### Menu Page
 
-<img src="./proposal-images/menu.jpg" alt="menu page mockup" width=800>
+<img src="./proposal-images/menu.jpg" alt="menu page mockup" width=400> <img src="./proposal-images/realMenu.png" alt="menu page mockup" width=400>
 
 1. Input for user to enter name (if left blank, a placeholder name will be used)
 
@@ -83,7 +83,7 @@ No external sources of data, a custom back-end will be made!
 
 #### Tutorial Page
 
-<img src="./proposal-images/tutorialpage.jpg" alt="tutorial page mockup" width=800>
+<img src="./proposal-images/tutorialpage.jpg" alt="tutorial page mockup" width=800><img src="./proposal-images/realTutorial.png" alt="tutorial page mockup" width=800>
 
 1. Home button to return to Menu Page
 
@@ -93,7 +93,7 @@ No external sources of data, a custom back-end will be made!
 
 #### Scoreboard Page
 
-<img src="./proposal-images/scoreboard.jpg" alt="scoreboard page mockup" width=800>
+<img src="./proposal-images/realScores.png" alt="scoreboard page mockup" width=800><img src="./proposal-images/scoreboard.jpg" alt="scoreboard page mockup" width=800>
 
 1. Scoreboard title with player's name (player-entered or placeholder)
 
@@ -105,7 +105,7 @@ No external sources of data, a custom back-end will be made!
 
 #### Main Page
 
-<img src="./proposal-images/mainpage.jpg" alt="main page" width=800>
+<img src="./proposal-images/realPlay.png" alt="main page" width=800><img src="./proposal-images/mainpage.jpg" alt="main page" width=800>
 
 1. Order cards
 2. Timers on orders
@@ -260,6 +260,8 @@ List endpoints that your server will implement, including HTTP methods, paramete
     - Plate shakes when invalid action happens
     - Score and expired cake count text pops out and changes colour 
     - Pop up on menu page reminds player to try playing with sound on
+- ✅ Custom themed cursors
+- ✅ Visually displaying which _cake component_ is selected (selection border)
 - Add symbols on flavours (instead of just relying on colours) to increase accessibility
 - Deploy online
     - Save scoreboard data for online players
