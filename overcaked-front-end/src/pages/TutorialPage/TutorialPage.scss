@@ -51,7 +51,13 @@
     }
     
     &__bkgd {
-        width: 85%;
+        width: 90%;
+        margin-top: 1rem;
+
+        @include desktop {
+            margin-top: 0;
+            width: 85%;
+        }
 
         &:hover {
             animation: popBiggerSubtle 1s both;
