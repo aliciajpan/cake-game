@@ -44,6 +44,10 @@ I forsee players of the game falling into these categories:
 - Players can view a game instruction blurb
 - Players can see their previous score history
 - Players can enter their Chef name
+- Game is responsive at and between the following screen size breakpoints (landscape mode):
+   - 1024px x 768px
+   - 1280px x 800px
+   - 1500px x 890px
  
 ## Implementation
 ### Tech Stack
@@ -52,7 +56,7 @@ I forsee players of the game falling into these categories:
 |---|---|
 |__Languages__| HTML, SASS, Javascript |
 |__Front-End__| React, SASS, axios, react-dom, react-router-dom, react-use-precision-timer |
-|__Languages__| Node, Express, CORS, body-parser, dotenv |
+|__Languages__| Node, Express, CORS, uuid, dotenv |
 |__Tools & Softwares__| VSCode, Postman, GitHub, Procreate, DaFont, Flaticon |
 
 ### APIs
@@ -242,7 +246,9 @@ List endpoints that your server will implement, including HTTP methods, paramete
 
 ---
 
-## Ideas for Future Implementations/Nice to Haves
+## Nice to Haves/Future Features
+
+✅ = Included at time of submission
 
 - ✅ Add cheerful music that plays in window
 - ✅ Animations
@@ -256,16 +262,18 @@ List endpoints that your server will implement, including HTTP methods, paramete
     - Pop up on menu page reminds player to try playing with sound on
 - ✅ Custom themed cursors
 - ✅ Visually displaying which _cake component_ is selected (selection border)
+- ✅ Different levels of difficulty (timers shorter/number of concurrent orders increases, etc.)
+- ✅ Use tutorial modal instead of redirecting to tutorial page from playing page
+- ✅ Use GIF for playthrough instructions
+- ✅ Highlight and scroll to newly added score when view scoreboard page from end of game
 - Add symbols on flavours (instead of just relying on colours) to increase accessibility
 - Deploy online
     - Save scoreboard data for online players
 - Expand colours/flavours/number of cake layers (increase cake order complexity)
 - Save data in database instead of JSON file
-- ✅ Different levels of difficulty (timers shorter/number of concurrent orders increases, etc.)
-- ✅ Use tutorial modal instead of redirecting to tutorial page from playing page
-- ✅ Use GIF for playthrough instructions 
 - Have back-end store names to randomly generate if player does not give a name
     - Example: Have array of adjectives and array of nouns, randomly pick one of each to give a name, ex. "Frosted Baker"
+
 
 ## Acknowledgements
 
@@ -284,6 +292,7 @@ Icon Attributions:
 - Volume on - https://www.flaticon.com/authors/fach
 - Chef hat cursor - https://www.flaticon.com/authors/those-icons
 - Whisk cursor - https://www.flaticon.com/authors/popo2021
+- Hand cursor (modified) - https://www.flaticon.com/authors/meaicon
 
 Special thanks to my friend Carmela, the first ever player of the game, who helped find all the ways to break the code :)
 
