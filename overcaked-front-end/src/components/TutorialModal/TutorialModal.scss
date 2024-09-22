@@ -24,7 +24,12 @@
     }
 
     &__image {
-        width: 80rem;
-        margin: 1rem 0;
+        width: 60rem;
+        margin-top: 1rem;
+
+        @include desktop {
+            width: 80rem;
+            margin: 1rem 0;
+        }
     }
 }
