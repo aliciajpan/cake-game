@@ -1,5 +1,6 @@
-# Overcaked
-<img src="./overcaked-front-end/public/favicon.png" alt="favicon" width=300>
+# Overcaked <img src="./overcaked-front-end/public/favicon.png" alt="favicon" width=30>
+
+<img src="./proposal-images/playthrough.gif" alt="sample playthrough" width=800>
 
 ## Overview
 
@@ -33,22 +34,15 @@ I forsee players of the game falling into these categories:
 
 - Cake card orders will appear on the screen
 - Cake orders will have a timer shown through a decreasing bar; once the timer is up, the card will expire and disappear (i.e. player can no longer earn points for completing that specific order)
-
 - Players will be able to add _cake components_ (layers and a topmost icing layer) by pressing buttons on screen as they see fit 
     * A maximum limit will be enforced so that the cake can fit in the screen area
 - Players will be able to customize _cake components_ to have different colours/flavours by pressing buttons on screen
-
 - Players will be able to trash a cake when they want to start over by pressing a button on screen
 - Players will be able to submit a cake order when they are satisfied with their work by pressing a button on screen
-
 - Orders do not have to be fulfilled in the order of appearance
-
 - Player score will be tracked and displayed on the screen
-
 - Players can view a game instruction blurb
-
 - Players can see their previous score history
-
 - Players can enter their Chef name
  
 ## Implementation
