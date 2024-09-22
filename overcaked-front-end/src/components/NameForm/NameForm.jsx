@@ -40,6 +40,7 @@ function NameForm() {
                     id="name" 
                     type="text"
                     placeholder={"what's your name, chef?"}
+                    maxLength="14"
                 ></input>
                 <Button text="play" sizing="big" color="pink pink--playBtn" onClick={handleSubmit}/>
             </form>
