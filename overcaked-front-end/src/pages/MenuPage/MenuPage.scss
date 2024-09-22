@@ -17,9 +17,14 @@
     }
 
     &__logo {
-        width: 50%;
-        margin: 2rem;
+        width: 55%;
+        margin: 1rem 0 3rem;
         animation: popBiggerLogo 8s infinite;
+
+        @include desktop {
+            width: 50%;
+            margin: 2rem;
+        }
     }
 
     &__orders {
@@ -30,13 +35,12 @@
         position: absolute;
 
         &--whisk {
-            rotate: 15deg;
-            right: -17rem;
+            rotate: 25deg;
+            right: -18rem;
             top: -48rem;
             scale: 0.3;
 
             @include desktop {
-                rotate: 15deg;
                 right: -15rem;
                 top: -45rem;
                 scale: 0.4;
@@ -49,17 +53,17 @@
         }
 
         &--folder {
-            left: -50rem;
+            left: -48rem;
             bottom: -63rem;
             scale: 0.23;
-            rotate: -25deg;
+            rotate: -32deg;
             cursor: url('/src/assets/images/handpointer.png') 16 16, auto;
 
             @include desktop {
-                left: -50rem;
-                bottom: -60rem;
+                left: -45rem;
+                bottom: -61rem;
                 scale: 0.3;
-                rotate: -25deg;
+                rotate: -35deg;
             }
 
             &:hover {

@@ -33,6 +33,12 @@
         height: 30rem;
         grid-column: 3 / 4;
         grid-row: 2 / 3;
+
+        // new for tablet
+        position: absolute;
+        bottom: 6rem;
+        left: 0;
+        right: 0;
     }
 
     &__edit {
@@ -43,6 +49,16 @@
         grid-row: 1 / -1;
         justify-content: center;
         align-items: center;
+
+        //tablet new
+        scale: 0.8;
+
+        margin-top: -6rem;
+
+        @include desktop {
+            margin-top: 0;
+            scale: 1;
+        }
     }
 
     &__info {
@@ -50,14 +66,23 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        margin-top: 2rem;
-        margin-bottom: 3rem;
+        margin-top: 3rem;
+        margin-bottom: 1rem;
+
+        @include desktop {
+            margin-top: 2rem;
+            margin-bottom: 3rem;
+        }
     }
 
     &__icon {
-        max-width: 5rem;
+        max-width: 4rem;
         position: absolute;
         bottom: 5rem;
+
+        @include desktop {
+            max-width: 5rem;
+        }
 
         &:hover {
             animation: popBigger 1s both;
@@ -71,16 +96,35 @@
         &--submit {
             grid-column: 4 / 5;
             grid-row: 2 / 3;
+            position: absolute;
+            bottom: -3rem;
+            right: 15.5rem;
+
+            @include desktop {
+                max-width: 5rem;
+                position: static;
+            }
         }
 
         &--trash {
             grid-column: 2 / 3;
             grid-row: 2 / 3;
+            position: absolute;
+            bottom: -3rem;
+            left: 12rem;
+
+            @include desktop {
+                position: static;
+            }
         }
     }
 
     &__score {
-        font-size: 4rem;
+        font-size: 3rem;
+
+        @include desktop {
+            font-size: 4rem;
+        }
     }
 
     &__image {
@@ -88,14 +132,21 @@
 
         &--folder {
             left: -50rem;
-            bottom: -65rem;
-            scale: 0.2;
-            rotate: -25deg;
+            bottom: -68rem;
+            scale: 0.15;
+            rotate: -32deg;
             cursor: url('/src/assets/images/handpointer.png') 16 16, auto;
             
             &:hover {
                 animation: popBigger 1s ease;
                 animation-fill-mode: forwards;
+            }
+
+            @include desktop {
+                scale: 0.23;
+                left: -47rem;
+                bottom: -64rem;
+                rotate: -35deg;
             }
         }
     }
