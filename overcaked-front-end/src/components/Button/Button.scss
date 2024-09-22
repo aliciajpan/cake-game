@@ -84,7 +84,11 @@
     color: $chocolate-light;
     height: 4rem;
     width: 15rem;
-    margin: 1rem;
+    margin: 0.5rem;
+
+    @include desktop {
+        margin: 1rem;
+    }
 
     &--menu {
         width: 10rem;
