@@ -1,6 +1,6 @@
+import { readFile, writeFile } from '../utils/json.js';
 import flavours from '../data/flavours.js';
 import generateNum from '../utils/rng.js';
-import { readFile, writeFile } from '../utils/json.js';
 
 function generateCakes (_req, res) {
     try {
@@ -48,7 +48,7 @@ function generateCakes (_req, res) {
     catch (error) {
         res.status(500).json({
             message: "Unable to retrieve cakes data",
-            error:error.toString()
+            error: error.toString()
         });
     }
 };

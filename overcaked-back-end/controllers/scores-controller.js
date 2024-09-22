@@ -1,5 +1,5 @@
-import { readFile, writeFile } from '../utils/json.js';
 import { v4 as uuidv4 } from 'uuid';
+import { readFile, writeFile } from '../utils/json.js';
 
 function postScore (req, res) {
     const {playerName, playerScore} = req.body;
@@ -46,6 +46,5 @@ function getAllScores (_req, res) {
         });
     }
 };
-
 
 export {postScore, getAllScores};
