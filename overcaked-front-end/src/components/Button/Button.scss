@@ -10,7 +10,7 @@
     margin: 2rem;
 
     &:hover {
-        cursor: pointer;
+        cursor: url('/src/assets/images/handpointer.png') 16 16, auto;
         animation: popBigger 1s both;
     }
 }

@@ -16,7 +16,7 @@
         width: 3rem;
 
         &:hover {
-            cursor: pointer;
+            cursor: url('/src/assets/images/handpointer.png') 16 16, auto;
             animation: popBigger 1s both;
         }
     }
@@ -46,7 +46,6 @@
         }
 
         &:hover {
-            cursor: pointer;
             animation-name: popBigger, bubbleFade;
             animation-duration: 1s, 2s;
             animation-timing-function: both, both;
