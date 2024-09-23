@@ -32,29 +32,34 @@ I forsee players of the game falling into these categories:
 
 ### Features
 
+- Game is responsive at/between/above the following screen size breakpoints (landscape mode):
+   - 1024px x 768px
+   - 1280px x 800px
+   - 1500px x 890px
 - Cake card orders will appear on the screen
 - Cake orders will have a timer shown through a decreasing bar; once the timer is up, the card will expire and disappear (i.e. player can no longer earn points for completing that specific order)
-- Players will be able to add _cake components_ (layers and a topmost icing layer) by pressing buttons on screen as they see fit 
-    * A maximum limit will be enforced so that the cake can fit in the screen area
+- Players will be able to add _cake components_ (layers and an icing layer) by pressing buttons on screen as they see fit 
+    * A maximum limit will be enforced so that the cake can fit in the screen area; this was decided to be max 3 layers
 - Players will be able to customize _cake components_ to have different colours/flavours by pressing buttons on screen
 - Players will be able to trash a cake when they want to start over by pressing a button on screen
 - Players will be able to submit a cake order when they are satisfied with their work by pressing a button on screen
 - Orders do not have to be fulfilled in the order of appearance
 - Player score will be tracked and displayed on the screen
+- Number of expired cakes will be tracked and displayed on the screen 
+    - If the number of expired cakes goes over a limit, the game will end; this was decided to be max 10 missed cakes
 - Players can view a game instruction blurb
 - Players can see their previous score history
-- Players can enter their Chef name
-- Game is responsive at and between the following screen size breakpoints (landscape mode):
-   - 1024px x 768px
-   - 1280px x 800px
-   - 1500px x 890px
+- Players can enter their Chef Name for the scoreboard
+
  
 ## Implementation
+
+Please note that some minor changes have been made since the original proposal as the implementation became better defined while working on the project.
 ### Tech Stack
 
 |   |   |
 |---|---|
-|__Languages__| HTML, SASS, Javascript |
+|__Languages__| HTML, CSS/SASS, Javascript |
 |__Front-End__| React, SASS, axios, react-dom, react-router-dom, react-use-precision-timer |
 |__Languages__| Node, Express, CORS, uuid, dotenv |
 |__Tools & Softwares__| VSCode, Postman, GitHub, Procreate, DaFont, Flaticon |
@@ -93,7 +98,7 @@ No external sources of data, a custom back-end will be made!
 
 <img src="./proposal-images/realScores.png" alt="scoreboard page mockup" width=800><img src="./proposal-images/scoreboard.jpg" alt="scoreboard page mockup" width=800>
 
-1. Scoreboard title with player's name (player-entered or placeholder)
+~~1. Scoreboard title with player's name (player-entered or placeholder)~~
 
 2. Dynamically timestamped scores displayed in order of highest to lowest
 
@@ -108,9 +113,9 @@ No external sources of data, a custom back-end will be made!
 1. Order cards
 2. Timers on orders
 3. Tab to show tutorial modal, which looks like tutorial page but smaller and the Main Page is visible in the background
-4. Garbage can icon to scrap cake
+4. Trash icon to scrap cake
 5. Plate on which _cake components_ are stacked
-6. Clicking on _cake components_ brings up flavour menu to change flavour/colour
+6. ~~Clicking on _cake components_ brings up~~ flavour menu to change flavour/colour
 7. Checkmark icon to submit cake to be compared against orders
 8. Flavour menu
 9. Buttons to add _cake components_
@@ -119,9 +124,9 @@ No external sources of data, a custom back-end will be made!
 
 ### Data
 
-1. Pool of flavours cake layers/icing
-2. Array of randomly generated cake configurations (uses #1)
-    - Some limits on number of cake layers, etc.
+1. Pool of flavours cake layers/icing (JSON)
+2. Array of randomly generated cake configurations (uses #1) (JSON)
+    - Some limits on number of cake layers (max 3)
     - What each cake object looks like:
 
     ```
@@ -134,10 +139,7 @@ No external sources of data, a custom back-end will be made!
     }
     ```
 
-3. Front-end can change cake data from #2
-    - If order times out, write to back-end to change `expired` to `true` 
-    - If order successfully submitted, write to back-end to change `submitted` to `true` 
-4. Array of player's past scores and associated timestamps
+3. Array of player's past scores and associated timestamps (JSON)
     - When game over, save current score and timestamp of game end to array
         - What each score object looks like:
     ```
@@ -148,11 +150,9 @@ No external sources of data, a custom back-end will be made!
         "time": 1726802792496 
     }
      ```
-5. Store player's name (from front-end input or use placeholder if none provided) to localStorage
+4. Store player's name, from front-end input or use placeholder if none provided (localStorage)
 
 ### Endpoints
-
-List endpoints that your server will implement, including HTTP methods, parameters, and example responses.
 
 **POST `/cakes`** -> Generates and returns array of cakes
 
@@ -165,7 +165,7 @@ List endpoints that your server will implement, including HTTP methods, paramete
 
 ## Roadmap
 
-### Main Chunks
+### Main Chunks & Rough Timeline
 
 0. Get feedback _(Sept 11)_
 
@@ -196,44 +196,31 @@ List endpoints that your server will implement, including HTTP methods, paramete
 5. Create data collections in back-end _(Sept 15-16)_
     - List of cake layer/icing flavours
     - Generate array of cakes
-        - Each cake object should have these properties (example properties):
-        ```
-        {
-            id: 1,
-            score: 200,
-            layerCount: 3,
-            layers: ["chocolate", "vanilla", "chocolate"],
-            icing: "strawberry",
-            expired: false,
-            submitted: false
-        }
-        ```
     - List of player scores so far
-        - Sorted to show highest at front of the array
+        - Sorted to show highest at the top
         - Use dynamic timestamp
 
 6. Define HTTP verb + endpoint combinations in back-end _(Sept 17)_
-    - See `Endpoints` section
+    - See **Endpoints** section
 
 7. Make `axios` calls in appropriate places in front-end to get data from back-end _(Sept 18-19)_
-    - Clicking PLAY button on Menu Page triggers generation of array of cakes (**limit vs infinite play TBD**)
+    - Clicking PLAY button on Menu Page* triggers generation of array of cakes (decided to limit to 20 cakes in a game)
         - Brings player to `/play`/Main Page
     - Clicking SCOREBOARD button on Menu Page fetches scoreboard data to display
          - Brings player to `/score`/Scoreboard Page
-    - Clicking CHECKMARK in Menu Page player name input writes name to back-end
-        - If field is blank, use placeholder name
+    - Clicking PLAY button on Menu Page writes inputted Chef Name to localStorage
+        - If field is blank, use placeholder name ("Anonymous Chef")
 
 8. Create event listeners in front-end to respond to player actions (see #7 for event listeners that have to do with back-end data) _(Sept 19-21)_
     - On Menu Page
         - Clicking on **Tutorial tab** takes player to `/howtoplay`/Tutorial page
     - On Main Page
-        - Clicking **+Add Cake Layer** button adds cake layer
-        - Clicking **+Add Icing** button adds icing to top
-        - Clicking a **_cake component_** brings up a menu to change its flavour
-        - Clicking **garbage can icon** scraps everything on the plate
+        - Clicking **+ Add Cake Layer** button adds cake layer
+        - Clicking **+ Add Icing** button adds icing to top
+        - Clicking **trash icon** scraps everything on the plate
         - Clicking **checkmark icon** submits the cake to check against the cake orders currently on screen
             - If a match is found, add that's order's cake's `score` property to player's score
-            - If not match is found, feedback is given to user so they know the cale submission was wrong
+            - If not match is found, feedback is given to user (shaking of the plate) so they know the cake submission was wrong
         - Clicking on **Tutorial tab** takes player to `/howtoplay`/Tutorial page
     - On Scoreboard Page
         - Clicking on **home icon** brings user back to `/`/Menu page
@@ -242,7 +229,6 @@ List endpoints that your server will implement, including HTTP methods, paramete
 
 9. Testing _(Sept 22)_
 
----
 ## How to Run Locally
 
 1. Clone this repo locally
@@ -253,7 +239,6 @@ List endpoints that your server will implement, including HTTP methods, paramete
 4. Run `npm run dev` in the `overcaked-front-end` directory
 5. Open `http://localhost:5173/` in Chrome
 
----
 
 ## Nice to Haves/Future Features
 
@@ -272,7 +257,7 @@ List endpoints that your server will implement, including HTTP methods, paramete
     - Cake box animation for successful submissions
 - ✅ Custom themed cursors
 - ✅ Visually displaying which _cake component_ is selected (selection border)
-- ✅ Use tutorial modal instead of redirecting to tutorial page from playing page
+- ✅ Pause timers when tutorial modal is open and resume when modal is closed (used https://www.npmjs.com/package/react-use-precision-timer)
 - ✅ Use GIF for playthrough instructions
 - ✅ Highlight and scroll to newly added score when view scoreboard page from end of game
 - ✅ Add a reminder to players if their screens are too small/wrong orientation
@@ -280,8 +265,7 @@ List endpoints that your server will implement, including HTTP methods, paramete
 - Different levels of difficulty (timers shorter/number of concurrent orders increases, etc.)
 - Deploy online
     - Save scoreboard data for online players
-- Expand colours/flavours/number of cake layers (increase cake order complexity)
-- Add cake toppings
+- Expand colours/flavours/number of cake layers, add cake toppings (increase cake order complexity)
 - Save data in database instead of JSON file
 - Have back-end store names to randomly generate if player does not give a name
     - Example: Have array of adjectives and array of nouns, randomly pick one of each to give a name, ex. "Frosted Baker"
@@ -290,11 +274,11 @@ List endpoints that your server will implement, including HTTP methods, paramete
 
 ## Acknowledgements
 
-Font (via DaFont): https://www.dafont.com/milk-cream.font by MJtype
+"Milk Cream" Font (via DaFont): https://www.dafont.com/milk-cream.font by MJtype
 
-Music (copyright free): https://www.youtube.com/watch?v=tAaFg2u-i2c by UmbrTone
+"Yummy Flavor" Music (copyright free): https://www.youtube.com/watch?v=tAaFg2u-i2c by UmbrTone
 
-CSS cake model (modified): https://codepen.io/fazlurr/pen/gPMJMK by Fazlur Rahman on CodePen
+CSS Cake Model (modified): https://codepen.io/fazlurr/pen/gPMJMK by Fazlur Rahman on CodePen
 
 Icon Attributions:
 
