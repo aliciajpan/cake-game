@@ -12,13 +12,15 @@ In this game, players are given cake orders from customers and must assemble the
 
 Points are earned for successfully submitted orders and the more complicated the cake, the higher the score awarded.
 
-### Problem Space
+<details>
+<summary>### Problem Space</summary>
 
 **Short answer**: This project is meant to deliver some good silly fun!
 
 **Longer answer**: Everyone needs a pick-me-up every now and then. This project aims to have a cute and cheerful design with a game mechanic that requires just the right amount of concentration - it gives your mind something to do, but is not too frustrating. I hope to bring a smile to someone's face when they play this :)
 
 **Personal answer**: I have been interested in what goes into video game design - especially browser games - for a long time. The scope of this game is modest due to the time constraints, but I'd still like to put my newly learned software skills to use on a project that feels exciting to me. Plus I think the lil cakes are super cute!
+</details>
 
 ### User Profile
 
