@@ -46,11 +46,11 @@ function ScoreboardPage() {
             <section className='scoreboard'>
                 <div className='scoreboard__header'>
                     <NavLink className="scoreboard__icon-wrapper" to="/">
-                        <img className='scoreboard__icon' src={homeIcon}/>
+                        <img className='scoreboard__icon' src={homeIcon} alt="home icon"/>
                     </NavLink>
                     <h1>Scores</h1>
                 </div>
-                
+
                 {scoresArray.map((scoreObj, index) => {
                     return (<ScoreCard 
                         key={index} 

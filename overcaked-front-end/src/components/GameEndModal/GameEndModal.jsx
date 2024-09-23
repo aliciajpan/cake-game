@@ -12,7 +12,7 @@ function GameEndModal({fail, newScoreID}) {
             <article className="modal">
                 <h2>{fail ? "GAME OVER" : "GREAT WORK!"}</h2>
                 <p>{message}</p>
-                <img className="modal__image" src={fail ? sadchef : happychef} />
+                <img className="modal__image" src={fail ? sadchef : happychef} alt="cartoon chef"/>
                 {newScoreID ? 
                     <NavLink to={`/scoreboard?id=${newScoreID}`}>
                         <Button text="See scores" sizing="small" color="brown"/>
