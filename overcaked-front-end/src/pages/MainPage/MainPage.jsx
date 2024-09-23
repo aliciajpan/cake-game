@@ -212,7 +212,7 @@ function MainPage() {
         <>
             <div className='main__wrapper'>
                 <main className='main'>
-                    <img onClick={openTutorial} className="main__image main__image--folder" src={folder}/>
+                    <img onClick={openTutorial} className="main__image main__image--folder" src={folder} alt="folder"/>
                     <div className='main__orders'>
                         <OrderList 
                             filteredCakeArray={cakeArray.filter((cake) => cakesToDisplay.includes(cake.id))} 
@@ -238,14 +238,14 @@ function MainPage() {
                     </section> 
 
                     <div className='main__icon-wrapper--submit'>
-                        <img className='main__icon' onClick={submitCake} src={submitIcon}/>
+                        <img className='main__icon' onClick={submitCake} src={submitIcon} alt="submit icon"/>
                     </div> 
 
                     <div className='main__icon-wrapper--trash'>
-                            <img onClick={trashCake} className='main__icon' src={trashIcon}/>
+                            <img onClick={trashCake} className='main__icon' src={trashIcon} alt="trash icon"/>
                     </div>                
                 </main>
-                
+
                 {isGameOver && (
                     <GameEndModal fail={missedCakesCountRef.current >= 10} newScoreID={newScoreID}/>
                 )}

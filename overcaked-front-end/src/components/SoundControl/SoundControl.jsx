@@ -42,7 +42,7 @@ function SoundControl() {
                         <div className="music__info--tail"></div>
                     </article>
                 }
-                <img onClick={toggleSound} className="music__image" src={playSound ? soundON : soundOFF} />
+                <img onClick={toggleSound} className="music__image" src={playSound ? soundON : soundOFF} alt="volume icon"/>
                 <audio
                     src={bkgdMusic}
                     autoPlay={false}

@@ -14,21 +14,29 @@
         align-items: start;
         flex: 1 0;
     }
+}
 
-    &__redirect {
-        @include flexCenter;
-        @include stretchScreen;
+.redirect {
+    @include flexCenter;
+    @include flexColumn;
+    @include stretchScreen;
+    text-align: center;
+    padding: 1rem;
 
-        @include tablet {
-            display: none;
-        }
+    @include tablet {
+        display: none;
+    }
 
-        @include desktop {
-            display: none;
-        }
+    @include desktop {
+        display: none;
+    }
 
-        @media (max-width: 1023px) or (max-height: 767px) {
-            display: flex;
-        }
+    @media (max-width: 1023px) or (max-height: 767px) {
+        display: flex;
+    }
+
+    &__logo {
+        width: 80%;
+        margin-bottom: 2rem;
     }
 }

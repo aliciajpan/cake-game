@@ -15,7 +15,7 @@ function MenuPage() {
                 <img className='menu__logo' src={logo} alt="Overcaked logo" />
                 <NameForm />
                 <NavLink to="/scoreboard"><Button text="scoreboard" sizing="small" color="brown brown--scoreboardBtn"/></NavLink>
-                <img className="menu__image menu__image--whisk" src={whisk}/>
+                <img className="menu__image menu__image--whisk" src={whisk} alt="whisk"/>
                 <Footer/>
             </section>
         </div>

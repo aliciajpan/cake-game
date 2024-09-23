@@ -6,11 +6,11 @@ function TutorialModal({closeModal}) {
     function closeTutModal() {
         closeModal();
     }
-    
+
     return (
         <div className="tutmodal__wrapper">
             <article className="tutmodal">
-                <img className="tutmodal__image" src={folder} />
+                <img className="tutmodal__image" src={folder} alt="game instructions"/>
                 <Button onClick={closeTutModal} text="Close" sizing="game" color="brown"/>
             </article>
         </div>
