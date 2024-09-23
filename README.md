@@ -8,17 +8,17 @@ Welcome to Overcaked!
 
 <sub>(What do you mean that sounds familiar enough to be a copyright problem?)</sub>
 
-In this game, players will be given cake orders in the form of an image of what the cake should look like when completed and they must assemble a cake according to the order to hand off to customers. Cakes will have varying numbers of layers, layer flavours, and frosting flavours.
+In this game, players are given cake orders from customers and must assemble the cakes correctly before time runs out and customers get hangry! Cakes will have varying numbers of layers, layer flavours, and frosting flavours.
 
-Points are earned for successfully submitted orders! Beware the order timers - no hungry customer wants to be left waiting for too long!
+Points are earned for successfully submitted orders and the more complicated the cake, the higher the score awarded.
 
 ### Problem Space
 
 **Short answer**: This project is meant to deliver some good silly fun!
 
-**Longer answer**: Everyone needs a pick-me-up every now and then. This project aims to have a cozy and cheerful design with a main game mechanic that requires just the right amount of concentration that it gives your mind something to do, but is not too frustrating. I hope to bring a smile to someone's face when they play this :)
+**Longer answer**: Everyone needs a pick-me-up every now and then. This project aims to have a cute and cheerful design with a game mechanic that requires just the right amount of concentration - it gives your mind something to do, but is not too frustrating. I hope to bring a smile to someone's face when they play this :)
 
-**Personal answer**: I have been interested in what goes into video game design - especially browser games, which generally need to be designed to be more lightweight - for a long time. The scope of this game is not meant to be super expansive due to the time constraints, but I'd still like to put my newly learned software skills to use on a project that feels exciting to me. Plus I think a site of lil cakes would be super cute!
+**Personal answer**: I have been interested in what goes into video game design - especially browser games - for a long time. The scope of this game is modest due to the time constraints, but I'd still like to put my newly learned software skills to use on a project that feels exciting to me. Plus I think the lil cakes are super cute!
 
 ### User Profile
 
@@ -261,27 +261,31 @@ List endpoints that your server will implement, including HTTP methods, paramete
 
 - ✅ Add cheerful music that plays in window
 - ✅ Animations
-    - Title logo idle pulse
-    - Menu page whisk moves on hover
-    - Interactable items enlarge on hover (hand pointer cursor to show clickable)
-    - Articles/cards enlarge when hover (regular cursor)
-    - Order cards slide into page
-    - Plate shakes when invalid action happens
-    - Score and expired cake count text pops out and changes colour 
-    - Pop up on menu page reminds player to try playing with sound on
+    - ✅ Title logo idle pulse
+    - ✅ Menu page whisk moves on hover
+    - ✅ Interactable items enlarge on hover (hand pointer cursor to show clickable)
+    - ✅ Articles/cards enlarge when hover (regular cursor)
+    - ✅ Order cards slide into page
+    - ✅ Plate shakes when invalid action happens
+    - ✅ Score and expired cake count text pops out and changes colour 
+    - ✅ Pop up on menu page reminds player to try playing with sound on
+    - Cake box animation for successful submissions
 - ✅ Custom themed cursors
 - ✅ Visually displaying which _cake component_ is selected (selection border)
-- ✅ Different levels of difficulty (timers shorter/number of concurrent orders increases, etc.)
 - ✅ Use tutorial modal instead of redirecting to tutorial page from playing page
 - ✅ Use GIF for playthrough instructions
 - ✅ Highlight and scroll to newly added score when view scoreboard page from end of game
+- ✅ Add a reminder to players if their screens are too small/wrong orientation
 - Add symbols on flavours (instead of just relying on colours) to increase accessibility
+- Different levels of difficulty (timers shorter/number of concurrent orders increases, etc.)
 - Deploy online
     - Save scoreboard data for online players
 - Expand colours/flavours/number of cake layers (increase cake order complexity)
+- Add cake toppings
 - Save data in database instead of JSON file
 - Have back-end store names to randomly generate if player does not give a name
     - Example: Have array of adjectives and array of nouns, randomly pick one of each to give a name, ex. "Frosted Baker"
+- Mobile compatibility
 
 
 ## Acknowledgements
@@ -303,6 +307,6 @@ Icon Attributions:
 - Whisk cursor - https://www.flaticon.com/authors/popo2021
 - Hand cursor (modified) - https://www.flaticon.com/authors/meaicon
 
-Special thanks to my friend Carmela, the first ever player of the game, who helped find all the ways to break the code :)
+Special thanks to Carmela and William, the first ever players, who helped find all the ways to break the code :)
 
 Original graphics by me! (Drawn on Procreate)

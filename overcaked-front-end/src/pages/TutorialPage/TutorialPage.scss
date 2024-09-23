@@ -40,10 +40,10 @@
 }
 
 .tutorial-module {
-    @include stretchScreen;
     display: flex;
     justify-content: center;
     align-items: start;
+    height: max-content;
 
     &__bkgd-container {
         @include flexCenter;
