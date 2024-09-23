@@ -316,4 +316,3 @@ Take a look at the `mystery-bug` branch if you'd like!
 Running from that branch instead of `main` will most likely yield more stable cake expiry behaviour, but the cakes will not be randomly generated every time.
 
 <sub>pray for me</sub>
-
