@@ -294,3 +294,24 @@ Icon Attributions:
 Special thanks to Carmela and William, the first ever players, who helped find all the ways to break the code :)
 
 Original graphics by me! (Drawn on Procreate)
+
+---
+
+#### Temp Note
+On the day of submission, a bug that I thought was squashed earlier reappeared. 
+Investigation is ongoing, but in the meantime, here is everything I know about it:
+- Sometimes cake expiry behaviour is weird 
+    - It seems that the main symptom is 1-layer cakes sometimes do not clear away when they are expired
+    - Sometimes they will seem to hang for a bit and then clear away after a couple seconds
+    - Sometimes the expiry of another cake seems to trigger its expiry as well
+- I can't consistently reproduce the issue but it seems to go away when instead of randomly generating cakes, an unchanging `cakes.json` is used
+    - If I cannot figure the bug out, I will use a static cake JSON file on Demo Day to be safe
+- Next parts of the investigation will entail:
+    - Seeing if new cakes are generated when they aren't expected to be
+    - Trying attaching the generation of cakes to the action of pressing the PLAY button the Menu Page instead of loading into the Play Page
+    - A lot of console logging
+
+Take a look at the `mystery-bug` branch if you'd like!
+
+<sub>pray for me</sub>
+
