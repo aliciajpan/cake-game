@@ -72,7 +72,7 @@ No external sources of data, a custom back-end will be made!
 
 #### Menu Page
 
-<img src="./proposal-images/menu.jpg" alt="menu page mockup" width=800> <img src="./proposal-images/realMenu.png" alt="menu page mockup" width=800>
+<img src="./proposal-images/realMenu.png" alt="menu page screenshot" width=800><img src="./proposal-images/menu.jpg" alt="menu page mockup" width=800> 
 
 1. Input for user to enter name (if left blank, a placeholder name will be used)
 
@@ -86,7 +86,7 @@ No external sources of data, a custom back-end will be made!
 
 #### Tutorial Page
 
-<img src="./proposal-images/tutorialpage.jpg" alt="tutorial page mockup" width=800><img src="./proposal-images/realTutorial.png" alt="tutorial page mockup" width=800>
+<img src="./proposal-images/realTutorial.png" alt="tutorial page screenshot" width=800><img src="./proposal-images/tutorialpage.jpg" alt="tutorial page mockup" width=800>
 
 1. Home button to return to Menu Page
 
@@ -96,7 +96,7 @@ No external sources of data, a custom back-end will be made!
 
 #### Scoreboard Page
 
-<img src="./proposal-images/realScores.png" alt="scoreboard page mockup" width=800><img src="./proposal-images/scoreboard.jpg" alt="scoreboard page mockup" width=800>
+<img src="./proposal-images/realScores.png" alt="scoreboard page screenshot" width=800><img src="./proposal-images/scoreboard.jpg" alt="scoreboard page mockup" width=800>
 
 ~~1. Scoreboard title with player's name (player-entered or placeholder)~~
 
@@ -108,7 +108,7 @@ No external sources of data, a custom back-end will be made!
 
 #### Main Page
 
-<img src="./proposal-images/realPlay.png" alt="main page" width=800><img src="./proposal-images/mainpage.jpg" alt="main page" width=800>
+<img src="./proposal-images/realPlay.png" alt="main page screenshot" width=800><img src="./proposal-images/mainpage.jpg" alt="main page mockup" width=800>
 
 1. Order cards
 2. Timers on orders
