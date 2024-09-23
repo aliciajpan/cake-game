@@ -25,7 +25,7 @@ function App() {
 
             <div className='redirect'>
                 <img className='redirect__logo' src={logo} alt="Overcaked logo" />
-                <p>Please play on a <strong>landscape orientation</strong> screen that is at least 1024px by 768px</p>
+                <p>Please play on a <strong>landscape orientation</strong> screen that is at least 1024px by 768px (or trying zooming out on the window)</p>
             </div>
         </BrowserRouter>
     )
