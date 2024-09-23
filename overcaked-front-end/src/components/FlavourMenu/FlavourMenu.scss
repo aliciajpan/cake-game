@@ -2,10 +2,8 @@
 @use '../../styles/partials/_mixins.scss' as *;
 
 .flavourmenu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flexColumn;
+    @include flexCenter;
     background-color: $vanilla;
     border-radius: 3rem;
     width: 15rem;

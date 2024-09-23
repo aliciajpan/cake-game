@@ -3,10 +3,8 @@
 @use '../../styles/partials/_variables.scss' as *;
 
 .tutorial {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flexColumn;
+    @include flexCenter;
     flex: 1 0;
     height: 100%;
 
@@ -42,15 +40,13 @@
 }
 
 .tutorial-module {
+    @include stretchScreen;
     display: flex;
     justify-content: center;
     align-items: start;
-    @include stretchScreen;
 
     &__bkgd-container {
-        display: flex;
-        justify-content: center;
-        align-items: center;
+        @include flexCenter;
     }
     
     &__bkgd {

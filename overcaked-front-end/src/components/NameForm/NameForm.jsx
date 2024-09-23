@@ -5,9 +5,9 @@ import "./NameForm.scss";
 
 function NameForm() {
     const navigate = useNavigate();
-    const nameInputRef = useRef(null); // handles input default value
+    const nameInputRef = useRef(null);
 
-    useEffect(() => { // set preloaded value once on mount
+    useEffect(() => {
         const storedName = localStorage.getItem("overcakedSavedName");
         if (storedName) {
             nameInputRef.current.value = storedName;

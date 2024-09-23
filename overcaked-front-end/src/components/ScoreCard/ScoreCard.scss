@@ -4,12 +4,12 @@
 
 .scorecard {
     display: flex;
+    justify-content: space-between;
+    align-items: center;
     width: 80%;
     height: 3rem;
     border-radius: 2rem;
-    justify-content: space-between;
     padding: 0 1rem;
-    align-items: center;
     font-size: 2rem;
     margin: 1rem;
 

@@ -2,8 +2,7 @@
 @use '../../styles/partials/_mixins.scss' as *;
 
 .scoreboard {
-    display: flex;
-    flex-direction: column;
+    @include flexColumn;
     justify-content: start;
     align-items: center;
     flex: 1 0;
@@ -15,7 +14,6 @@
     }
 
     &__icon {
-
         max-width: 4rem;
         max-height: 4rem;
         position: absolute;

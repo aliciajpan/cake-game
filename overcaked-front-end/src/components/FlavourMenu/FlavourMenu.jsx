@@ -1,5 +1,5 @@
-import "./FlavourMenu.scss";
 import Button from "../Button/Button";
+import "./FlavourMenu.scss";
 
 function FlavourMenu({setSelectedFlavour}) {
 

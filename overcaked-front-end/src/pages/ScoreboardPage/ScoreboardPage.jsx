@@ -1,11 +1,10 @@
-import './ScoreboardPage.scss';
-import ScoreCard from '../../components/ScoreCard/ScoreCard';
 import { useState, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { NavLink, useSearchParams } from 'react-router-dom';
 import axios from 'axios';
-import homeIcon from '../../assets/icons/home.png';
-import { NavLink } from 'react-router-dom';
+import ScoreCard from '../../components/ScoreCard/ScoreCard';
 import Footer from '../../components/Footer/Footer';
+import homeIcon from '../../assets/icons/home.png';
+import './ScoreboardPage.scss';
 
 function ScoreboardPage() {
     const colors = ["scorecard--pink", "scorecard--brown", "scorecard--cream"];
@@ -51,6 +50,7 @@ function ScoreboardPage() {
                     </NavLink>
                     <h1>Scores</h1>
                 </div>
+                
                 {scoresArray.map((scoreObj, index) => {
                     return (<ScoreCard 
                         key={index} 

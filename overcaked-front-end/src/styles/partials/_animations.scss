@@ -1,13 +1,6 @@
 @use './_variables.scss' as *;
 
 @keyframes barRunOut {
-    // to {
-    //     width: 0;
-    //     // transform: scaleX(0);
-    //     background-color: $red;
-        
-    // }
-
     0% {width: 100%; background-color: $green;}
     25% {width: 75%; background-color: $green-yellow;}
     50% {width: 50%; background-color: $yellow;}

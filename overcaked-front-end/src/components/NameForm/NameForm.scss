@@ -3,10 +3,8 @@
 @use '../../styles/partials/_mixins.scss' as *;
 
 .nameform {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flexColumn;
+    @include flexCenter;
 
     &__input {
         height: 3.5rem;
@@ -20,11 +18,7 @@
         @include desktop {
             height: 4rem;
             width: 25rem;
-            padding: 1rem;
-            border-radius: 1rem;
             font-size: 2rem;
-            background-color: $vanilla;
-            margin-bottom: 1rem;
         }
 
         &:hover, &:focus{

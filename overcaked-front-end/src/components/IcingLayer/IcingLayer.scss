@@ -20,20 +20,20 @@
     &--0 {
         display: none;
     }
-}
 
-.chocolate {
-    @include icingColoring($chocolate);
-}
-
-.vanilla {
-    @include icingColoring($vanilla);
-}
-
-.strawberry {
-    @include icingColoring($strawberry);
+    &--chocolate {
+        @include icingColoring($chocolate);
+    }
+    
+    &--vanilla {
+        @include icingColoring($vanilla);
+    }
+    
+    &--strawberry {
+        @include icingColoring($strawberry);
+    }
 }
 
 .selected-icing {
-    @include selectedGlowIcing;
+    @include selectedGlow;
 }

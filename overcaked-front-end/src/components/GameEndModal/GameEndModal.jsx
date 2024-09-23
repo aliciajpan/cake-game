@@ -1,11 +1,11 @@
-import Button from "../Button/Button";
 import { NavLink } from "react-router-dom";
-import "./GameEndModal.scss";
+import Button from "../Button/Button";
 import happychef from "../../assets/images/happychef.png";
 import sadchef from "../../assets/images/sadchef.png";
+import "./GameEndModal.scss";
 
 function GameEndModal({fail, newScoreID}) {
-    const message = (fail ? "Too many customers were left waiting :(" : "You got through a day at the bakery!"); // why this not work?
+    const message = (fail ? "Too many customers were left waiting :(" : "You got through a day at the bakery!");
 
     return (
         <div className="modal__wrapper">

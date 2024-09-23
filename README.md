@@ -142,6 +142,7 @@ No external sources of data, a custom back-end will be made!
         - What each score object looks like:
     ```
     { 
+        "id": "74c625c8-79da-47b9-8302-aff05edcb05d",
         "name": "alicia", 
         "score": 5300, 
         "time": 1726802792496 
@@ -243,6 +244,14 @@ List endpoints that your server will implement, including HTTP methods, paramete
 
 ---
 ## How to Run Locally
+
+1. Clone this repo locally
+2. Run `npm install` in both the `overcaked-front-end` and `overcaked-back-end` directories
+    - **Optional**: Add a `.env` file to the `overcaked-back-end` directory and set the `PORT` to 8080 (the `.env.sample` file shows the format)
+        - The port is set automatically if this file is not added, please do not change it to be anything other than 8080 at this time
+3. Run `node --watch index.js` in the `overcaked-back-end` directory
+4. Run `npm run dev` in the `overcaked-front-end` directory
+5. Open `http://localhost:5173/` in Chrome
 
 ---
 

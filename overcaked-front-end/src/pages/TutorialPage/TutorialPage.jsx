@@ -1,8 +1,8 @@
-import './TutorialPage.scss';
 import { NavLink } from 'react-router-dom';
+import Footer from '../../components/Footer/Footer';
 import homeIcon from '../../assets/icons/home.png';
 import folder from '../../assets/images/tutorialGIF.gif';
-import Footer from '../../components/Footer/Footer';
+import './TutorialPage.scss';
 
 function TutorialPage() {
     return (
@@ -19,7 +19,6 @@ function TutorialPage() {
                     <img className="tutorial-module__bkgd" src={folder} />
                 </div>
             </section>
-
             
             <Footer/>
         </section>

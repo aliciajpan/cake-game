@@ -1,10 +1,10 @@
-import './App.scss';
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 import MainPage from './pages/MainPage/MainPage';
 import MenuPage from './pages/MenuPage/MenuPage';
-import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import ScoreboardPage from './pages/ScoreboardPage/ScoreboardPage';
 import TutorialPage from './pages/TutorialPage/TutorialPage';
 import SoundControl from './components/SoundControl/SoundControl';
+import './App.scss';
 
 function App() {
     return (
@@ -21,8 +21,6 @@ function App() {
                 <SoundControl/>
             </div>
         </BrowserRouter>
-
-
     )
 }
 

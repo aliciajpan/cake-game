@@ -2,22 +2,18 @@
 @use '../../styles/partials/_mixins.scss' as *;
 
 .modal {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flexColumn;
+    @include flexCenter;
     background-color: $strawberry-light;
     width: 60%;
     border-radius: 2rem;
     padding: 1rem;
 
     &__wrapper {
-        position: absolute;
-        display: flex;
-        justify-content: center;
-        align-items: center;
         @include stretchScreen;
-        z-index: 100;
+        @include flexCenter;
+        position: absolute;
+        z-index: 15;
         background-color: rgb(50,50,50,0.5);
         top: 0;
         left: 0;

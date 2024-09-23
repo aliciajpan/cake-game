@@ -1,16 +1,15 @@
-import "./SoundControl.scss";
+import { useState, useRef, useEffect } from "react";
+import { useLocation } from "react-router-dom";
 import bkgdMusic from '../../assets/sounds/cutesybkgdmusic.mp3';
 import soundON from '../../assets/icons/soundON.png';
 import soundOFF from '../../assets/icons/soundOFF.png';
-import { useState, useRef, useEffect } from "react";
-import { useLocation } from "react-router-dom";
+import "./SoundControl.scss";
 
 function SoundControl() {
     const [playSound, setPlaySound] = useState(false);
     const [showInfo, setShowInfo] = useState(true);
     const playerRef = useRef(null);
     const pageUrl = useLocation().pathname;
-    console.log(pageUrl);
 
     function toggleSound() {
         if (playSound === false) {

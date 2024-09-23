@@ -1,8 +1,8 @@
 import { useEffect, useCallback } from "react";
 import { useTimer } from "react-use-precision-timer";
-import "./OrderCard.scss";
 import TimerBar from "../TimerBar/TimerBar";
 import Cake from "../Cake/Cake";
+import "./OrderCard.scss";
 
 function OrderCard({num, icing, cakelayers, expireCake, isGameOver, tutorialModalOpen}) {
     const msPerLayer = 15000;

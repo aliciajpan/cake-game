@@ -3,22 +3,17 @@
 @use '../../styles/partials/_variables.scss' as *;
 
 .menu {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
+    @include flexColumn;
+    @include flexCenter;
 
     &__wrapper {
-        display: flex;
-        justify-content: center;
-        align-items: center;
         @include stretchScreen;
+        @include flexCenter;
         position: absolute;
         overflow: hidden;
     }
 
     &__logo {
-        // width: 20rem;
         width: 34rem;
         margin: 1rem 0 3rem;
         animation: popBiggerLogo 8s infinite;

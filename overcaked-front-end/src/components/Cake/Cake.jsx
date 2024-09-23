@@ -4,7 +4,7 @@ import "./Cake.scss";
 
 function Cake({icing, cakelayers, size, selectedItem, setSelectedItem}) {
     return (
-        <article className={`cake ${size}`}>
+        <article className={`cake cake--${size}`}>
             <div className="plate"></div>
             {cakelayers.map((layer, index) => {
                 return (
@@ -17,7 +17,12 @@ function Cake({icing, cakelayers, size, selectedItem, setSelectedItem}) {
                     />
                 )
             })}
-            <IcingLayer onClick={() => {setSelectedItem("icing")}} isSelected={selectedItem==="icing"} flavour={icing} height={cakelayers.length}/>
+            <IcingLayer 
+                onClick={() => {setSelectedItem("icing")}} 
+                isSelected={selectedItem==="icing"} 
+                flavour={icing} 
+                height={cakelayers.length}
+            />
         </article>
     );
 }

@@ -1,11 +1,12 @@
 import Button from "../Button/Button";
-import "./TutorialModal.scss";
 import folder from '../../assets/images/tutorialGIF.gif';
+import "./TutorialModal.scss";
 
 function TutorialModal({closeModal}) {
     function closeTutModal() {
         closeModal();
     }
+    
     return (
         <div className="tutmodal__wrapper">
             <article className="tutmodal">

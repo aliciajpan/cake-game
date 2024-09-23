@@ -1,6 +1,5 @@
-import { useState } from "react";
-import "./OrderList.scss";
 import OrderCard from "../OrderCard/OrderCard.jsx";
+import "./OrderList.scss";
 
 function OrderList({filteredCakeArray, expireCake, isGameOver, tutorialModalOpen}) {
     return (

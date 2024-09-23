@@ -3,15 +3,12 @@
 @use './styles/partials/_mixins.scss' as *;
 
 .app {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    @include flexCenter;
 
     &__window {
         display: flex;
-        flex: 1 0;
         justify-content: center;
         align-items: start;
-        // @include stretchScreen;
+        flex: 1 0;
     }
 }
