@@ -13,7 +13,7 @@ In this game, players are given cake orders from customers and must assemble the
 Points are earned for successfully submitted orders and the more complicated the cake, the higher the score awarded.
 
 <details>
-<summary>### Problem Space</summary>
+<summary> ### Problem Space </summary>
 
 **Short answer**: This project is meant to deliver some good silly fun!
 
