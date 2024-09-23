@@ -1,5 +1,4 @@
 import { NavLink } from 'react-router-dom';
-import { useState } from 'react';
 import Button from '../../components/Button/Button';
 import NameForm from '../../components/NameForm/NameForm';
 import logo from '../../assets/logos/logo.png';

@@ -20,6 +20,8 @@ function App() {
                 </div>
                 <SoundControl/>
             </div>
+
+            <div className='app__redirect'>Please play on a landscape orientation screen that is at least 1024px by 768px</div>
         </BrowserRouter>
     )
 }
