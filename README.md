@@ -311,7 +311,9 @@ Investigation is ongoing, but in the meantime, here is everything I know about i
     - Trying attaching the generation of cakes to the action of pressing the PLAY button the Menu Page instead of loading into the Play Page
     - A lot of console logging
 
-Take a look at the `mystery-bug` branch if you'd like!
+Take a look at the `mystery-bug` branch if you'd like! 
+
+Running from that branch instead of `main` will most likely yield more stable cake expiry behaviour, but the cakes will not be randomly generated every time.
 
 <sub>pray for me</sub>
 
