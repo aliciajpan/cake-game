@@ -301,18 +301,19 @@ Original graphics by me! (Drawn on Procreate)
 On the day of submission, a bug that I thought was squashed earlier reappeared. 
 Investigation is ongoing, but in the meantime, here is everything I know about it:
 - Sometimes cake expiry behaviour is weird 
-    - It seems that the main symptom is 1-layer cakes sometimes do not clear away when they are expired
+    - Cakes sometimes do not clear away when they are expired; the order card gets stuck there with an empty timer
     - Sometimes they will seem to hang for a bit and then clear away after a couple seconds
     - Sometimes the expiry of another cake seems to trigger its expiry as well
-- I can't consistently reproduce the issue but it seems to go away when instead of randomly generating cakes, an unchanging `cakes.json` is used
-    - If I cannot figure the bug out, I will use a static cake JSON file on Demo Day to be safe
+- I can't consistently reproduce the issue but using a static `cakes.json` file instead of randomly generating cakes each time does not fix the issue
+   - This other repo I made for deploying purposes, which modifies the project to be fully front-end and holds data in static JSONs, also suffers from this bug: https://github.com/aliciajpan/overcaked-demo
+   - It does not seem that a new set of cakes are generated/fetched when they should not be
+- Using console logs to better see what is happening, it seems that the `expireCake` function that is passed down as a prop from MainPage > OrderList > OrderCard is not being called when it should
+   - Thus incrementing the "hangry customer" count which depends on this does not work
+   - And players are still able to earn points off of submitting a stuck expired cake, which should not be allowed
+   - The `expireCake` function is handled as a callback that is used when the timer for the OrderCard runs out, using this package: https://www.npmjs.com/package/react-use-precision-timer
 - Next parts of the investigation will entail:
-    - Seeing if new cakes are generated when they aren't expected to be
-    - Trying attaching the generation of cakes to the action of pressing the PLAY button the Menu Page instead of loading into the Play Page
-    - A lot of console logging
+    - Trying attaching the fetching of cakes to the action of pressing the PLAY button the Menu Page instead of loading into the Play Page
 
 Take a look at the `mystery-bug` branch if you'd like! 
-
-Running from that branch instead of `main` will most likely yield more stable cake expiry behaviour, but the cakes will not be randomly generated every time.
 
 <sub>pray for me</sub>
