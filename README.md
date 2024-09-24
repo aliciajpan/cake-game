@@ -1,5 +1,7 @@
 # Overcaked <img src="./overcaked-front-end/public/favicon.png" alt="favicon" width=30>
 
+Live dmeo version: overcaked.vercel.app/
+
 <img src="./proposal-images/playthrough.gif" alt="sample playthrough" width=800>
 
 ## Overview
