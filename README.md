@@ -63,7 +63,7 @@ Please note that some minor changes have been made since the original proposal a
 |---|---|
 |__Languages__| HTML, CSS/SASS, Javascript |
 |__Front-End__| React, SASS, axios, react-dom, react-router-dom, react-use-precision-timer |
-|__Languages__| Node, Express, CORS, uuid, dotenv |
+|__Back-End__| Node, Express, CORS, uuid, dotenv |
 |__Tools & Softwares__| VSCode, Postman, GitHub, Procreate, DaFont, Flaticon |
 
 ### APIs
